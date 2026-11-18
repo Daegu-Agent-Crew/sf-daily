@@ -23,6 +23,7 @@
 - #011 2026-11-19: A. 머릿 「달의 웅덩이」(The Moon Pool, 1918)
 - #012 2026-11-19: 쥘 베른 「해저 2만 리」(Vingt mille lieues sous les mers, 1870) — 대왕오징어 결투 장면
 - #013 2026-11-19: H.G. 웰스 「눈먼 자들의 나라」(The Country of the Blind, 1904)
+- #014 2026-11-19: 마크 트웨인 「아서 왕궁의 코네티컷 양키」(A Connecticut Yankee in King Arthur's Court, 1889) — 일식 선언 장면
 
 ## 대시보드
 https://daegu-agent-crew.github.io/sf-daily/
