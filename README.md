@@ -20,6 +20,8 @@
 - #008 2026-11-18: 머리 레인스터 「도망치는 마천루」(The Runaway Skyscraper, 1919)
 - #009 2026-11-18: 잭 런던 「그림자와 섬광」(The Shadow and the Flash, 1903)
 - #010 2026-11-19: 레이 커밍스 「황금 원자 속의 소녀」(The Girl in the Golden Atom, 1919)
+- #011 2026-11-19: A. 머릿 「달의 웅덩이」(The Moon Pool, 1918)
+- #012 2026-11-19: 쥘 베른 「해저 2만 리」(Vingt mille lieues sous les mers, 1870) — 대왕오징어 결투 장면
 
 ## 대시보드
 https://daegu-agent-crew.github.io/sf-daily/
