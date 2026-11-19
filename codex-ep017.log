@@ -1,0 +1,547 @@
+Reading additional input from stdin...
+OpenAI Codex v0.163.0
+--------
+workdir: /data/data/com.termux/files/home/tmp/sf-daily
+model: gpt-6-sol
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1f24c-12b7-7c73-aa98-9c8a124ff68a
+--------
+user
+작업: SF 데일리 #017 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-017-the-time-machine.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: H.G. 웰스 "타임 머신" (The Time Machine, 1895). 줄거리: 1895년 런던, 저녁 식사 자리에서 '시간 여행자'는 시간 기계 축소 모형을 내놓고 레버를 당긴다 — 모형은 번쩍이며 흔적 없이 사라진다. 이튿날 그는 본체(놋쇠·아이보리·수정 막대, 안장과 두 개의 레버)에 올라타고 레버를 민다. 낮과 밤이 섬광처럼 교차하고 태양이 하늘을 오르내리며 도시가 흐르듯 지나간다. 서기 802,701년 — 낙원 같은 정원에 하얀 스핑크스상이 서 있고, 작고 우아한 종족 에로이가 과일을 나눈다. 그는 얕은 템스강에 익을 뻔한 소녀 위나를 구해 주고, 위나는 그에게 꽃을 가득 안겨 준다. 그러나 밤이 오면 땅속 우물의 어둠 속에서 올려다보는 둥근 눈빛들 — 지하의 잿빛 종족 몰록이었다. 어느 밤 숲에서 그는 성냥으로 불의 고리를 만들어 몰록을 몰아내지만, 연기 속에서 위나를 잃는다. 기계를 되찾아 미래의 창백한 해 아래를 지나 집으로 돌아온 그는 저녁 식사 자리에 하얀 꽃 두 송이를 내놓는다 — 80만 년 저편 위나의 꽃. 그리고 다음 날, 그는 다시 기계를 타고 어딘가로 떠나 3년째 돌아오지 않았다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 오버숄더): cozy Victorian dining room at candle-lit evening, over-the-shoulder past a skeptical gentleman friend in a bowler hat; in front of him the Time Traveller — lean man about 35, tousled pale-brown hair, bright grey eyes, rumpled cream waistcoat with rolled-up shirtsleeves — proudly holding up a tiny gleaming brass-and-ivory model machine with a small lever, placing it on the table among dinner plates; warm golden lamplight, rich cream-and-coral interior
+- P2 (1행 우, 클로즈업): tight close-up on the tabletop — the spot where the model stood now empty with a single wisp of white smoke and a few fading golden sparkles; at the panel edges three astonished faces leaning in (mustached doctor with pince-nez, red-faced mayor, the bowler-hat friend), eyes wide, one dropping his fork; candle flames bending
+- P3 (2행 좌, 최대 역동 와이드): the full-size time machine ride — the Time Traveller astride a saddle on a brass-and-ivory machine with two levers and a flickering quartz rod, leaning forward with wind-blown hair and coat-tails; around him the sky strobing with alternating day-and-night bands, a stylized sun arcing up and down like a bounce trail, walls of his laboratory drawn ghost-transparent, flowers blooming and withering on the windowsill in the same frame; sense of tremendous speed, pastel speed-lines
+- P4 (2행 우, 부감 확립 와이드): year 802,701 — high bird's-eye view over a vast sunlit garden paradise: ruined overgrown giants of buildings draped in flowering vines, a huge white Sphinx statue on a tall bronze pedestal, a gentle river winding; tiny graceful Eloi people in bright coral-and-mint tunics gathered under a big fruit tree; big friendly sun, fluffy clouds
+- P5 (3행 좌, 두 인물 투샷): sunny riverbank — the Time Traveller kneeling, soaked sleeves, laughing gently as Weena, a tiny delicate Eloi girl with long curling chestnut hair, round rosy cheeks, coral tunic, presses an armful of bright white-and-yellow flowers into his hands; her clothes dripping from the shallow bright river behind them; warm intimate mood
+- P6 (3행 우, 무음 최대 긴장): silent night panel — the dark round mouth of a well shaft in the foreground meadow; from the blackness many pairs of round pale glowing eyes looking up; behind it the White Sphinx looming huge against a giant mint-white moon; silver-mint moonlight, long soft shadows, pastel palette kept light — tension comes from composition only. This panel stays completely text-free in the final page
+- P7 (4행 좌, 역동 대와이드): the night forest fire — the Time Traveller standing in a ring of crackling pastel-orange flame, striking a match held high, flame lighting his determined face; hunched grey apelike Morlock figures with long arms recoiling and shielding their round eyes from the light; through drifting smoke his other hand reaching toward a small distant coral silhouette; mint night sky above, warm fire glow below
+- P8 (4행 우, 여운 클로즈업): quiet lingering close-up — the Victorian dining table the day after: on the white tablecloth two small faded white flowers lying beside a glass of brandy and a scattered deck of cards, one candle burnt down; soft late-afternoon window light, the Time Traveller's empty chair; gentle wistful closing mood
+캐릭터 일관성: 시간 여행자는 P1·P3·P5·P7에서 동일 인물(마흔 줄, 마른 체형, 짙은 연갈색 헝클어진 머리, 회색 눈, 크림색 조끼+롤업 셔츠). 위나는 P5(코랈 튜닉·젖은 머리)와 P7(연기 속 작은 코랄 실루엣)에서 동일 인물. 몰록은 P6(눈빛만)·P7(잿빛 유인원형 실루엣)에서 동일 종족. 긴장은 어두운 색이 아니라 구도·앵글·표정으로(밤 장면도 실버민트 달빛 톤으로 밝게 유지). 생성 결과를 .work/ep017-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep016.py 와 동일한 격자·서체 방식으로 .work/letter_ep017.py 를 작성해 실행(입력을 .work/ep017-notext.png, 출력을 episodes/sf-daily-017-the-time-machine.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산. P6은 무음 칸 — 어떤 텍스트도 넣지 않는다.
+서체 스타일(기존 회차 포맷 그대로 유지):
+- 내레이션 바: 각 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px).
+넣을 텍스트 (패널별):
+- P1 [내레이션] 1895년 런던, 저녁 식사 자리 — 그는 '시간 기계' 축소 모형을 내놓았다. [대사] 시간 여행자: 시간은 눈에 보이지 않는 네 번째 차원입니다.
+- P2 [내레이션] 레버를 당기자 모형은 흔적도 없이 사라졌다. [대사] 시간 여행자: 지금 그것은 과거에도, 미래에도 없습니다.
+- P3 [내레이션] 이튿날 본체에 올라 레버를 밀자 — 낮과 밤이 섬광처럼 교차하며 흘러갔다. [대사] 시간 여행자: 서기 802,701년…!
+- P4 [내레이션] 낙원 같은 정원, 그리고 하얀 스핑크스 — 작고 우아한 종족 에로이. [대사] 없음
+- P5 [내레이션] 얕은 강에서 익을 뻔한 위나를 구해 준 날. [대사] 위나: 고마워요… 이 꽃, 전부 당신 거예요.
+- P6 (무음 칸 — 텍스트 없음, 그림만)
+- P7 [내레이션] 밤의 숲에 불의 고리를 그려 눈빛 무리를 몰아냈다 — 그리고 연기 속에서 위나를 잃었다. [대사] 시간 여행자: 위나!!
+- P8 [내레이션] 그가 남긴 증거는 하얀 꽃 두 송이 — 이튿날 그는 다시 기계를 타고 떠나, 3년째 돌아오지 않았다. [대사] 없음
+
+완료 조건: episodes/sf-daily-017-the-time-machine.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (/data/data/com.termux/files/home/.codex/config.toml): `sandbox` is ignored.
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (/data/data/com.termux/files/home/.codex/config.toml): `sandbox` is ignored.
+codex
+기존 회차의 조판 스크립트와 폰트를 확인한 뒤, 그림을 한 번 생성하고 지정된 캡션을 입혀 최종 PNG로 저장하겠습니다.
+exec
+/bin/sh -lc "pwd && rg --files -g 'AGENTS.md' -g 'letter_ep016.py' -g 'NanumGothic*' -g 'sf-daily-017-the-time-machine.png' -g 'SKILL.md' ." in /data/data/com.termux/files/home/tmp/sf-daily
+ exited 127 in 0ms:
+/bin/sh: rg: inaccessible or not found
+/data/data/com.termux/files/home/tmp/sf-daily
+
+exec
+/bin/sh -lc 'cat /data/data/com.termux/files/home/.codex/skills/.system/imagegen/SKILL.md' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+---
+name: "imagegen"
+description: "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas."
+---
+
+# Image Generation Skill
+
+Generates or edits images for the current project (for example website assets, game assets, UI mockups, product mockups, wireframes, logo design, photorealistic images, or infographics).
+
+## Top-level modes and rules
+
+This skill has exactly two top-level modes:
+
+- **Default built-in tool mode (preferred):** built-in `image_gen` tool for image generation, editing, and transparent-image requests. Does not require `OPENAI_API_KEY`.
+- **Fallback CLI mode:** `scripts/image_gen.py` CLI. Use when the user explicitly asks for or confirms the CLI/API/model path. Requires `OPENAI_API_KEY`.
+
+Within CLI fallback, the CLI exposes three subcommands:
+
+- `generate`
+- `edit`
+- `generate-batch`
+
+Rules:
+- Use the built-in `image_gen` tool by default for normal image generation and editing requests.
+- Do not switch to CLI fallback for ordinary quality, size, or file-path control.
+- For transparent images, ask built-in `image_gen` for a transparent background and preserve the generated alpha.
+- Never silently switch from built-in `image_gen` or CLI `gpt-image-2` to CLI `gpt-image-1.5`; ask the user first unless they explicitly requested `gpt-image-1.5`.
+- The word `batch` by itself does not mean CLI fallback. If the user asks for many assets or says to batch-generate assets without explicitly asking for CLI/API/model controls, stay on the built-in path and issue one built-in call per requested asset or variant.
+- If the built-in tool fails or is unavailable, tell the user the CLI fallback exists and that it requires `OPENAI_API_KEY`. Proceed only if the user explicitly asks for that fallback.
+- If the user explicitly asks for CLI mode, use the bundled `scripts/image_gen.py` workflow. Do not create one-off SDK runners.
+- Never modify `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
+
+Built-in save-path policy:
+- In built-in tool mode, Codex saves generated images under `$CODEX_HOME/*` by default.
+- Do not describe or rely on OS temp as the default built-in destination.
+- Do not describe or rely on a destination-path argument (if any) on the built-in `image_gen` tool. If a specific location is needed, generate first and then move or copy the selected output from `$CODEX_HOME/generated_images/...`.
+- Save-path precedence in built-in mode:
+  1. If the user names a destination, move or copy the selected output there.
+  2. If the image is meant for the current project, move or copy the final selected image into the workspace before finishing.
+  3. If the image is only for preview or brainstorming, render it inline; the underlying file can remain at the default `$CODEX_HOME/*` path.
+- Never leave a project-referenced asset only at the default `$CODEX_HOME/*` path.
+- Do not overwrite an existing asset unless the user explicitly asked for replacement; otherwise create a sibling versioned filename such as `hero-v2.png` or `item-icon-edited.png`.
+
+Shared prompt guidance for both modes lives in `references/prompting.md` and `references/sample-prompts.md`.
+
+Fallback-only docs/resources for CLI mode:
+- `references/cli.md`
+- `references/image-api.md`
+- `references/codex-network.md`
+- `scripts/image_gen.py`
+
+## When to use
+- Generate a new image (concept art, product shot, cover, website hero)
+- Generate a new image using one or more reference images for style, composition, or mood
+- Edit an existing image (inpainting, lighting or weather transformations, background replacement, object removal, compositing, transparent background)
+- Produce many assets or variants for one task
+
+## When not to use
+- Extending or matching an existing SVG/vector icon set, logo system, or illustration library inside the repo
+- Creating simple shapes, diagrams, wireframes, or icons that are better produced directly in SVG, HTML/CSS, or canvas
+- Making a small project-local asset edit when the source file already exists in an editable native format
+- Any task where the user clearly wants deterministic code-native output instead of a generated bitmap
+
+## Decision tree
+
+Think about two separate questions:
+
+1. **Intent:** is this a new image or an edit of an existing image?
+2. **Execution strategy:** is this one asset or many assets/variants?
+
+Intent:
+- If the user wants to modify an existing image while preserving parts of it, treat the request as **edit**.
+- If the user provides images only as references for style, composition, mood, or subject guidance, treat the request as **generate**.
+- If the user provides no images, treat the request as **generate**.
+
+Built-in edit semantics:
+- Built-in edit mode is for images already visible in the conversation context, such as attached images or images generated earlier in the thread.
+- If the user wants to edit a local image file with the built-in tool, first load it with built-in `view_image` tool so the image is visible in the conversation context, then proceed with the built-in edit flow.
+- Do not promise arbitrary filesystem-path editing through the built-in tool.
+- If a local file still needs direct file-path control, masks, or other explicit CLI-only parameters, use the explicit CLI fallback only when the user asks for it.
+- For edits, preserve invariants aggressively and save non-destructively by default.
+
+Execution strategy:
+- In the built-in default path, produce many assets or variants by issuing one `image_gen` call per requested asset or variant.
+- In the CLI fallback path, use the CLI `generate-batch` subcommand only when the user explicitly chose CLI mode and needs many prompts/assets.
+- For many distinct assets, do not use `n` as a substitute for separate prompts. `n` is for variants of one prompt; distinct assets need distinct built-in calls or distinct CLI `generate-batch` jobs.
+
+Assume the user wants a new image unless they clearly ask to change an existing one.
+
+## Workflow
+1. Decide the top-level mode: built-in by default, including transparent-output requests; fallback CLI only if explicitly requested or confirmed.
+2. Decide the intent: `generate` or `edit`.
+3. Decide whether the output is preview-only or meant to be consumed by the current project.
+4. Decide the execution strategy: single asset vs repeated built-in calls vs CLI `generate-batch`.
+5. Collect inputs up front: prompt(s), exact text (verbatim), constraints/avoid list, and any input images.
+6. For every input image, label its role explicitly:
+   - reference image
+   - edit target
+   - supporting insert/style/compositing input
+7. If the edit target is only on the local filesystem and you are staying on the built-in path, inspect it with `view_image` first so the image is available in conversation context.
+8. If the user asked for a photo, illustration, sprite, product image, banner, or other explicitly raster-style asset, use `image_gen` rather than substituting SVG/HTML/CSS placeholders. If the request is for an icon, logo, or UI graphic that should match existing repo-native SVG/vector/code assets, prefer editing those directly instead.
+9. Augment the prompt based on specificity:
+   - If the user's prompt is already specific and detailed, normalize it into a clear spec without adding creative requirements.
+   - If the user's prompt is generic, add tasteful augmentation only when it materially improves output quality.
+10. Use the built-in `image_gen` tool by default.
+11. For transparent-output requests, ask built-in `image_gen` for a transparent background and preserve the generated alpha channel.
+12. Inspect outputs and validate: subject, style, composition, text accuracy, and invariants/avoid items.
+13. Iterate with a single targeted change, then re-check.
+14. For preview-only work, render the image inline; the underlying file may remain at the default `$CODEX_HOME/generated_images/...` path.
+15. For project-bound work, move or copy the selected artifact into the workspace and update any consuming code or references. Never leave a project-referenced asset only at the default `$CODEX_HOME/generated_images/...` path.
+16. For batches or multi-asset requests, persist every requested deliverable final in the workspace unless the user explicitly asked to keep outputs preview-only. Discarded variants do not need to be kept unless requested.
+17. If the user explicitly chooses or confirms the CLI fallback, then use the fallback-only docs for model, quality, size, `input_fidelity`, masks, output format, output paths, and network setup.
+18. Always report the final saved path(s) for any workspace-bound asset(s), plus the final prompt or prompt set and whether the built-in tool or fallback CLI mode was used.
+
+## Transparent image requests
+
+Ask built-in `image_gen` for a genuinely transparent background and preserve its alpha.
+
+## Prompt augmentation
+
+Reformat user prompts into a structured, production-oriented spec. Make the user's goal clearer and more actionable, but do not blindly add detail.
+
+Treat this as prompt-shaping guidance, not a closed schema. Use only the lines that help, and add a short extra labeled line when it materially improves clarity.
+
+### Specificity policy
+
+Use the user's prompt specificity to decide how much augmentation is appropriate:
+
+- If the prompt is already specific and detailed, preserve that specificity and only normalize/structure it.
+- If the prompt is generic, you may add tasteful augmentation when it will materially improve the result.
+
+Allowed augmentations:
+- composition or framing hints
+- polish level or intended-use hints
+- practical layout guidance
+- reasonable scene concreteness that supports the stated request
+
+Not allowed augmentations:
+- extra characters or objects that are not implied by the request
+- brand names, slogans, palettes, or narrative beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Use-case taxonomy (exact slugs)
+
+Classify each request into one of these buckets and keep the slug consistent across prompts and references.
+
+Generate:
+- photorealistic-natural — candid/editorial lifestyle scenes with real texture and natural lighting.
+- product-mockup — product/packaging shots, catalog imagery, merch concepts.
+- ui-mockup — app/web interface mockups and wireframes; specify the desired fidelity.
+- infographic-diagram — diagrams/infographics with structured layout and text.
+- scientific-educational — classroom explainers, scientific diagrams, and learning visuals with required labels and accuracy constraints.
+- ads-marketing — campaign concepts and ad creatives with audience, brand position, scene, and exact tagline/copy.
+- productivity-visual — slide, chart, workflow, and data-heavy business visuals.
+- logo-brand — logo/mark exploration, vector-friendly.
+- illustration-story — comics, children’s book art, narrative scenes.
+- stylized-concept — style-driven concept art, 3D/stylized renders.
+- historical-scene — period-accurate/world-knowledge scenes.
+
+Edit:
+- text-localization — translate/replace in-image text, preserve layout.
+- identity-preserve — try-on, person-in-scene; lock face/body/pose.
+- precise-object-edit — remove/replace a specific element (including interior swaps).
+- lighting-weather — time-of-day/season/atmosphere changes only.
+- background-extraction — transparent background / clean cutout. Ask built-in `image_gen` for actual transparency.
+- style-transfer — apply reference style while changing subject/scene.
+- compositing — multi-image insert/merge with matched lighting/perspective.
+- sketch-to-render — drawing/line art to photoreal render.
+
+## Shared prompt schema
+
+Use the following labeled spec as shared prompt scaffolding for both top-level modes:
+
+```text
+Use case: <taxonomy slug>
+Asset type: <where the asset will be used>
+Primary request: <user's main prompt>
+Input images: <Image 1: role; Image 2: role> (optional)
+Scene/backdrop: <environment>
+Subject: <main subject>
+Style/medium: <photo/illustration/3D/etc>
+Composition/framing: <wide/close/top-down; placement>
+Lighting/mood: <lighting + mood>
+Color palette: <palette notes>
+Materials/textures: <surface details>
+Text (verbatim): "<exact text>"
+Constraints: <must keep/must avoid>
+Avoid: <negative constraints>
+```
+
+Notes:
+- `Asset type` and `Input images` are prompt scaffolding, not dedicated CLI flags.
+- `Scene/backdrop` refers to the visual setting. It is not the same as the fallback CLI `background` parameter, which controls output transparency behavior.
+- Fallback-only execution notes such as `Quality:`, `Input fidelity:`, masks, output format, and output paths belong in the CLI path only. Do not treat them as built-in `image_gen` tool arguments.
+
+Augmentation rules:
+- Keep it short.
+- Add only the details needed to improve the prompt materially.
+- For edits, explicitly list invariants (`change only X; keep Y unchanged`).
+- If any critical detail is missing and blocks success, ask a question; otherwise proceed.
+
+## Examples
+
+### Generation example (hero image)
+```text
+Use case: product-mockup
+Asset type: landing page hero
+Primary request: a minimal hero image of a ceramic coffee mug
+Style/medium: clean product photography
+Composition/framing: wide composition with usable negative space for page copy if needed
+Lighting/mood: soft studio lighting
+Constraints: no logos, no text, no watermark
+```
+
+### Edit example (invariants)
+```text
+Use case: precise-object-edit
+Asset type: product photo background replacement
+Primary request: replace only the background with a warm sunset gradient
+Constraints: change only the background; keep the product and its edges unchanged; no text; no watermark
+```
+
+## Prompting best practices
+- Structure prompt as scene/backdrop -> subject -> details -> constraints.
+- Include intended use (ad, UI mock, infographic) to set the mode and polish level.
+- Use camera/composition language for photorealism.
+- Only use SVG/vector stand-ins when the user explicitly asked for vector output or a non-image placeholder.
+- Quote exact text and specify typography + placement.
+- For tricky words, spell them letter-by-letter and require verbatim rendering.
+- For multi-image inputs, reference images by index and describe how they should be used.
+- For edits, repeat invariants every iteration to reduce drift.
+- Iterate with single-change follow-ups.
+- If the prompt is generic, add only the extra detail that will materially help.
+- If the prompt is already detailed, normalize it instead of expanding it.
+- For CLI fallback only, see `references/cli.md` and `references/image-api.md` for model, `quality`, `input_fidelity`, masks, output format, and output-path guidance.
+- For transparent images, ask built-in `image_gen` for actual transparency and preserve its alpha.
+
+More principles shared by both modes: `references/prompting.md`.
+Copy/paste specs shared by both modes: `references/sample-prompts.md`.
+
+## Guidance by asset type
+Asset-type templates (website assets, game assets, wireframes, logo) are consolidated in `references/sample-prompts.md`.
+
+## gpt-image-2 guidance for CLI fallback
+
+The fallback CLI defaults to `gpt-image-2`.
+
+- Use `gpt-image-2` for new CLI/API workflows unless the user confirms a different model.
+- CLI `gpt-image-2` does not support `background=transparent`; ask before using `gpt-image-1.5` unless the user explicitly requested that model.
+- `gpt-image-2` always uses high fidelity for image inputs; do not set `input_fidelity` with this model.
+- `gpt-image-2` supports `quality` values `low`, `medium`, `high`, and `auto`.
+- Use `quality low` for fast drafts, thumbnails, and quick iterations. Use `medium`, `high`, or `auto` for final assets, dense text, diagrams, identity-sensitive edits, or high-resolution outputs.
+- Square images are typically fastest to generate. Use `1024x1024` for fast square drafts.
+- If the user asks for 4K-style output, use `3840x2160` for landscape or `2160x3840` for portrait.
+- `gpt-image-2` size may be `auto` or `WIDTHxHEIGHT` if all constraints hold: max edge `<= 3840px`, both edges multiples of `16px`, long-to-short ratio `<= 3:1`, total pixels between `655,360` and `8,294,400`.
+
+Popular `gpt-image-2` sizes:
+- `1024x1024` square
+- `1536x1024` landscape
+- `1024x1536` portrait
+- `2048x2048` 2K square
+- `2048x1152` 2K landscape
+- `3840x2160` 4K landscape
+- `2160x3840` 4K portrait
+- `auto`
+
+## Fallback CLI mode only
+
+### Temp and output conventions
+These conventions apply only to the CLI fallback. They do not describe built-in `image_gen` output behavior.
+- Use `tmp/imagegen/` for intermediate files (for example JSONL batches); delete them when done.
+- Write final artifacts under `output/imagegen/`.
+- Use `--out` or `--out-dir` to control output paths; keep filenames stable and descriptive.
+
+### Dependencies
+Prefer `uv` for dependency management in this repo.
+
+Required Python package:
+```bash
+uv pip install openai
+```
+
+Optional for image inspection and downscaling:
+```bash
+uv pip install pillow
+```
+
+Portability note:
+- If you are using the installed skill outside this repo, install dependencies into that environment with its package manager.
+- In uv-managed environments, `uv pip install ...` remains the preferred path.
+
+### Environment
+- `OPENAI_API_KEY` must be set for live API calls.
+- Do not ask the user for `OPENAI_API_KEY` when using the built-in `image_gen` tool.
+- Never ask the user to paste the full key in chat. Ask them to set it locally and confirm when ready.
+
+If the key is missing, give the user these steps:
+1. Create an API key in the OpenAI platform UI: https://platform.openai.com/api-keys
+2. Set `OPENAI_API_KEY` as an environment variable in their system.
+3. Offer to guide them through setting the environment variable for their OS/shell if needed.
+
+If installation is not possible in this environment, tell the user which dependency is missing and how to install it into their active environment.
+
+### Script-mode notes
+- CLI commands + examples: `references/cli.md`
+- API parameter quick reference: `references/image-api.md`
+- Network approvals / sandbox settings for CLI mode: `references/codex-network.md`
+
+## Reference map
+- `references/prompting.md`: shared prompting principles for both modes.
+- `references/sample-prompts.md`: shared copy/paste prompt recipes for both modes.
+- `references/cli.md`: fallback-only CLI usage via `scripts/image_gen.py`.
+- `references/image-api.md`: fallback-only API/CLI parameter reference.
+- `references/codex-network.md`: fallback-only network/sandbox troubleshooting for CLI mode.
+- `scripts/image_gen.py`: fallback-only CLI implementation. Use only when the user explicitly chooses or confirms CLI mode.
+
+codex
+imagegen 스킬의 내장 도구 절차를 적용합니다. 요청하신 대로 이미지 생성 호출은 한 번만 하겠습니다.
+exec
+/bin/sh -lc 'cat .work/letter_ep016.py' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+from pathlib import Path
+from PIL import Image, ImageDraw, ImageFont
+
+root = Path(__file__).resolve().parent.parent
+src = root / '.work/ep016-notext.png'
+dst = root / 'episodes/sf-daily-016-the-wreck-of-the-titan.png'
+im = Image.open(src).convert('RGBA')
+W, H = im.size
+sx, sy = W / 1024, H / 1536
+scale = min(sx, sy)
+px = lambda n: max(1, round(n * scale))
+bold = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Bold.ttf'), px(22))
+regular = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Regular.ttf'), px(20))
+speaker_font = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Bold.ttf'), px(20))
+overlay = Image.new('RGBA', im.size)
+d = ImageDraw.Draw(overlay)
+
+margin_x, margin_y = round(8 * sx), round(8 * sy)
+gutter_x, gutter_y = round(8 * sx), round(8 * sy)
+panel_w = (W - 2 * margin_x - gutter_x) / 2
+panel_h = (H - 2 * margin_y - 3 * gutter_y) / 4
+
+def panel(i):
+    row, col = divmod(i, 2)
+    x = margin_x + col * (panel_w + gutter_x)
+    y = margin_y + row * (panel_h + gutter_y)
+    return round(x), round(y), round(x + panel_w), round(y + panel_h)
+
+def wrap_chars(s, font, max_width, first_width=None):
+    lines, line = [], ''
+    width = first_width if first_width is not None else max_width
+    for ch in s:
+        if d.textlength(line + ch, font=font) > width and line:
+            lines.append(line.rstrip())
+            line = ch.lstrip()
+            width = max_width
+        else:
+            line += ch
+    if line:
+        lines.append(line.rstrip())
+    return lines
+
+def narration(i, caption):
+    x0, y0, x1, _ = panel(i)
+    left, right = x0 + px(12), x1 - px(12)
+    inset = px(12)
+    lines = wrap_chars(caption, bold, right - left - 2 * inset - px(6))
+    leading = px(31)
+    top = y0 + px(10)
+    height = px(21) + leading * len(lines)
+    d.rounded_rectangle((left, top, right, top + height), radius=px(10), fill=(13, 20, 32, 205))
+    d.rounded_rectangle((left, top, left + px(6), top + height), radius=px(3), fill=(245, 158, 11, 255))
+    for n, line in enumerate(lines):
+        d.text((left + inset + px(6), top + px(9) + n * leading), line, font=bold, fill=(255, 255, 255, 255))
+
+def dialogue(i, name, speech):
+    x0, _, x1, y1 = panel(i)
+    left, right = x0 + px(12), x1 - px(12)
+    inset = px(12)
+    name_width = d.textlength(name, font=speaker_font) + px(8)
+    available = right - left - 2 * inset
+    lines = wrap_chars(speech, regular, available, available - name_width)
+    leading = px(29)
+    height = px(20) + leading * len(lines)
+    bottom = y1 - px(10)
+    top = bottom - height
+    d.rounded_rectangle((left, top, right, bottom), radius=px(10), fill=(255, 255, 255, 238), outline=(31, 41, 55, 255), width=px(2))
+    text_y = top + px(8)
+    d.text((left + inset, text_y), name, font=speaker_font, fill=(245, 158, 11, 255))
+    for n, line in enumerate(lines):
+        line_x = left + inset + (name_width if n == 0 else 0)
+        d.text((line_x, text_y + n * leading), line, font=regular, fill=(31, 41, 55, 255))
+
+narration(0, "1898년, 소설이 그린 4월의 대서양 — '침몰 불가능'이라 불린 세계 최대 여객선 타이탄호.")
+dialogue(0, '일등석 신사:', '저 배가 가라앉다니요, 웃기지 마시오.')
+narration(1, '갑판원 존 롤랜드 — 술로 몰락한 전직 해군 장교.')
+dialogue(1, '롤랜드:', '빙산 지대입니다! 속도를 줄여야 합니다!')
+narration(3, '한밤, 빙산이 우현을 찢었다.')
+dialogue(3, '부관:', '구명보트는 24척… 사람은 3000명입니다.')
+narration(4, '롤랜드는 옛 사랑의 딸, 아홉 살 미라를 안고 얼음으로 뛰었다.')
+dialogue(4, '롤랜드:', '눈 감아! 꼭 잡아!')
+narration(5, '얼음 섬에서 사흘째 — 그는 곰보다 먼저 움직였다.')
+dialogue(5, '롤랜드:', '미라, 내 뒤로.')
+narration(6, '새벽 지평선에 연기 한 줄.')
+dialogue(6, '미라:', '배요, 아저씨! 배!')
+narration(7, "재기한 롤랜드는 미라의 어머니와 가정을 이뤘다 — 그리고 14년 뒤, '타이타닉'이 소설과 같은 밤을 지나갔다.")
+
+dst.parent.mkdir(parents=True, exist_ok=True)
+Image.alpha_composite(im, overlay).convert('RGB').save(dst, format='PNG')
+print(dst.stat().st_size)
+
+exec
+/bin/sh -lc "find . -name AGENTS.md -o -name letter_ep016.py -o -name 'NanumGothic*' -o -name sf-daily-017-the-time-machine.png" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+./assets/fonts/NanumGothic-Regular.ttf
+./assets/fonts/NanumGothic-Bold.ttf
+./.work/letter_ep016.py
+
+exec
+/bin/sh -lc 'ls -ld .work episodes assets/fonts' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+drwx------. 2 u0_a667 u0_a667 3452 Nov 19 12:52 .work
+drwx------. 2 u0_a667 u0_a667 3452 Nov 18 08:36 assets/fonts
+drwx------. 2 u0_a667 u0_a667 3452 Nov 19 12:52 episodes
+
+codex
+기존 스크립트의 격자와 서체 설정을 확인했습니다. 이제 8칸짜리 글자 없는 원화를 생성하겠습니다.
+exec
+/bin/sh -lc "find /data/data/com.termux/files/home/.codex/generated_images -type f -name '*.png' -mmin -10 | tail -n 5" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+/data/data/com.termux/files/home/.codex/generated_images/01a1f24c-12b7-7c73-aa98-9c8a124ff68a/exec-bab94df2-003f-42aa-b267-cc2fc6ccd90f.png
+
+codex
+원화 생성이 완료됐습니다. 생성된 파일을 `.work`에 보관하고, 기존 회차와 같은 조판 코드에 #017의 문구만 적용하겠습니다.
+exec
+/bin/sh -lc "cp /data/data/com.termux/files/home/.codex/generated_images/01a1f24c-12b7-7c73-aa98-9c8a124ff68a/exec-bab94df2-003f-42aa-b267-cc2fc6ccd90f.png .work/ep017-notext.png && python3 -c \"from PIL import Image; im=Image.open('.work/ep017-notext.png'); print(im.size)\"" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+(1024, 1536)
+
+exec
+/bin/sh -lc "python3 - <<'PY'
+from pathlib import Path
+p = Path('.work/letter_ep016.py').read_text()
+p = p.replace('.work/ep016-notext.png', '.work/ep017-notext.png')
+p = p.replace('episodes/sf-daily-016-the-wreck-of-the-titan.png', 'episodes/sf-daily-017-the-time-machine.png')
+start = p.index('narration(0, ')
+end = p.index('dst.parent.mkdir', start)
+text = '''narration(0, \"1895년 런던, 저녁 식사 자리 — 그는 '시간 기계' 축소 모형을 내놓았다.\")
+dialogue(0, '시간 여행자:', '시간은 눈에 보이지 않는 네 번째 차원입니다.')
+narration(1, '레버를 당기자 모형은 흔적도 없이 사라졌다.')
+dialogue(1, '시간 여행자:', '지금 그것은 과거에도, 미래에도 없습니다.')
+narration(2, '이튿날 본체에 올라 레버를 밀자 — 낮과 밤이 섬광처럼 교차하며 흘러갔다.')
+dialogue(2, '시간 여행자:', '서기 802,701년…"'!'"')
+narration(3, '낙원 같은 정원, 그리고 하얀 스핑크스 — 작고 우아한 종족 에로이.')
+narration(4, '얕은 강에서 익을 뻔한 위나를 구해 준 날.')
+dialogue(4, '위나:', '고마워요… 이 꽃, 전부 당신 거예요.')
+# P6 is intentionally silent.
+narration(6, '밤의 숲에 불의 고리를 그려 눈빛 무리를 몰아냈다 — 그리고 연기 속에서 위나를 잃었다.')
+dialogue(6, '시간 여행자:', '위나"'!!'"')
+narration(7, '그가 남긴 증거는 하얀 꽃 두 송이 — 이튿날 그는 다시 기계를 타고 떠나, 3년째 돌아오지 않았다.')
+
+'''
+Path('.work/letter_ep017.py').write_text(p[:start] + text + p[end:])
+PY
+python3 .work/letter_ep017.py
+python3 - <<'PY'
+from pathlib import Path
+from PIL import Image
+p=Path('episodes/sf-daily-017-the-time-machine.png')
+im=Image.open(p)
+print(p.exists(), im.size, p.stat().st_size)
+PY" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 297ms:
+2773811
+True (1024, 1536) 2773811
+
+codex
+episodes/sf-daily-017-the-time-machine.png
+tokens used
+14,958
+episodes/sf-daily-017-the-time-machine.png
+EXIT:0

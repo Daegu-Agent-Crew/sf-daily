@@ -1,0 +1,36 @@
+작업: SF 데일리 #020 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-020-the-war-of-the-worlds.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: H.G. 웰스 "우주 전쟁" (The War of the Worlds, 1898). 줄거리: 1898년 6월의 어느 밤, 서리주 워킹 근처 호셀 들판에 불꽃을 그리며 거대한 실린더가 추락한다. 사람들은 자전거와 등불을 들고 구덩이를 에워싸고, 밤이 깊자 실린더의 뚜껑이 천천히 돌아가며 떨어져 나간다 — 축축하게 빛나는 회색 촉수 한가닥이 더듬더듬 밖을 향한다. 그리고 소리도 없이 '열선'이 들판을 쓸고 지나가자 구경꾼들은 재가 되고, 나레이터는 모자를 잃은 채 도랑물 속으로 뛰어든다. 곧 세 개의 황동 전투 기계 — 등대 같은 몸통에 세 개의 긴 관절 다리 — 가 강을 건너 런던을 향해 걷기 시작한다. 웨이브리지에서 마침내 포탄 하나가 놈의 후드를 꿰뚫고 첫 전투 기계가 무너지지만, 물밀 듯 밀려오는 공포 앞에 런던은 비어간다 — 템스강은 붉은 잡초에 뒤덮이고 도시는 소리 없이 멈춘다. 나레이터는 빈집 다락방 창가에서 마지막을 기다리다 마침내 거리로 나와 본다 — 강변에 그대로 멈춰 선 채 쓰러진 전투 기계들. 놈들을 쓰러뜨린 것은 인간의 대포가 아니라, 이 별의 가장 작은 것들, 세균이었다. 새들이 죽은 거인 위를 날아다닌다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 와이드 확립): warm summer evening on Horsell Common near Woking, Surrey — a sandy pit with a smoking meteor crater, at its center a huge half-buried brass cylinder glowing faint coral from heat; a ring of curious townsfolk holding paper lanterns and pushing bicycles at the rim; the narrator (young writer, mid-20s, neat short brown hair, straw boater hat, mustard-tweed jacket over cream shirt) standing front-left with a notebook, face bright with excited curiosity; mint-and-lavender dusk sky
+- P2 (1행 우, 클로즈업 긴장): tight close-up at the crater rim in darkness — the cylinder's circular end cap slowly unscrewing and tipping loose, revealing a black opening; from it one wet glistening grey tentacle with soft round groping fingertips slowly reaching out and testing the air; at the frame edge two lantern-lit frozen onlooker faces, eyes huge; mint-green glow from the pit below
+- P3 (2행 좌, 최대 역동 앙각): the biggest panel, dramatic low-angle — a Martian fighting machine (tall brass-and-copper body like a lighthouse mounted on three articulated stilt legs, small round hood with green-lit eye slits) rising over the crater rim at night, its invisible heat ray sweeping the common; pine trees bursting into coral-orange flame without smoke, tiny fleeing people frozen mid-run turning pale as chalk; in the foreground corner the narrator leaping headlong into a muddy water ditch, straw hat flying off his head
+- P4 (2행 우, 부감): bird's-eye view — three fighting machines striding in a line across sunny Surrey countryside, wading straight through a sparkling river, long morning shadows on cream-green meadows; on a road below a tiny line of refugee carts and a little steam locomotive; peaceful bright landscape dwarfed by the colossal machines — pure scale contrast
+- P5 (3행 좌, 오버숄더): over-the-shoulder shot from behind the narrator pressed down in a roadside ditch, watching an artillery battery fire across a bridge — one shell bursting against a fighting machine's round hood; the machine tilts, legs buckling, coming down in a slow colossal fall with golden dust; tiny soldiers cheering at the corner; bright cheerful daylight
+- P6 (3행 우, 무음 최대 정적): silent wide panel — London utterly still and empty under a pale morning sky: the Thames choked with dense coral-red weed like rivers of red kelp swallowing ships and bridges, empty streets, an abandoned omnibus, papers drifting in the wind; no people anywhere; hushed abandoned beauty — this panel stays completely text-free in the final page
+- P7 (4행 좌, 크게 클로즈업): big close-up of the narrator's haggard face at a dusty attic window seen from inside, one tired eye visible through the glass — reflected in the windowpane, the blurred silhouette of a fighting machine still marching far outside; his hand pressed flat on the pane; soft mint light, quiet dread and exhaustion
+- P8 (4행 우, 여운 백샷): quiet wide back-shot at dawn — a dead fighting machine standing motionless mid-stride by the Thames, slightly tilted, its hood hanging open; gulls and crows perched on its legs and circling its hood; tiny human figures emerging into the streets below, looking up; soft cream-and-lavender sunrise — wistful, meditative closing mood
+캐릭터 일관성: 나레이터는 P1·P3·P5·P7에서 동일 인물(20대 중반, 짧은 갈색 머리, 밀짚 중산모, 머스터드 트위드 재킷+크림 셔츠; P3에서는 모자가 벗겨진 상태). 전투 기계는 P3·P4·P5·P8에서 동일 디자인(황동+구리 몸통, 세 개의 관절 다리, 둥근 후드에 초록 빛 눈 슬릿). 실린더는 P1·P2에서 동일. P6의 붉은 잡초는 코랄-레드 켈프처럼. 긴장은 어두운 색이 아니라 구도·스케일·표정으로 전달(밤 장면도 민트·라벤더 톤으로 밝게 유지). 생성 결과를 .work/ep020-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep019.py 와 동일한 격자·서체 방식으로 .work/letter_ep020.py 를 작성해 실행(입력을 .work/ep020-notext.png, 출력을 episodes/sf-daily-020-the-war-of-the-worlds.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산. P6은 무음 칸 — 어떤 텍스트도 넣지 않는다.
+서체 스타일(기존 회차 포맷 그대로 유지):
+- 내레이션 바: 각 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px).
+넣을 텍스트 (패널별):
+- P1 [내레이션] 1898년 6월 — 서리주 호셀 들판에 불꽃을 그리며 거대한 실린더가 떨어졌다. [대사] 나레이터: 잠들어 있는 별똥이겠지.
+- P2 [내레이션] 밤이 깊자 뚜껑이 돌아가며 떨어져 나갔다 — 축축하게 빛나는 회색 촉수가, 더듬더듬 밖을 향했다. [대사] 구경꾼: 저것은… 살아 있다!
+- P3 [내레이션] 소리도 없이 '열선'이 들판을 쓸었다 — 나는 모자를 잃은 채 도랑물에 뛰어들었다. [대사] 없음
+- P4 [내레이션] 다음 날, 세 개의 전투 기계가 강을 건너 런던을 향해 걷기 시작했다. [대사] 없음
+- P5 [내레이션] 웨이브리지 — 마침내 포탄 하나가 놈의 후드를 꿰뚫았다. 첫 거인이 무너져 내렸다. [대사] 포병: 쓰러뜨렸다!
+- P6 (무음 칸 — 텍스트 없음, 그림만)
+- P7 [내레이션] 나는 빈집 다락방 창가에서 마지막을 기다렸다 — 유리에 비친 다리는, 아직도 걷고 있었다. [대사] 없음
+- P8 [내레이션] 놈들을 쓰러뜨린 것은 대포가 아니었다 — 이 별의 가장 작은 것들, 세균이었다. [대사] 없음
+
+완료 조건: episodes/sf-daily-020-the-war-of-the-worlds.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

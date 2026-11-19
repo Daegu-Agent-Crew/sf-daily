@@ -1,0 +1,38 @@
+작업: SF 데일리 #005 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-005-m-valdemar.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 에드거 앨런 포 "발데마르 씨의 사건" (The Facts in the Case of M. Valdemar, 1845). 요약: 최면술사인 화자는 임종 직전 환자를 최면에 걸면 죽음을 붙들 수 있는지 궁금했다. 결핵으로 시들어가던 문인 발데마르가 실험에 동의했다. 숨이 끊어지던 밤 최면에 걸린 발데마르는 사망 확인 후에도 최면 속에 일곱 달 동안 그대로 누워 있었다. 의사들이 물었을 때 그는 혀만 움직여 대답했다 — "지금껏 잠들어 있었습니다… 지금은 죽어 있습니다." 깨우려는 순간 "어서! 잠재우든지 깨우든지! 나는 죽어 있다고 말하고 있소!"라고 외쳤고, 일곱 달을 붙들고 있던 형체는 한순간에 무너져 내렸다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
+이어서: "single comic page, exactly 8 rectangular panels in a 2-column by 4-row grid, thin dark panel borders, narrow white gutters, NO text, NO letters, NO speech bubbles, NO numbers, NO logos anywhere"
+
+패널 장면 (읽기 순서: 왼쪽→오른쪽, 위→아래 4행):
+- P1 (1행 좌): wide establishing shot, cozy 1845 study with bookshelves, the young round-faced mesmerist narrator in a cream vest holding a small brass pendulum over an open journal, warm candlelight, curious determined expression, gazing right
+- P2 (1행 우): medium shot, gaunt silver-haired writer Ernest Valdemar in a coral dressing gown seated by a sunny window with stacked manuscripts, looking left at the narrator standing beside him, gentle sad smile, one hand raised in calm agreement
+- P3 (2행 좌): low angle medium shot at night, sickroom lit by candles, Valdemar lying thin and pale on the bed, the narrator's palm resting on Valdemar's forehead, an elderly doctor in a mint coat checking the pulse, wall clock behind
+- P4 (2행 우): wide shot, same sickroom months later, Valdemar lying perfectly still in exactly the same pose, waxy pale, two doctors (elderly mint-coat doctor and a plump sky-blue coat doctor with round glasses) staring astonished, moon phases visible through the window
+- P5 (3행 좌, 무음 칸): high-angle extreme close-up of sleeping Valdemar's waxy pale face, eyes closed, gaunt cheeks, silver hair spread on the pillow, soft blue moonlight
+- P6 (3행 우): close-up profile, the plump sky-blue coat doctor leaning in with a stethoscope asking a question, Valdemar's pale lips slightly parted with his tongue faintly moving, answering from deep sleep
+- P7 (4행 좌, 가장 강한 칸·최대): dramatic low angle two-shot, the narrator sweeping mesmeric passes with both hands over the bed, Valdemar's eyes rolled white, body jolting upright, sheets swirling, coral-orange candle glow flaring
+- P8 (4행 우): quiet wide aftermath shot, morning mint light through the window, doctors recoiling toward the wall, the narrator frozen with hands still raised, on the bed only a sunken collapsed shape under a gently draped sheet
+
+캐릭터 일관성: 같은 인물이 나오는 모든 칸에서 외형 동일(화자=둥근 얼굴 크림 조끼 짙은 머리 청년 최면술사, 발데마르=야윈 은발 코랄 잠옷 신사, 노의사=민트 코트+회색 구레나룻, 뚱뚱한 의사=스카이블루 코트+둥근 안경). 생성 결과를 .work/ep005-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략해도 됨.
+넣을 텍스트 (패널별, P5는 완전 무음 — 아무 텍스트 없음):
+- P1 [내레이션] 나는 오래 궁금했다 — 임종의 순간, 최면은 죽음을 붙들 수 있는가
+- P2 [대사] 발데마르: 선생, 제 마지막 순간에 저를 최면에 걸어 주시오.
+- P3 [내레이션] 숨이 끊어지던 그 밤, 내 손이 그의 이마에 닿았다
+- P4 [내레이션] 사망은 확인됐다 — 그러나 그는 일곱 달 동안 최면 속에 남았다
+- P5 (텍스트 없음)
+- P6 [대사] 발데마르: 지금껏 잠들어 있었습니다… 그리고 지금은 — 죽어 있습니다.
+- P7 [대사] 발데마르: 어서! 잠재우든지 깨우든지! 나는 죽어 있다고 말하고 있소!
+- P8 [내레이션] 외침이 채 끝나기 전에, 일곱 달의 형체는 스러져 내렸다
+줄바꿈은 바/상자 너비에 맞게 자동 배치. 텍스트가 그림의 얼굴을 가리지 않게 위치 미세조정.
+최종 저장: episodes/sf-daily-005-m-valdemar.png (PNG). 완료 후 파일 크기(bytes)를 출력하고 종료. 품질 재검·추가 수정 금지.

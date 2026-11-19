@@ -1,0 +1,38 @@
+작업: SF 데일리 #007 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-007-the-voice-in-the-night.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: W.H. 호지슨 "밤의 목소리" (The Voice in the Night, 1907). 요약: 바람 한 점 없는 밤 태평양, 안개에 갇힌 범선에 어둠 저편에서 목소리가 날아온다 — "등대가 보이는 분 계십니까?" 다가온 노보트의 남자는 온몸이 창백한 균류로 뒤덮여 얼굴을 감추고, 자신의 얼굴을 보지 말아 달라고 빈다. 그의 이야기: 떠돌이 난파선과 충돌해 배가 가라앉고, 그와 약혼자만 구명정에 살아남았다. 표류 끝에 닿은 섬은 나무도 바위도 좌초선도 전부 부드러운 회색 균류로 뒤덮여 있었다. 가져온 식량이 떨어지자 굶주림은 그들을 균류로 내몰았고, 먹은 자의 살결에 회색 것이 뿌리내리기 시작했다 — 약혼자의 손등에도. 둘은 오두막에서 서로에게 맹세했다, 증인은 하나님뿐이었다. 마지막에 남자는 배에 "깨끗한 식량" 빵을 청해 받고, 그녀가 기다리는 안개 저편의 섬으로 노를 저어 돌아간다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
+이어서: "single comic page, exactly 8 rectangular panels in a 2-column by 4-row grid, thin dark panel borders, narrow white gutters, NO text, NO letters, NO speech bubbles, NO numbers, NO logos anywhere"
+
+패널 장면 (읽기 순서: 왼쪽→오른쪽, 위→아래 4행):
+- P1 (1행 좌): wide establishing shot at night, a small tall ship with furled sails lying becalmed on a perfectly flat dark teal sea, thick pale fog all around, one warm lantern glowing at the bow, no stars, eerie calm stillness
+- P2 (1행 우): low-angle shot from the sea looking up at two friendly sailors in cream knit sweaters leaning over the wooden rail, one holding a glowing lantern, both startled and peering down into the fog toward the lower left
+- P3 (2행 좌): over-the-shoulder shot past a sailor's rounded shoulder: below on the dark water, a lone man in a small wooden rowboat rowing slowly toward the ship, his whole body and head completely shrouded in a thick cloak of pale grey-white fungus growth like soft coral, face hidden, hunched humble sorrowful posture
+- P4 (2행 우, 가장 강한 칸·최대): high-angle dramatic wide shot in golden dawn light, a large steamship tilting half-sunken on the right with foam and smoke, and a tiny wooden lifeboat rowing away to the left carrying two young figures — a slim young man with brown hair and a young woman with long chestnut hair in a cream dress
+- P5 (3행 좌, 완전 무음): vast wide reveal of a mysterious island where every tree, rock and a beached derelict ship are all encrusted with soft pale pastel-grey fungus growth in fantastical coral-like shapes, misty mint-green sea, a tiny rowboat just landing on the shore, dreamlike wonder
+- P6 (3행 우): extreme close-up, a young woman's hand held gently between a young man's hands, a small soft grey fungus patch growing on the back of her hand, his worried eyes above, her long chestnut hair falling, tender and sad
+- P7 (4행 좌): medium shot seen through the small round window of a wooden hut at dusk, warm lamp glow inside, the young couple sitting face to face holding hands in gentle silhouette, pale grey fungus tendrils creeping up the window frame from outside
+- P8 (4행 우): low-angle wide shot from the ship's deck at dawn, the fungus-shrouded man rowing his small boat away into thick fog with a cloth sack of bread beside him, two sailors watching silently from the rail in the foreground, the little boat fading into the mist
+
+캐릭터 일관성: 균류 남자는 P3·P8에서 동일 실루엣(회백색 균류 망토·후드로 온몸과 얼굴 완전 차음, 얼굴 절대 보이지 않음). 회상 속 청년은 P4·P6·P7에서 동일 외형(마른 체형, 둥근 친근한 얼굴, 갈색 머리, 크림색 셔츠), 약혼자는 동일 외형(긴 밤색 머리, 크림색 원피스). 생성 결과를 .work/ep007-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지 — ep006과 동일한 lettering 방식):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략해도 됨.
+넣을 텍스트 (패널별, P5는 완전 무음 — 아무 텍스트 없음):
+- P1 [내레이션] 바람도 별도 없는 밤 — 배는 안개 속에 멈춰 있었다
+- P2 [대사] 항해사: "저기요! 등대가 보이는 분 계십니까?"
+- P3 [대사] 남자: "부탁입니다… 제 얼굴은 보지 말아 주세요"
+- P4 [내레이션] 남은 이야기는 그의 것이었다 — 침몰에서 살아남은 건 그와 약혼자, 둘뿐
+- P5 (텍스트 없음)
+- P6 [내레이션] 남은 식량은 균류뿐 — 먹은 자의 살결에, 회색 것이 뿌리내렸다
+- P7 [내레이션] 오두막 안, 둘은 서로에게 맹세했다 — 증인은 하나님뿐이었다
+- P8 [대사] 남자: "그녀에게 가져가겠습니다 — 이건 깨끗한 식량이니까요"
+줄바꿈은 바/상자 너비에 맞게 자동 배치. 텍스트가 그림의 얼굴을 가리지 않게 위치 미세조정.
+최종 저장: episodes/sf-daily-007-the-voice-in-the-night.png (PNG). 완료 후 파일 크기(bytes)를 출력하고 종료. 품질 재검·추가 수정 금지.

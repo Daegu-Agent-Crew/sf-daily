@@ -1,0 +1,4 @@
+Attached image: episodes/sf-daily-003-the-diamond-lens.png (a Korean webtoon-style one-page comic, 8 panels).
+
+Analyze ONLY the layout and typography, and answer as compact JSON (no markdown fence):
+{"page_w":int,"page_h":int,"grid_rows":int,"grid_cols":int,"gutter":"description","panel_border":"description","title_header":{"present":bool,"text":"exact title text","position":"...","style":"..."},"caption_style":"per-panel caption bars or bubbles; where positioned; background color+opacity; text color; approx font size relative to page; rounded?","dialog_style":"how speech dialog shown (same bar? separate bubble?)","narr_style":"how narration shown","text_quality":"is Korean text rendered correctly (no tofu boxes)?","other_notes":"anything else about the format"}

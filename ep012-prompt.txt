@@ -1,0 +1,36 @@
+작업: SF 데일리 #012 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-012-twenty-thousand-leagues.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 쥘 베른 "해저 2만 리" (Vingt mille lieues sous les mers, 1870). 본 화 장면 단위: 2부 2장 '오징어' — 대서양(루케이즈 제도 부근)에서 노틸러스호가 괴물 문어(거대 오징어) 떼에게 나선을 얽혀 정지한다. 전기 공격은 통하지 않고(껍데기 없는 연체동물), 네모 선장은 부상해 갑판 위에서 도끼로 맞서기로 한다. 결투 중 프랑스인 사원 한 명이 촉수에 붙잡혀 "도와주시오!"를 외치며 바다로 끌려 사라진다(그 부름은 네모 선장과 같은 프랑스어였다). 네드 랜드의 작살이 오징어 눈을 꿰뚫지만 그가 위기에 처하자 네모 선장이 도끼로 그를 구한다. 네모는 "그 사내는 프랑스인이었소. 나는 그를 잊지 않겠소"라고 말하고, 그날 밤 살롱에서 아내와 두 아이의 초상화 앞에 무릎 꿇고 운다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌): cozy interior of the Nautilus grand salon, three men clustered at a huge slanted glass viewport looking out into dim teal deep water — a refined 40s French professor with a short grey-brown beard and navy jacket (pointing right in alarm), a tall calm blond young man in a dark coat, and a burly red-bearded Canadian harpooner in a striped sailor shirt, warm lamplight inside
+- P2 (1행 우): over-the-shoulder shot from behind the trio through the massive glass wall — colossal giant squid silhouettes with huge glowing eyes and thick knotted tentacles drifting toward them in the gloomy green Atlantic water, eerie wonder
+- P3 (2행 좌, 앙각): dramatic low-angle shot on the surfaced submarine's open deck — a proud dark-bearded captain in a long dark naval coat and embroidered cap gripping a hatchet with grim resolve, a line of determined sailors with axes behind him, wind and sea spray, grey-cream sky
+- P4 (2행 우, 최대 긴장·와이드): wide chaotic action shot on the deck — sailors swinging hatchets at massive slimy tentacles of giant squids coiling over the railing, arcs of black ink spraying across the air like rain, churning pastel-turquoise sea, courageous chaos
+- P5 (3행 좌, 크게·완전 무음): powerful close-up — a young sailor in whites hoisted high into the pale sky in the crushing coil of a giant tentacle, arms flung wide, mouth open in a soundless cry, his hatchet falling from his hand
+- P6 (3행 우): the burly red-bearded harpooner thrusting his harpoon into a giant squid's enormous eye, while a second squid arm swings down at him from behind, spray and strong motion energy
+- P7 (4행 좌): close two-shot on the deck aftermath — the dark-bearded captain pulling the fallen harpooner up by the arm, his hatchet buried in the dying squid beside them, the captain's eyes glassy with grief, quiet dignity
+- P8 (4행 우, 여운 마무리): night interior of the lavish salon in warm lamplight — the captain kneeling with bowed head before a framed wall portrait of a gentle woman with two small children, a single tear on his cheek, deep sea-blue night through the viewport glass, profound silence
+캐릭터 일관성: 아로낙스 교수는 P1(회갈색 짧은 수염, 네이비 재킷)·P2에서 동일 인물. 콘셜은 P1(마른 체격, 금발, 짙은 코트)에서만. 네드 랜드는 P1·P6·P7에서 동일 인물(건장한 체격, 붉은 갈색 수염, 스트라이프 선원 셔츠). 네모 선장은 P3·P7·P8에서 동일 인물(검은 수염, 매서운 눈, 긴 짙은 해군 코트, 자수 모자). 프랑스인 사원은 P5에서만(흰 선원복의 젊은이). 긴장은 어두운 색이 아니라 구도·앵글·표정으로(스타일 블록 유지). 생성 결과를 .work/ep012-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep011.py 와 동일한 격자·서체 방식으로 .work/letter_ep012.py 를 작성해 실행(입력을 .work/ep012-notext.png, 출력을 episodes/sf-daily-012-twenty-thousand-leagues.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지 — ep006~011과 동일한 lettering 방식):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략 가능.
+넣을 텍스트 (패널별, P5는 완전 무음 — 아무 텍스트 없음):
+- P1 [내레이션] 대서양 한복판, 항해 열째 달 — 노틸러스호가 갑자기 멈춰 섰다. [대사] 아로낙스: 나선이 무언가에 얽혔군!
+- P2 [내레이션] 살롱 유리 너머, 거대한 눈들이 우리를 지켜보고 있었다. [대사] 콘셜: 문어입니다, 선생님!
+- P3 [내레이션] 네모 선장이 갑판 위에 섰다. [대사] 네모: 껍데기 없는 놈들 — 이길 길은 도끼뿐이오.
+- P4 [내레이션] 갑판 위로 촉수가 쏟아졌다. 검은 잉크가 비처럼 뿌려졌다.
+- P5 (완전 무음 — 그림만으로)
+- P6 [내레이션] 네드의 작살이 괴물의 눈을 꿰뚫었다 — 그 순간, 두 번째 촉수가 그를 덮쳤다. [대사] 네드: 이 자식!
+- P7 [내레이션] 네모 선장의 도끼가 괴물을 갈랐다. [대사] 네모: 그 사내는 프랑스인이었소… 죽는 날까지 잊지 않겠소.
+- P8 [내레이션] 그날 밤 — 강철 같은 사내가 가족 초상 앞에서 소리 없이 울고 있었다.
+
+완료 조건: episodes/sf-daily-012-twenty-thousand-leagues.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

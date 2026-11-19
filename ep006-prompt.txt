@@ -1,0 +1,38 @@
+작업: SF 데일리 #006 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-006-the-horror-of-the-heights.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 아서 코난 도일 "고공의 공포" (The Horror of the Heights, 1913). 요약: 영국의 저명한 비행사 조이스-암스트롱은 동료 조종사들이 고공에서 원인 불명으로 사라지는 사고의 원인이 4만 피트 상공의 무언가라고 믿었다. 그는 일기장을 남기고 단엽기로 상승한다. 진주빛 구름 지대 위에서 그는 해파리처럼 떠다니는 반투명 생물의 무리와, 그것을 사냥하는 갈색 판자형 괴물과 띠 모양의 공중 뱀 무리를 목격한다 — 구름 위에는 정글이 있었던 것이다. 관측 중 괴물들이 그의 비행기를 발견하고 뱀 형체 하나가 기체에 감겨온다. 그는 기수를 내려 도망친다. 찢어진 일기장이 밭에서 발견되었고, 그 뒷장은 없었다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
+이어서: "single comic page, exactly 8 rectangular panels in a 2-column by 4-row grid, thin dark panel borders, narrow white gutters, NO text, NO letters, NO speech bubbles, NO numbers, NO logos anywhere"
+
+패널 장면 (읽기 순서: 왼쪽→오른쪽, 위→아래 4행):
+- P1 (1행 좌): wide establishing shot, golden dusk airfield with a small hangar, a few aviators in tan leather coats gathered around a framed photo of a lost pilot, the protagonist Joyce-Armstrong standing slightly apart writing in a brown leather notebook, gazing right
+- P2 (1행 우): high-angle extreme close-up of the open notebook held in gloved hands, squiggly unreadable handwriting lines, half of his resolute face at the frame edge looking left
+- P3 (2행 좌): low angle wide shot, the small yellow monoplane climbing steeply, sky gradient deepening from blue to violet, curved earth with pearly cloud sea far below, sunlight glinting on the wings
+- P4 (2행 우, 무음 칸): vast dreamlike air jungle, a shimmering pearly-golden cloud bank like a beach, dozens of translucent glowing sky-jellyfish with soft trailing tendrils floating peacefully, wonder and silence
+- P5 (3행 좌): extreme close-up of the pilot's face, huge amazed eyes behind round goggles reflecting the golden cloud jungle, mouth open in awe, facing right
+- P6 (3행 우): high-angle shot over the cloud bank, flat brown door-mat-like creatures gliding like kites and long ribbon-shaped sky serpents swarming over the jellyfish herd, one serpent turning its head toward the tiny yellow monoplane
+- P7 (4행 좌, 가장 강한 칸·최대): dramatic dynamic low angle, the yellow monoplane diving hard through the cloud bank with propeller blur and motion lines, a long green-brown sky serpent coiled around its tail, a storm of flat brown creatures chasing behind
+- P8 (4행 우): quiet wide aftermath shot, misty morning meadow with dew, a torn notebook page and a single leather glove lying in the grass in the foreground, above a calm empty pastel blue sky with one faint white contrail
+
+캐릭터 일관성: 조이스-암스트롱은 모든 칸에서 동일 외형(마른 체형의 젊은 비행사, 둥근 친근한 얼굴, 갈색 가죽 비행복, 코랄 스카프, 동그란 고글, 가죽 비행모자). 단엽기는 모든 칸에서 노란 단엽기로 동일. 생성 결과를 .work/ep006-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략해도 됨.
+넣을 텍스트 (패널별, P4는 완전 무음 — 아무 텍스트 없음):
+- P1 [내레이션] 동료들은 고공에서 사라졌다 — 원인은 4만 피트 위에 있다
+- P2 [내레이션] "돌아오지 못하면, 이 일기장을 읽어 달라"
+- P3 [내레이션] 3만 피트 — 하늘은 보라빛으로 깊어지고, 그 위엔 미지의 지대가 있다
+- P4 (텍스트 없음)
+- P5 [대사] 조이스-암스트롱: 아름답다… 구름 위에 정글이 있었어!
+- P6 [내레이션] 그 정글에는 사냥꾼이 있었다
+- P7 [대사] 조이스-암스트롱: 기수를 내린다 — 놈들이 온다!
+- P8 [내레이션] 주워진 일기장의 뒷장은 찢겨 있었다 — 하늘은 오늘도 무심하게 파랬다
+줄바꿈은 바/상자 너비에 맞게 자동 배치. 텍스트가 그림의 얼굴을 가리지 않게 위치 미세조정.
+최종 저장: episodes/sf-daily-006-the-horror-of-the-heights.png (PNG). 완료 후 파일 크기(bytes)를 출력하고 종료. 품질 재검·추가 수정 금지.

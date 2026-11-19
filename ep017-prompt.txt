@@ -1,0 +1,36 @@
+작업: SF 데일리 #017 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-017-the-time-machine.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: H.G. 웰스 "타임 머신" (The Time Machine, 1895). 줄거리: 1895년 런던, 저녁 식사 자리에서 '시간 여행자'는 시간 기계 축소 모형을 내놓고 레버를 당긴다 — 모형은 번쩍이며 흔적 없이 사라진다. 이튿날 그는 본체(놋쇠·아이보리·수정 막대, 안장과 두 개의 레버)에 올라타고 레버를 민다. 낮과 밤이 섬광처럼 교차하고 태양이 하늘을 오르내리며 도시가 흐르듯 지나간다. 서기 802,701년 — 낙원 같은 정원에 하얀 스핑크스상이 서 있고, 작고 우아한 종족 에로이가 과일을 나눈다. 그는 얕은 템스강에 익을 뻔한 소녀 위나를 구해 주고, 위나는 그에게 꽃을 가득 안겨 준다. 그러나 밤이 오면 땅속 우물의 어둠 속에서 올려다보는 둥근 눈빛들 — 지하의 잿빛 종족 몰록이었다. 어느 밤 숲에서 그는 성냥으로 불의 고리를 만들어 몰록을 몰아내지만, 연기 속에서 위나를 잃는다. 기계를 되찾아 미래의 창백한 해 아래를 지나 집으로 돌아온 그는 저녁 식사 자리에 하얀 꽃 두 송이를 내놓는다 — 80만 년 저편 위나의 꽃. 그리고 다음 날, 그는 다시 기계를 타고 어딘가로 떠나 3년째 돌아오지 않았다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 오버숄더): cozy Victorian dining room at candle-lit evening, over-the-shoulder past a skeptical gentleman friend in a bowler hat; in front of him the Time Traveller — lean man about 35, tousled pale-brown hair, bright grey eyes, rumpled cream waistcoat with rolled-up shirtsleeves — proudly holding up a tiny gleaming brass-and-ivory model machine with a small lever, placing it on the table among dinner plates; warm golden lamplight, rich cream-and-coral interior
+- P2 (1행 우, 클로즈업): tight close-up on the tabletop — the spot where the model stood now empty with a single wisp of white smoke and a few fading golden sparkles; at the panel edges three astonished faces leaning in (mustached doctor with pince-nez, red-faced mayor, the bowler-hat friend), eyes wide, one dropping his fork; candle flames bending
+- P3 (2행 좌, 최대 역동 와이드): the full-size time machine ride — the Time Traveller astride a saddle on a brass-and-ivory machine with two levers and a flickering quartz rod, leaning forward with wind-blown hair and coat-tails; around him the sky strobing with alternating day-and-night bands, a stylized sun arcing up and down like a bounce trail, walls of his laboratory drawn ghost-transparent, flowers blooming and withering on the windowsill in the same frame; sense of tremendous speed, pastel speed-lines
+- P4 (2행 우, 부감 확립 와이드): year 802,701 — high bird's-eye view over a vast sunlit garden paradise: ruined overgrown giants of buildings draped in flowering vines, a huge white Sphinx statue on a tall bronze pedestal, a gentle river winding; tiny graceful Eloi people in bright coral-and-mint tunics gathered under a big fruit tree; big friendly sun, fluffy clouds
+- P5 (3행 좌, 두 인물 투샷): sunny riverbank — the Time Traveller kneeling, soaked sleeves, laughing gently as Weena, a tiny delicate Eloi girl with long curling chestnut hair, round rosy cheeks, coral tunic, presses an armful of bright white-and-yellow flowers into his hands; her clothes dripping from the shallow bright river behind them; warm intimate mood
+- P6 (3행 우, 무음 최대 긴장): silent night panel — the dark round mouth of a well shaft in the foreground meadow; from the blackness many pairs of round pale glowing eyes looking up; behind it the White Sphinx looming huge against a giant mint-white moon; silver-mint moonlight, long soft shadows, pastel palette kept light — tension comes from composition only. This panel stays completely text-free in the final page
+- P7 (4행 좌, 역동 대와이드): the night forest fire — the Time Traveller standing in a ring of crackling pastel-orange flame, striking a match held high, flame lighting his determined face; hunched grey apelike Morlock figures with long arms recoiling and shielding their round eyes from the light; through drifting smoke his other hand reaching toward a small distant coral silhouette; mint night sky above, warm fire glow below
+- P8 (4행 우, 여운 클로즈업): quiet lingering close-up — the Victorian dining table the day after: on the white tablecloth two small faded white flowers lying beside a glass of brandy and a scattered deck of cards, one candle burnt down; soft late-afternoon window light, the Time Traveller's empty chair; gentle wistful closing mood
+캐릭터 일관성: 시간 여행자는 P1·P3·P5·P7에서 동일 인물(마흔 줄, 마른 체형, 짙은 연갈색 헝클어진 머리, 회색 눈, 크림색 조끼+롤업 셔츠). 위나는 P5(코랈 튜닉·젖은 머리)와 P7(연기 속 작은 코랄 실루엣)에서 동일 인물. 몰록은 P6(눈빛만)·P7(잿빛 유인원형 실루엣)에서 동일 종족. 긴장은 어두운 색이 아니라 구도·앵글·표정으로(밤 장면도 실버민트 달빛 톤으로 밝게 유지). 생성 결과를 .work/ep017-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep016.py 와 동일한 격자·서체 방식으로 .work/letter_ep017.py 를 작성해 실행(입력을 .work/ep017-notext.png, 출력을 episodes/sf-daily-017-the-time-machine.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산. P6은 무음 칸 — 어떤 텍스트도 넣지 않는다.
+서체 스타일(기존 회차 포맷 그대로 유지):
+- 내레이션 바: 각 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px).
+넣을 텍스트 (패널별):
+- P1 [내레이션] 1895년 런던, 저녁 식사 자리 — 그는 '시간 기계' 축소 모형을 내놓았다. [대사] 시간 여행자: 시간은 눈에 보이지 않는 네 번째 차원입니다.
+- P2 [내레이션] 레버를 당기자 모형은 흔적도 없이 사라졌다. [대사] 시간 여행자: 지금 그것은 과거에도, 미래에도 없습니다.
+- P3 [내레이션] 이튿날 본체에 올라 레버를 밀자 — 낮과 밤이 섬광처럼 교차하며 흘러갔다. [대사] 시간 여행자: 서기 802,701년…!
+- P4 [내레이션] 낙원 같은 정원, 그리고 하얀 스핑크스 — 작고 우아한 종족 에로이. [대사] 없음
+- P5 [내레이션] 얕은 강에서 익을 뻔한 위나를 구해 준 날. [대사] 위나: 고마워요… 이 꽃, 전부 당신 거예요.
+- P6 (무음 칸 — 텍스트 없음, 그림만)
+- P7 [내레이션] 밤의 숲에 불의 고리를 그려 눈빛 무리를 몰아냈다 — 그리고 연기 속에서 위나를 잃었다. [대사] 시간 여행자: 위나!!
+- P8 [내레이션] 그가 남긴 증거는 하얀 꽃 두 송이 — 이튿날 그는 다시 기계를 타고 떠나, 3년째 돌아오지 않았다. [대사] 없음
+
+완료 조건: episodes/sf-daily-017-the-time-machine.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

@@ -1,0 +1,36 @@
+작업: SF 데일리 #014 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-014-connecticut-yankee.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 마크 트웨인 "아서 왕궁의 코네티컷 양키" (A Connecticut Yankee in King Arthur's Court, 1889). 줄거리: 1879년 코네티컷 무기공장 주임 행크 모건이 작업자의 크라우바에 맞아 실신했다가 깨어나 보니 6세기 아서 왕의 캐멀롯이다. 그는 엉터리 마법사로 몰려 화형을 선고받지만, 그날 아침 달력에서 본 '6월 21일 전체 일식'을 떠올린다. 장작더미에 묶인 채 "해를 지워 버리겠다" 선언하자 정말 해가 지워지고, 겁에 질린 아서 왕은 그를 풀어주고 왕 다음가는 '보스' 자리를 내준다. 해가 돌아온 저녁, 그는 회중시계를 덮으며 미소 짓는다 — 과학 지식 하나로 중세를 정복한 순간.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 와이드 확립): bustling 19th-century Connecticut arms factory, brick walls, steam-era belts and gears, workers in flat caps; center: confident superintendent Hank Morgan — middle-aged, neat dark hair, mustache, mustard-yellow checkered suit, brown bowler hat — pointing at blueprints; behind him a huge scowling worker swinging a crowbar, comic bonk energy with little stars, no one hurt badly
+- P2 (1행 우): inside a torchlit medieval banquet hall with a round table in the background, armored knights laughing hard; small Hank standing dazed in the middle in his checkered suit holding an open pocket watch, a mounted knight pointing down at him
+- P3 (2행 좌, 부감): dungeon cell seen from above — straw floor, barred window casting a shaft of light; Hank sitting up, eyes wide with sudden realization, index finger raised, a small spark-like glow above his head
+- P4 (2행 우, 앙각): castle courtyard at noon, Hank bound to a stake atop a log pile, calm smirk, one finger raised to the sky; below him a colorful medieval crowd, knights with lances, a herald with a scroll; King Arthur (gold crown, scarlet royal robe) watching from a canopy seat
+- P5 (3행 좌, 무음 와이드): the sun in a clear pastel sky with a dark bite creeping across its edge, eerie dimming daylight over castle towers, startled birds scattering — this panel stays completely text-free in the final page
+- P6 (3행 우): panic in the courtyard — villagers and knights on their knees, arms stretched toward the darkening sky, some fleeing with hats flying, torches flaring in twilight; King Arthur half-rising from his canopy seat in alarm, mouth open
+- P7 (4행 좌): ropes cut, Hank standing tall on the log pile, one hand raised solemnly toward the brightening sky; King Arthur kneeling and offering a heavy gold chain of office, knights bowing low, awed faces lit by returning light
+- P8 (4행 우, 여운 마무리): warm sunset light through a great hall window; Hank now in a fine scarlet cloak seated on a chair beside King Arthur's throne, gently closing his pocket watch with a small knowing smile, courtiers bowing in the background
+캐릭터 일관성: 행크 모건은 P1·P2·P3·P4·P7·P8에서 동일 인물(중년, 짙은 머리에 콧수염, 머스터드색 체크 양복+갈색 중산모; P8은 진홍색 망토 차림). 아서 왕은 P4·P6·P7·P8에서 동일 인물(금 왕관, 진홍 왕복, 금발). 긴장은 어두운 색이 아니라 구도·앵글·표정으로(스타일 블록 유지 — 일식 칸도 하늘만 황혼톤으로 낮추고 전체 팔레트는 밝게 유지). 생성 결과를 .work/ep014-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep013.py 와 동일한 격자·서체 방식으로 .work/letter_ep014.py 를 작성해 실행(입력을 .work/ep014-notext.png, 출력을 episodes/sf-daily-014-connecticut-yankee.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산. P5는 무음 칸 — 어떤 텍스트도 넣지 않는다.
+서체 스타일(기존 회차 포맷 그대로 유지):
+- 내레이션 바: 각 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px).
+넣을 텍스트 (패널별):
+- P1 [내레이션] 1879년, 코네티컷 무기공장 주임 행크 모건. [대사] 행크: 기계든 사람이든, 내가 다루기 나름이지.
+- P2 [내레이션] 크라우바 한 방에 눈뜨니 — 6세기, 아서 왕의 캐멀롯. [대사] 기사: 이 자는 흉측한 마법사라 하오!
+- P3 [내레이션] 옥중에서 떠오른 것은, 그날 아침에 본 달력이었다. [대사] 행크: 내일 정오… 전체 일식이 온다!
+- P4 [내레이션] 정오, 장작더미 위의 선언. [대사] 행크: 지금부터 해를 지워 버리겠다!
+- P5 (무음 칸 — 텍스트 없음, 그림만)
+- P6 [내레이션] 해가 지워지자, 캐멀롯이 무릎을 꿇었다. [대사] 아서 왕: 마법사여, 부디 해를 돌려다오!
+- P7 [내레이션] 해를 되찾는 대가 — 왕 다음가는 자리. [대사] 행크: 해는 돌아올 것이다. 단, 내 조건부터.
+- P8 [내레이션] 해가 돌아온 저녁, 그는 조용히 회중시계를 덮었다 — 과학이 마법을 이긴 날.
+
+완료 조건: episodes/sf-daily-014-connecticut-yankee.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

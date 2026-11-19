@@ -1,0 +1,36 @@
+작업: SF 데일리 #018 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-018-princess-of-mars.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 에드거 라이스 버로스 "화성의 공주" (A Princess of Mars, 1912). 줄거리: 1866년 애리조나, 남북전쟁 제대 군인 존 카터는 아파치의 추격을 피해 동굴에 숨는다. 밤, 이유 없는 마비가 그를 쓰러뜨리고, 동굴 틈새로 붉게 빛나는 화성이 내려다보인다 — 이윽고 그는 소리 없이 그 별로 끌려간다. 정신을 차리자 붉은 사막과 산호빛 하늘 — 화성 '바르숨'. 지구인의 몸과 낮은 중력이 만나, 그는 첫 한 걸음에 아홉 미터를 뛰어오른다. 그는 네 개의 팔을 가진 초록 거인 종족 '타르크'에게 포로로 잡혀 그들의 도시로 끌려간다. 그곳에서 그는 사로잡힌 붉은 인종 헬륨의 공주 데자 소리스를 만나고, 두 사람은 서로에게 마음을 연다. 타르크족은 포로들을 거대한 흰 유인원과 싸우는 아레나에 던지지만, 카터는 하늘 높이 도약하는 초인의 검으로 공주와 함께 싸워 빠져나간다. 그러나 화성을 구한 마지막 순간 그가 쓰러지고 — 눈을 뜨면 그는 애리조나의 동굴에 누워 있다. 몸은 그대로 그 자리에 있었다. 그는 오늘 밤도 붉은 별을 바라보며 데자 소리스를 그리워한다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 와이드 확립): Arizona 1866 at night — inside a rocky desert hillside cave, John Carter (tall lean man early 30s, short black hair, steel-grey eyes, cream shirt under a worn brown cavalry coat) crouches at the cave entrance, hand resting on his revolver, peering out warily; outside the cave mouth, distant silhouettes of Apache riders with flickering torches against an indigo twilight desert; wide starry sky with one faint coral star
+- P2 (1행 우, 클로즈업): strange paralysis — close view of Carter lying rigid on his back on the cave floor, eyes wide open in astonishment, body frozen; his tilted gaze follows a crack in the cave ceiling through which one large glowing coral-red star (Mars) beams a soft mysterious coral ray down onto his face; eerie but drawn in pastel-bright colors
+- P3 (2행 좌, 최대 역동 와이드): arrival on Mars — dynamic wide shot: Carter mid-air in a joyful gigantic leap high above a rose-red desert, arms spread wide, coat flapping; below him strange scarlet moss and tall yellow-red alien grass, odd bottle-shaped plants; coral-pink sky with two small pale moons and distant ruined towers; big pastel motion lines showing the tremendous jump
+- P4 (2행 우, 부감 확립 와이드): bird's-eye view — Carter standing small in the red plain, completely surrounded by a ring of giant Thark warriors: three-meter green-skinned humanoids with four arms each, small tusks beside their jaws, copper arm-bands, holding long spears; the biggest one (their chieftain) closest to camera looking down; morning light, long soft shadows
+- P5 (3행 좌, 두 인물 투샷): two-shot inside a stone Thark city street — Carter protectively standing in front of Dejah Thoris, a regal red-Martian princess with long black hair, warm rosy-copper skin, flowing red-and-gold robes with glowing gem ornaments; Carter's fist raised toward a green guard in the background; the princess looking up at him with surprised grateful eyes
+- P6 (3행 우, 무음 최대 긴장): silent high-angle panel — a colossal circular arena at night seen from high above: at the center of the sandy ring two tiny figures standing back-to-back (a man in a brown coat and a woman in red robes), encircled by darkness; from the black arena gates huge shaggy white ape silhouettes with faintly glowing eyes creeping in; two moons in the night sky; mint-and-coral night palette kept light — tension comes from composition only. This panel stays completely text-free in the final page
+- P7 (4행 좌, 역동 대와이드): the arena fight — Carter leaping sky-high with a long Thark spear, striking down a huge shaggy white ape; two more apes recoiling; Dejah below thrusting a slender sword; pastel action lines, sand kicking up, coral night sky with twin moons, heroic bright energy
+- P8 (4행 우, 여운 클로즈업): quiet close-up back on Earth — a weathered Arizona hut room at night: Carter in his brown coat seated at a desk beside a window, an open journal and a small brass telescope on the desk; through the window pane one coral-red star glowing in the night sky; his eyes gentle and far away, warm lamplight, wistful closing mood
+캐릭터 일관성: 존 카터는 P1·P2·P3·P4·P5·P7·P8에서 동일 인물(마른 큰 키, 짧은 검은 머리, 강철 회색 눈, 크림 셔츠+갈색 기병 코트). 데자 소리스는 P5(붉은 금장 로브·검은 장발)와 P6·P7(붉은 로브)에서 동일 인물. 타르크는 P4(포위 부감)와 P5(배경 경비)에서 동일 종족. 흰 유인원은 P6(어둠 속 실루엣)·P7(전투)에서 동일 종족. 화성 하늘은 산호색+두 개의 작은 달로 통일. 긴장은 어두운 색이 아니라 구도·앵글·표정으로(밤 아레나도 민트-코랄 톤으로 밝게 유지). 생성 결과를 .work/ep018-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep017.py 와 동일한 격자·서체 방식으로 .work/letter_ep018.py 를 작성해 실행(입력을 .work/ep018-notext.png, 출력을 episodes/sf-daily-018-princess-of-mars.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산. P6은 무음 칸 — 어떤 텍스트도 넣지 않는다.
+서체 스타일(기존 회차 포맷 그대로 유지):
+- 내레이션 바: 각 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 둥린 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px).
+넣을 텍스트 (패널별):
+- P1 [내레이션] 1866년 애리조나 — 아파치의 추격을 피해 숨은 동굴에서, 무언가가 그를 기다리고 있었다. [대사] 존 카터: 여기서 한몫 벌고 죽어주지.
+- P2 [내레이션] 갑자기 몸이 굳었다. 동굴 틈새로 붉은 별 화성이 이상한 빛을 내려보냈다. [대사] 존 카터: 몸이… 움직이지 않아. 저 별이… 나를 부르고 있어.
+- P3 [내레이션] 눈을 뜨자 붉은 사막, 산호빛 하늘 — 화성 '바르숨'. 첫 한 걸음에 아홉 미터를 뛰었다. [대사] 존 카터: 내 몸이… 깃털처럼 가볍다!
+- P4 [내레이션] 네 개의 팔을 가진 초록 거인 '타르크'가 나를 포위했다. [대사] 타스 타르카스: 뼈가 약한 지구인이군. 우리 도시로 가라.
+- P5 [내레이션] 그곳에서 나는 만났다 — 헬륨의 공주 데자 소리스. [대사] 존 카터: 이 여인은 내가 지킨다.
+- P6 (무음 칸 — 텍스트 없음, 그림만)
+- P7 [내레이션] 밤의 아레나, 흰 유인원들 앞에서 — 나는 하늘을 나는 검이 되었다. [대사] 존 카터: 지구에선 늙은 병사 — 여기선 하늘을 나는 검이다!
+- P8 [내레이션] 눈을 떠 보니 애리조나의 동굴 — 몸은 그대로 그 자리에서, 오늘 밤도 저 붉은 별을 바라본다. [대사] 없음
+
+완료 조건: episodes/sf-daily-018-princess-of-mars.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

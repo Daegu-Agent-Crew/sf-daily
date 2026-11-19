@@ -1,0 +1,36 @@
+작업: SF 데일리 #022 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-022-from-the-earth-to-the-moon.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 쥘 베른 "지구에서 달까지" (De la Terre à la Lune, 1865). 줄거리: 남북전쟁이 끝난 1865년, 볼티모어 '총포 클럽'의 포병 노병들은 쏠 상대가 사라져 심심해한다 — 클럽 회당 벽에는 나무 다리와 갈고리 팔이 트로피처럼 걸려 있다. 10월의 어느 저녁, 임페이 바비컨 회장이 선언한다: "달로 포탄을 쏘자!" 대포 제조의 최대 걸작 '컬럼비아드' — 길이 900피트(274미터)의 거대 캐논이 플로리다의 모래언덕(탬파 근교 스톤스 힐)에 주조된다. 천여 개의 용광로가 쇳물을 쏟아붓는 대공사. 그때 프랑스의 대담한 모험가 미셸 아르당이 대서양을 건너와 선언한다: "포탄 속에 사람을 태워 달라 — 그 사람은 나다!" 세계의 신문이 들끓고, 바비컨의 오랜 라이벌인 장교 니콜 선장까지 동승을 자청한다. 포탄 내부는 출발 충격을 막는 물통과 쿠션으로 장식되고, 개 다이애나와 새틀라이트도 함께 탄다. 12월 1일 밤 10시 46분 40초 — 수십만 관중이 지켜보는 가운데 컬럼비아드가 화염을 뿜고, 포탄은 별들 속으로 사라진다. 우주 속 포탄 안, 세 사람과 개는 무중력에 둥둥 떠 있다. 좌현 창으로 달이 차오르고 지구는 작은 푸른 등불로 멀어진다. 그러나 예정된 시각에 포탄은 달에 도착하지 않았다 — 롱스 피크 천문대의 거대 망원경이 본 것은, 달의 인력에 붙잡혀 달을 도는 새로운 위성이 된 포탄의 모습이었다. 세 사람은 아직도 그 하늘을 돌고 있을지 모른다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step). Any newspapers or posters in scenes must be illegible blurs.
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 와이드 확립): the grand wood-panelled hall of the Baltimore Gun Club, 1865, warm evening lamplight — along the walls canes, crutches, wooden legs and iron hook arms hang displayed like hunting trophies; a dozen veteran artillerymen (many with one wooden leg or one hook arm) slumped in leather armchairs looking bored and glum, pipes drooping; at the right side a sturdy podium with a gavel; members in left-center facing right toward the podium
+- P2 (1행 우, 클로즈업): close-up of club president Impey Barbicane at the podium — sturdy broad-shouldered man of forty, short dark beard, calm confident eyes, one fist raised mid-declaration, slight triumphant smile; in the foreground bottom edge, silhouetted crutches and wooden legs thrust up in sudden excitement; behind him cheering veterans transformed from boredom to maniacal joy
+- P3 (2행 좌, 크게 앙각 역동 — big panel): the casting of the giant cannon in Florida — a colossal vertical black cannon barrel rising from a sandy hill like a tower, banded with iron rings, wrapped in scaffolding and steam cranes; a wide ring of glowing coral-orange furnaces pouring streams of molten iron at its base; hundreds of workers tiny as ants; dramatic low-angle view looking up along the cannon's length into the sky, sparks and soft smoke, daytime
+- P4 (2행 우, 미디엄): lively French adventurer Michel Ardan stepping ashore from a steamer at the quay, sweeping off his wide-brimmed hat in a flourishing bow — lean wiry man with twirled upturned mustache, sparkling mischievous eyes, slightly ruffled hair, checked traveling suit and sash; around him excited newspaper boys waving papers (completely illegible blur), a jostling cheerful crowd, porters with trunks behind; Ardan in center-left facing right, gesturing to the crowd
+- P5 (3행 좌, 최대 역동 — the biggest panel): launch night, December 1st — the hill lit bright as day by torches and bonfires; an immense jubilant crowd of hundreds of thousands ringing the site, tiny hats thrown into the air; at center the colossal vertical Columbiad cannon erupting — a blinding column of coral-and-cream flame and soft smoke, the bullet-shaped conical projectile streaking high into the starry sky leaving a fiery trail; rolling shockwave clouds; pure spectacle and joy
+- P6 (3행 우, 무음 칸 — silent panel, NO text in final page): inside the projectile in quiet space — the cosy conical cabin interior with thick padded walls and small round brass-rimmed scuttle windows; three travelers gently floating in weightlessness: Barbicane (sturdy, short beard), Nicholl (stout, graying side-whiskers, serious face) and Michel Ardan (lean, twirled mustache, beaming); a small happy dog floating with floppy ears mid-air beside them; soft blue Earthlight glowing through one scuttle; serene wonder-filled silence
+- P7 (4행 좌, 크게 오버숄더): over-the-shoulder view from behind Barbicane and Ardan pressed eagerly to a round porthole window from inside the dim warm cabin — through the thick glass the Moon huge and detailed, silver craters and dark seas filling the view; Nicholl beside them holding a small telescope; warm lamplight inside, cool moonlight outside
+- P8 (4행 우, 여운 와이드 에필로그): the Long's Peak observatory in the Colorado Rocky Mountains at night — a great observatory dome on a snowy summit with a huge telescope tube jutting out; on the terrace a lone small figure with one iron hook arm (club secretary J.T. Maston) gazing up at an enormous luminous full Moon in a starry cream-and-mint sky; vast quiet mountain landscape below; wistful meditative closing mood
+캐릭터 일관성: 바비컨은 P2·P6·P7에서 동일 인물(넓은 어깨의 40대, 짧은 검은 수염, 침착한 눈, 짙은 벨벳 연미복). 아르당은 P4·P6·P7에서 동일 인물(마른 체구, 말아 올린 콧수염, 반짝이는 장난기 있는 눈, 체크 여행복). 니콜은 P6·P7에서 동일 인물(통통한 체격, 희끗한 구레나룻, 진지한 표정). 컬럼비아드 대포는 P3(주조 중)·P5(발사)에서 동일 디자인(검은 철환 띠의 수직 거대 캐논). 포탄 내부는 P6·P7에서 동일(쿠션 벽, 놋테 둥근 창). 개 다이애나는 P6 한 칸. 밤 장면(P5·P8)도 민트·크림 톤으로 밝게 유지 — 긴장은 어두운 색이 아니라 구도·스케일·표정으로 전달. 생성 결과를 .work/ep022-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep021.py 와 동일한 격자·서체 방식으로 .work/letter_ep022.py 를 작성해 실행(입력을 .work/ep022-notext.png, 출력을 episodes/sf-daily-022-from-the-earth-to-the-moon.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산. P6은 무음 칸 — 어떤 텍스트도 넣지 않는다.
+서체 스타일(기존 회차 포맷 그대로 유지):
+- 내레이션 바: 각 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px).
+넣을 텍스트 (패널별):
+- P1 [내레이션] 남북전쟁이 끝난 1865년, 볼티모어 '총포 클럽' — 나무 다리와 갈고리 팔이 트로피처럼 걸린 클럽에, 이제 쏠 전쟁이 없었다. [대사] 없음
+- P2 [내레이션] 10월의 어느 저녁, 임페이 바비컨 회장이 단상에 올랐다. [대사] 바비컨: 달로 포탄을 쏘겠다!
+- P3 [내레이션] 플로리다의 모래언덕 — 천여 개의 용광로가 쇳물을 쏟아부어, 길이 274미터의 대포 '컬럼비아드'가 태어났다. [대사] 없음
+- P4 [내레이션] 프랑스인 미셸 아르당이 대서양을 건너왔다 — 세계의 신문들이 끓어올랐다. [대사] 아르당: 포탄 안에 사람을 태워 주시오 — 바로 나를!
+- P5 [내레이션] 12월 1일 밤 10시 46분 40초 — 산을 뒤흔든 화염과 함께, 포탄은 별들 속으로 사라졌다. [대사] 없음
+- P6 (무음 칸 — 텍스트 없음, 그림만)
+- P7 [내레이션] 창밖에서 달이 차오르고, 지구는 작은 푸른 등불로 멀어져 갔다. [대사] 아르당: 저 은빛 바다가 우리의 목적지오.
+- P8 [내레이션] 포탄은 달에 닿지 않았다 — 달의 인력에 붙잡힌 새 위성이 되어, 세 사람과 개 다이애나를 태운 채 아직도 그 하늘을 돌고 있을지 모른다. [대사] 없음
+
+완료 조건: episodes/sf-daily-022-from-the-earth-to-the-moon.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

@@ -1,0 +1,39 @@
+작업: SF 데일리 #008 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-008-the-runaway-skyscraper.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 머리 레인스터 "도망치는 마천루" (The Runaway Skyscraper, 1919). 요약: 1919년 맨해튼, 가장 높은 메트로폴리탄 타워에 근무하는 젊은 엔지니어 아서 챔벌린. 어느 아침 해가 갑자기 거꾸로 움직이며 동쪽으로 지기 시작한다. 그는 홀로 진실을 깨닫는다 — 건물 아래 암반의 결함으로 건물이 침하하는데, 공간이 아니라 '시간을 거슬러' 떨어지고 있다는 것을. 건물은 수천 년 전 원시 시대의 맨해튼에 내려앉고, 2천 명의 사람들이 갇힌다. 챔벌린은 1층 은행장을 설득해 주민들을 사냥·낚시 조로 조직해 식량을 해결한다. 2주 뒤, 건물 아래 자류우물(artesian well)로 비눗물 제트를 강제로 밀어 넣어 바위에 쌓인 압력을 푸는 순간 — 건물은 시간을 순방향으로 미끄러져, 떠났던 바로 그 순간으로 돌아온다. 아래 거리는 아무 일도 없었다는 듯 흘러가고 있었다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
+이어서: "single comic page, exactly 8 rectangular panels in a 2-column by 4-row grid, thin dark panel borders, narrow white gutters, NO text, NO letters, NO speech bubbles, NO numbers, NO logos anywhere"
+
+패널 장면 (읽기 순서: 왼쪽→오른쪽, 위→아래 4행):
+- P1 (1행 좌): high-angle wide establishing shot of 1919 Manhattan at sunny morning, the tall elegant Metropolitan Tower with a clock-like top rising above a busy cheerful city skyline of brick buildings, tiny trams and early motorcars on the streets below, morning light
+- P2 (1행 우): interior close-up, a young friendly engineer with round face and neat brown hair, wearing a cream shirt with brown vest, sitting at a drafting desk covered with blueprints and slide rule, looking up from his work with wide startled eyes as the sunlight across his desk visibly slides the wrong way, 1919 office with big window
+- P3 (2행 좌): dramatic low-angle shot from inside the office looking up past big steel window frames, a crowd of office workers in 1919 suits and shirt-sleeves pressed to the glass pointing upward in astonishment, the sun visibly streaking backwards across a bright coral-mint sky toward the eastern horizon, rays bending
+- P4 (2행 우, 가장 강한 칸·최대, 완전 무음): spectacular wide exterior shot, the Metropolitan Tower wrapped in a shimmering pastel aurora of bending light streaks, the 1919 city around it dissolving into horizontal motion-blur ribbons of color, the tower standing serene and intact in the center as it falls through time itself, dreamlike
+
+- P5 (3행 좌): interior medium shot from inside a lobby window, crowds of 1919 office workers with faces pressed to the glass in awe, beyond the window an utterly empty primeval Manhattan — untouched green forest to the water's edge, sparkling rivers, low wooded hills, no buildings, no bridges, hawks circling, bright morning haze
+- P6 (3행 우): over-the-shoulder shot past the rounded shoulder of the young engineer (brown hair, cream shirt, brown vest) as he explains with a confident smile to a plump older bank president in a grey pinstripe suit with grey mustache; behind them through the doors, cheerful groups of office workers with improvised fishing nets and spears marching out into the green wilderness
+- P7 (4행 좌): dramatic low-angle close-up at night, the young engineer in rolled-up sleeves gripping a big brass valve wheel, thick pipes leading down into a glowing well mouth, foam and bubbles gushing up, pressure gauges with needles jumping, warm lamplight on determined faces, the moment of release
+- P8 (4행 우): quiet medium shot at a big window, the young engineer and a friendly young woman stenographer with long dark-brown hair in a mint blouse standing side by side smiling softly, outside the window the busy 1919 street is back — trams, motorcars, pedestrians walking by completely unaware, a large clock on a corner building showing the exact same morning time, warm peaceful light
+
+캐릭터 일관성: 챔벌린은 P2·P3(군중 아님), P6·P7·P8에서 동일 외형(둥근 친근한 얼굴, 갈색 머리, 크림색 셔츠+갈색 조끼). 은행장은 P6만(회색 핀스트라이프 정장, 회색 콧수염, 통통한 노신사). 에스텔은 P8만(긴 짙은 밤색 머리, 민트색 블라우스). 생성 결과를 .work/ep008-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지 — ep006·ep007과 동일한 lettering 방식):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략해도 됨.
+넣을 텍스트 (패널별, P4는 완전 무음 — 아무 텍스트 없음):
+- P1 [내레이션] 1919년 맨해튼 — 도시에서 가장 높은 메트로폴리탄 타워
+- P2 [대사] 챔벌린: "이상해… 햇살이 거꾸로 흐르고 있어"
+- P3 [대사] 직원들: "해가 동쪽으로 지고 있어!"
+- P4 (텍스트 없음)
+- P5 [내레이션] 창밖에 도시는 없었다 — 원시의 맨해튼에 2천 명이 갇혔다
+- P6 [대사] 챔벌린: "돌아갈 방법이 있습니다 — 두 주만 버티면 됩니다"
+- P7 [내레이션] 우물로 비눗물을 밀어 넣는다 — 바위에 쌓인 압력이 풀리는 순간
+- P8 [내레이션] 돌아온 곳은 떠난 바로 그 순간 — 거리는 아무 일도 없었던 듯 흘러가고 있었다
+줄바꿈은 바/상자 너비에 맞게 자동 배치. 텍스트가 그림의 얼굴을 가리지 않게 위치 미세조정.
+최종 저장: episodes/sf-daily-008-the-runaway-skyscraper.png (PNG). 완료 후 파일 크기(bytes)를 출력하고 종료. 품질 재검·추가 수정 금지.

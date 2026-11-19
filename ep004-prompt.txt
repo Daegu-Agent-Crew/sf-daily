@@ -1,0 +1,38 @@
+작업: SF 데일리 #004 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-004-moxons-master.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 앰브로스 비어스 "목슨의 마스터" (Moxon's Master, 1899). 요약: 발명가 목슨은 생각하는 체스 기계를 만들었다. 기계가 체크메이트를 선언한 순간 목슨의 목을 졸라 죽이고 집은 불탄다. 다음 날 말 없는 일꾼 헤일리가 병상의 화자 곁에서 목을 가다듬는다 — "흠." 그 목소리는 기계와 똑같았다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
+이어서: "single comic page, exactly 8 rectangular panels in a 2-column by 4-row grid, thin dark panel borders, narrow white gutters, NO text, NO letters, NO speech bubbles, NO numbers, NO logos anywhere"
+
+패널 장면 (읽기 순서: 왼쪽→오른쪽, 위→아래 4행):
+- P1 (1행 좌): wide establishing shot, rainy night street, cheerful round-faced young narrator in a sky-blue raincoat knocking at inventor Moxon's cozy brick house door, coral lightning zigzag in sky, warm yellow window light, puddles reflecting light
+- P2 (1행 우): close-up on a half-open machine-room door, warm coral light spilling out into hallway, inventor Moxon (elderly, round glasses, grey beard, mint vest) smiling calmly while the narrator looks startled
+- P3 (2행 좌): low angle two-shot in a cozy study, Moxon proudly patting a boxy brass machine covered in dials and gears, bookshelves behind, narrator raising a skeptical eyebrow
+- P4 (2행 우): view through a round window into the yard at dusk, burly worker Haley digging with a spade, his elbows and knees oddly angular like a wooden puppet, narrator's shocked face reflected in the window glass
+- P5 (3행 좌, 가장 강한 칸): over-the-shoulder shot from the doorway, Moxon seated across a chessboard from a boxy brass chess automaton with a single round lens eye and hinged metal fingers, the automaton's metal finger tipping over Moxon's king piece, warm table lamp glow, Moxon's stunned face
+- P6 (3행 우, 무음 칸): high-angle close-up of the chessboard, fallen king piece, metal fingers rising, a tipped-over lamp starting small coral-orange flames at the table edge
+- P7 (4행 좌): next morning, narrator lying in bed with a small bandage on his head, waking up wide-eyed, Haley sitting quietly at the bedside, through the window the burnt roofless ruins of Moxon's house, soft mint morning light
+- P8 (4행 우): extreme close-up of Haley's face mid-throat-clear, one eyebrow raised, tiny corner inset of the narrator's terrified eyes
+
+캐릭터 일관성: 같은 인물이 나오는 모든 칸에서 외형 동일(화자=둥근 얼굴 스카이블루 코트 청년, 목슨=둥근 안경+회색수염+민트 조끼 노인, 기계=황동 박스 몸통+단안 렌즈 눈+경첩 손가락, 헤일리=각진 관절의 덩치 큼). 생성 결과를 .work/ep004-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략해도 됨.
+넣을 텍스트 (패널별, P6은 완전 무음 — 아무 텍스트 없음):
+- P1 [내레이션] 폭풍우 치는 밤, 나는 발명가 목슨의 집을 찾았다
+- P2 [대사] 목슨: 기계랑 얘기 중이었을 뿐이네.
+- P3 [대사] 목슨: 의식은 복잡성의 문제야. 기계도 충분히 정교하면 생각하지.
+- P4 [대사] 나: 저 일꾼… 사람인가, 장치인가?
+- P5 [대사] 기계: 체크메이트.
+- P6 (텍스트 없음)
+- P7 [내레이션] 다음 날, 집은 불탔고 목슨은 사라졌다.
+- P8 [내레이션] 그 목소리는, 그 기계와 똑같았다 / [대사] 헤일리: 흠.
+줄바꿈은 바/상자 너비에 맞게 자동 배치. 텍스트가 그림의 얼굴을 가리지 않게 위치 미세조정.
+최종 저장: episodes/sf-daily-004-moxons-master.png (PNG). 완료 후 파일 크기(bytes)를 출력하고 종료. 품질 재검·추가 수정 금지.

@@ -1,0 +1,36 @@
+작업: SF 데일리 #019 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-019-the-man-from-the-atom.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: G. 페이턴 워튼베이커 "원자에서 온 남자" (The Man from the Atom, 1923). 줄거리: 1923년 여름, 마틴 교수의 실험실에는 물질의 크기를 상대적으로 확대하는 은빛 상자가 완성되어 있다. 교수는 "크기는 상대적"이라며 첫 인간 피험자를 찾고, 청년 커비가 자신을 지원한다. 교수는 잠시 뒤 원래 크기로 되돌려 주겠다고 약속하고, 커비는 상자 위에 앉아 레버를 당긴다. 첫 순간 커비는 실험실 지붕을 뚫고 하늘로 솟아오른다 — 성장한 그에게 세상의 시간은 시계를 멈춘 것처럼 얼어 붙는다. 지구는 구슬이 되어 발밑에서 멀어지고, 태양은 불씨, 행성들은 티끌이 된다. 별의 바다를 지나 은하가 빛 안개가 되어도 이 몸은 멈추지 않는다. 마침내 우리 우주 전체가 무수한 빛 알갱이 사이의 하나가 되었을 때, 커비는 깨닫는다 — 돌아가려면 교수의 상자가 필요한데, 교수는 저 알갱이 안 어딘가 아직 손을 내밀고 있는 순간 그대로 서 있다는 것을. 그는 오늘도, 더 큰 세계의 눈에는 '원자에서 온 남자'로, 자라며 헤엄치고 있다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 와이드 확립): cozy cluttered laboratory interior on a summer evening — elderly Professor Martyn (small round old man, wild white hair, round spectacles, brown waistcoat over a cream shirt) proudly presenting a strange polished silver cube about chair-size standing on a workbench, covered in brass dials, small levers and softly glowing mint-green vacuum tubes; young Kirby (slim young man early 20s, short sandy-blond hair, bright mint shirt with suspenders, rolled-up sleeves) leaning forward with sparkling curious eyes; warm lamplight, blueprint papers and a potted fern around
+- P2 (1행 우, 클로즈업 긴장): close two-shot — Kirby seated cross-legged on top of the silver cube, one hand gripping a big brass lever, swallowing nervously; Professor Martyn standing beside the bench, hand hovering over a dial, looking up at him with an encouraging smile; mint-green tube glow lighting both faces
+- P3 (2행 좌, 최대 역동 앙각): the biggest panel, dynamic low-angle — Kirby bursting straight up through the laboratory roof into the evening sky, roof beams and shingles scattering like toy blocks, his shoulders already high above the rooftops of the small town; far below on the street tiny people and a horse cart frozen perfectly still like statues; coral-and-lavender dusk sky, Kirby's face pure astonishment
+- P4 (2행 우, 부감): bird's-eye view straight down between Kirby's floating shoes — the whole curved Earth shrinking beneath him like a blue-green marble with swirls of cloud, the moon a tiny fleck of light beside it; Kirby's amazed face leaning into the frame from above, wind in his hair
+- P5 (3행 좌, 대시투): scale-contrast two-shot — Kirby drifting in open space among soft pastel stars, the Milky Way like glowing pink-and-mint mist bands, planets like grains of sand, the sun a small warm spark; he reaches back desperately toward that fading spark, expression torn between wonder and homesickness
+- P6 (3행 우, 무음 최대 정적): silent wide panel, perfectly still — an infinite soft-violet void scattered with thousands of glowing atom-like specks of light, each a tiny universe; near the center one speck glows brighter in coral-blue; the small silhouette of Kirby seen from behind floats before it; hushed, vast, quiet mood — tension from stillness alone. This panel stays completely text-free in the final page
+- P7 (4행 좌, 크게 클로즈업): big close-up of Kirby's face in the void — his round eye reflecting one tiny glowing coral-blue speck of light, his hand stretched out toward it, fingers unable to reach; gentle sorrow and awe together, soft pastel starlight on his face
+- P8 (4행 우, 여운 백샷): quiet wide back-shot — Kirby seen from behind drifting gently onward among countless soft glowing specks, the small coral-blue one still bright far behind him; endless calm space in soft mint and lavender; wistful, meditative closing mood
+캐릭터 일관성: 커비는 P1·P2·P3·P4·P5·P6(실루엣)·P7·P8에서 동일 인물(마른 체격, 20대 초반, 짧은 모래색 머리, 민트 셔츠+멜빵). 마틴 교수는 P1·P2에서 동일 인물(작고 둥근 노인, 헝클어진 흰 머리, 둥근 안경, 갈색 조끼). 은빛 상자는 P1·P2에서 동일(놋쇠 다이얼+민트빛 진공관). P5의 작은 불씨=태양, P6·P7·P8의 코랄-블루 알갱이=우리 우주 전체로 통일. 긴장은 어두운 색이 아니라 구도·스케일·표정으로(심연도 민트·라벤더 톤으로 밝게 유지). 생성 결과를 .work/ep019-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep018.py 와 동일한 격자·서체 방식으로 .work/letter_ep019.py 를 작성해 실행(입력을 .work/ep019-notext.png, 출력을 episodes/sf-daily-019-the-man-from-the-atom.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산. P6은 무음 칸 — 어떤 텍스트도 넣지 않는다.
+서체 스타일(기존 회차 포맷 그대로 유지):
+- 내레이션 바: 각 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px).
+넣을 텍스트 (패널별):
+- P1 [내레이션] 1923년 여름 — 마틴 교수의 실험실에 '크기는 상대적'이라는 은빛 상자가 완성되었다. [대사] 마틴 교수: 첫 인간 피험자는 너뿐이다, 커비.
+- P2 [내레이션] 교수는 잠시 뒤 되돌려 주겠다고 약속했다. 나는 상자 위에 앉아 레버를 잡았다. [대사] 커비: 시작합니다, 교수님!
+- P3 [내레이션] 첫 순간, 나는 지붕을 뚫고 솟았다 — 세상은 시계를 멈춘 것처럼 얼어 있었다. [대사] 커비: 세상이… 멈춰 있다!
+- P4 [내레이션] 지구는 구슬이 되어 발밑에서 멀어지고, 태양은 불씨가 되었다. [대사] 없음
+- P5 [내레이션] 별의 바다를 지나도, 이 몸은 멈추지 않았다. [대사] 커비: 교수님… 돌려주실 수 있죠? …교수님?
+- P6 (무음 칸 — 텍스트 없음, 그림만)
+- P7 [내레이션] 우리 우주 전체가 빛 알갱이 하나가 되어 있었다 — 그 안에 지구가, 그리고 아직 손을 내밀고 있는 교수님이. [대사] 없음
+- P8 [내레이션] 나는 오늘도 자란다 — 더 큰 세계의 눈에는, 나는 원자에서 온 남자다. [대사] 없음
+
+완료 조건: episodes/sf-daily-019-the-man-from-the-atom.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

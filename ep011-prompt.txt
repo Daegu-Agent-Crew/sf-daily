@@ -1,0 +1,36 @@
+작업: SF 데일리 #011 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-011-the-moon-pool.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: A. 머릿 "달의 웅덩이" (The Moon Pool, 1918). 요약: 1918년 태평양. 해양학자인 화자(굿윈)는 배 갑판에서 야윈 스록마틴 박사에게 붙잡힌다. 스록마틴 일행은 폰페 섬 앞바다의 고대 폐허 나-마타르를 조사하다가, 돔 천장의 둥근 구멍으로 보름달이 곧장 내려꽂히는 검은 석제 웅덩이 '달의 웅덩이'를 발견했다. 달빛이 닿은 물이 빛나기 시작하고, 물속에서 '빛나는 것(The Shining One)'이 솟아올랐다 — 유령처럼 빛으로 접힌 종(柱) 모양의 존재, 그 안에는 여인의 얼굴이 잠들어 있었다. 그것은 지나치게 아름다웠고, 본 사람은 홀렸다. 젊은 조수 스탠튼은 행복한 얼굴로 물속으로 걸어 들어갔고, 스록마틴의 아내 에디스는 "저 빛은 따뜻해요"라며 빛의 리본에 감싸여 사라졌다. 이야기를 마친 스록마틴도 그 뒤 폐허에서 사라졌다. 화자는 그의 가죽 일기장을 받아 들고, 수평선 너머 폐허가 있는 어둠 위로 가느다란 빛기둥이 피어오르는 것을 본다. 달이 차는 밤마다 그 웅덩이는 아직 빛난다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌): sunset ship deck on a 1918 Pacific steamer, a sturdy kindly oceanographer narrator with a silver-streaked beard and navy coat listening in alarm, while a gaunt exhausted scientist in rumpled khaki field clothes and round wire glasses grips his sleeve, begging desperately, both facing right toward the open sea
+- P2 (1행 우, 가장 강한 칸·최대): bird's-eye view wide shot of the ancient ruins of Nan-Matal — weathered basalt walls rising from a misty moonlit lagoon, a small canoe with a lantern approaching, one colossal stone dome with a round aperture at its top, the full moon perfectly aligned above the hole so a shaft of moonlight pours straight down inside, breathtaking wonder
+- P3 (2행 좌): interior of the dome chamber — four explorers (gaunt scientist with wire glasses, his gentle wife with chestnut hair in a low bun and dusty-rose scarf, a young blond assistant with rolled sleeves, one more crew member) gathered around a still black stone pool, a single beam of moonlight from the ceiling hole touching the water which is beginning to glow pale aqua, their amazed faces lit from below
+- P4 (2행 우, 최대 긴장): dramatic low-angle shot — a towering radiant being rising from the pool, a living column of opalescent pastel light shaped like a giant jellyfish bell with cascading tendrils of luminous mist, a serene woman-like face of soft light sleeping inside the bell, tiny awed human silhouettes at the pool edge, gorgeous and eerie
+- P5 (3행 좌): over-the-shoulder view from behind the young blond assistant — he is entranced, walking calmly into the glowing water with a blissful empty smile, arms slack, while the gaunt scientist lunges from the stone edge in terror reaching out to grab him
+- P6 (3행 우): close-up — the wife knee-deep in glowing aqua water, wrapped gently in silk-like ribbons of pale light, a calm tearful smile on her face, her hand just slipping away from her husband's desperately outstretched fingers, focus on the two almost-touching hands
+- P7 (4행 좌, 완전 무음): the empty chamber after — the moonbeam thinned to a thread, ripples fading on the black pool, two abandoned lanterns lying on the wet stone floor, drifting mist, profound silence
+- P8 (4행 우, 여운 마무리): night ship deck — the bearded narrator under a deck-lamp holding a worn leather journal, gazing out at the dark sea horizon where a faint slender pillar of pale light rises above the distant ruins, full moon high above, quiet sorrow and wonder
+캐릭터 일관성: 화자(굿윈)는 P1·P8에서 동일 인물(튼튼한 체격, 은빛 섞인 수염, 네이비 코트). 스록마틴은 P1·P3·P5·P6에서 동일 인물(야윈 얼굴, 둥근 금속 안경, 헝클어진 검은 머리, 주름진 카키 탐사복). 에디스는 P3·P6에서 동일 인물(밤색 낮은 머리땋기, 더스티로즈 스카프). 스탠튼은 P3·P5에서 동일 인물(금발, 걷어올린 소매). 빛의 존재는 P4를 기준으로 동일 형태(파스텔 유령빛 해파리 종+빛의 여인 얼굴). 생성 결과를 .work/ep011-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep010.py 와 동일한 격자·서체 방식으로 .work/letter_ep011.py 를 작성해 실행(입력을 .work/ep011-notext.png, 출력을 episodes/sf-daily-011-the-moon-pool.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지 — ep006~010과 동일한 lettering 방식):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략 가능.
+넣을 텍스트 (패널별, P7은 완전 무음 — 아무 텍스트 없음):
+- P1 [내레이션] 1918년, 태평양의 갑판에서 야윈 남자가 내 소매를 붙잡았다. [대사] 스록마틴: 폰페의 폐허로… 가 주셔야 합니다.
+- P2 [내레이션] 나-마타르의 돔 — 보름달이 천장 구멍으로 곧장 내려꽂혔다.
+- P3 [내레이션] 달빛이 닿은 물이, 빛나기 시작했다.
+- P4 [내레이션] 그것은 아름다웠다. 빛으로 접힌 종 속에, 여인의 얼굴이 잠들어 있었다.
+- P5 [내레이션] 스탠튼은 행복한 얼굴로, 물속으로 걸어 들었다.
+- P6 [내레이션] 에디스의 손가락이 남편의 손을 지나쳤다. [대사] 에디스: 다비드… 저 빛은, 따뜻해요.
+- P8 [내레이션] 스록마틴의 소식은 끊겼다. 달이 차는 밤마다, 그 웅덩이는 아직 빛난다.
+(P7은 그림만으로 — 무음 칸)
+
+완료 조건: episodes/sf-daily-011-the-moon-pool.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

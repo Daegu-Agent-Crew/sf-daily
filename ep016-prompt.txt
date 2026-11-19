@@ -1,0 +1,36 @@
+작업: SF 데일리 #016 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-016-the-wreck-of-the-titan.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 몰간 로버트슨 "타이탄호의 침몰" (Futility / The Wreck of the Titan, 1898). 줄거리: 4월의 북대서양, 세계 최대 여객선 타이탄호는 '침몰 불가능'이라 불리며 25노트로 질주한다. 갑판원 존 롤랜드는 전직 해군 장교이나 술로 몰락한 몸. 그가 빙산 지대를 경고해도 배는 속도를 줄이지 않고, 한밤에 빙산이 우현을 찢는다. 구명보트는 24척, 사람은 3000명. 롤랜드는 옛 사랑의 딸 아홉 살 미라를 안고 빙산 위로 뛰어오르고, 얼음 섬에서 북극곰과 맞서며 사흘을 버틴 뒤 구조선에 발견된다. 술을 끊고 재기한 그는 몇 년 뒤 미라의 어머니(미망인)와 결혼해 가정을 이룬다 — 그리고 소설이 나온 지 14년 뒤인 1912년 4월, '타이탄'이 아니라 '타이타닉'이, 소설과 똑같은 밤을 지나갔다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 부감 와이드 확립): high angle over the April North Atlantic — the world's largest ocean liner Titan, a huge sleek steamship with four tall buff-yellow funnels, speeding at full steam with a long white wake on bright aqua sea; distant pale line of icebergs on the far horizon; two dolphins leaping ahead of the bow; sense of colossal scale, ship small inside the vast bright sea
+- P2 (1행 우, 오버숄더): first-class deck at golden dusk, over-the-shoulder past a rich gentleman in a top hat laughing with a cigar; in front of him deckhand John Rowland — weathered man about 40, dark tousled hair, several days of stubble, threadbare navy peacoat over a sailor sweater — leaning urgently toward the ship's bridge, pointing at the horizon with a worried grim face
+- P3 (2행 좌, 최대 와이드 무음): the midnight collision — star-filled sky, a moonlit giant iceberg towering like a white cliff beside the starboard bow, ice chunks and white spray bursting, the bow plates crumpling; rendered in silver-mint moonlight that stays pastel and flat, dramatic through composition not darkness. This panel stays completely text-free in the final page
+- P4 (2행 우, 클로즈업): close-up on the tilting deck — one lifeboat swinging on its davits while frightened passengers in life-vests grab at its ropes; behind them a dense pressing crowd; a pale young officer clutching his cap, shouting back over his shoulder; deck rails already visibly angled downward
+- P5 (3행 좌, 역동적 와이드): Rowland mid-air leaping over the railing clutching little Myra — 8-year-old girl with honey-blonde curls in a coral dress, white ribbon flying — both airborne toward the flat blue-white ice field beside the sinking ship, spray bursting below, flat stylized motion feeling, ship's lights glittering behind them
+- P6 (3행 우, 앙각 역광): on the ice island, dramatic low angle backlit by the low sun — a huge polar bear rearing up growling, versus Rowland holding a broken oar like a spear, planted protectively in front of little Myra kneeling behind him; long blue shadows raking the snow
+- P7 (4행 좌, 새벽 와이드): rescue at dawn — pastel sunrise sky, a steamship with a thin smoke trail on the far horizon; Rowland down on one knee hoisting Myra up onto his shoulder, she waves a red scarf with both arms; both gaunt and wind-burned but smiling wide
+- P8 (4행 우, 여운 마무리): a few years later, sunlit harbor garden — Rowland now in a respectable clean navy suit, clean-shaven, standing beside elegant widow Mrs. Selfridge in a lavender dress; a slightly grown Myra (about 12, honey-blonde curls, white-and-sky-blue dress) between them holding both their hands; calm glittering sea behind, gentle closing mood
+캐릭터 일관성: 롤랜드는 P2·P5·P6·P7·P8에서 동일 인물(마흔 즈음, 짙은 헝클어진 머리; P2~P7은 며칠 난 수염+낡은 네이비 코트, P8은 면도한 얼굴+맑은 네이비 정장). 미라는 P5·P6·P7·P8에서 동일 인물(꿀금발 곱슬; P5~P7은 코랄 원피스+하얀 리본, P8은 열두 살쯤, 하양-하늘색 원피스). 긴장은 어두운 색이 아니라 구도·앵글·표정으로(스타일 블록 유지 — 충돌 칸도 달빛 실버민트 톤으로 밝게 유지). 생성 결과를 .work/ep016-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep015.py 와 동일한 격자·서체 방식으로 .work/letter_ep016.py 를 작성해 실행(입력을 .work/ep016-notext.png, 출력을 episodes/sf-daily-016-the-wreck-of-the-titan.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산. P3은 무음 칸 — 어떤 텍스트도 넣지 않는다.
+서체 스타일(기존 회차 포맷 그대로 유지):
+- 내레이션 바: 각 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px).
+넣을 텍스트 (패널별):
+- P1 [내레이션] 1898년, 소설이 그린 4월의 대서양 — '침몰 불가능'이라 불린 세계 최대 여객선 타이탄호. [대사] 일등석 신사: 저 배가 가라앉다니요, 웃기지 마시오.
+- P2 [내레이션] 갑판원 존 롤랜드 — 술로 몰락한 전직 해군 장교. [대사] 롤랜드: 빙산 지대입니다! 속도를 줄여야 합니다!
+- P3 (무음 칸 — 텍스트 없음, 그림만)
+- P4 [내레이션] 한밤, 빙산이 우현을 찢었다. [대사] 부관: 구명보트는 24척… 사람은 3000명입니다.
+- P5 [내레이션] 롤랜드는 옛 사랑의 딸, 아홉 살 미라를 안고 얼음으로 뛰었다. [대사] 롤랜드: 눈 감아! 꼭 잡아!
+- P6 [내레이션] 얼음 섬에서 사흘째 — 그는 곰보다 먼저 움직였다. [대사] 롤랜드: 미라, 내 뒤로.
+- P7 [내레이션] 새벽 지평선에 연기 한 줄. [대사] 미라: 배요, 아저씨! 배!
+- P8 [내레이션] 재기한 롤랜드는 미라의 어머니와 가정을 이뤘다 — 그리고 14년 뒤, '타이타닉'이 소설과 같은 밤을 지나갔다.
+
+완료 조건: episodes/sf-daily-016-the-wreck-of-the-titan.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

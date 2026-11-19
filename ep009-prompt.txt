@@ -1,0 +1,38 @@
+작업: SF 데일리 #009 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-009-the-shadow-and-the-flash.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 잭 런던 "그림자와 섬광" (The Shadow and the Flash, 1903). 요약: 1903년. 화자(내레이터)에게는 두 천재 친구가 있다 — 폴과 퀘스트. 체스도 권투도 공부도 늘 서로를 한 발 앞서려 덤비는 우정 어린 라이벌. 어느 저녁 만찬에서 '인간이 완전히 보이지 않게 될 수 있는가'라는 논쟁이 붙고, 둘은 각자 다른 길로 떠난다. 폴의 답은 검정 — 빛을 완전히 흡수하는 순수한 검은 물질로 온몸을 칠하면 눈에 보이지 않는다. 퀘스트의 답은 투명 — 살을 유리처럼 만들면 빛은 몸을 그냥 지나친다. 둘 다 성공하고, 경쟁은 마지막 결투로 치닫는다. 안개 낀 새벽 해변에서 보이지 않는 두 남자가 격투를 벌인다 — 젖은 모래가 투명한 자의 몸에 달라붙어 윤곽을 드러내고, 안개가 검게 칠한 자의 형체를 감싸 드러낸다. 폴의 칼과 퀘스트의 손이 서로를 향한다. 해가 뜰 때 모래 위에는 두 시체가 남는다 — 하나는 '그림자', 하나는 '반짝임'.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
+이어서: "single comic page, exactly 8 rectangular panels in a 2-column by 4-row grid, thin dark panel borders, narrow white gutters, NO text, NO letters, NO speech bubbles, NO numbers, NO logos anywhere"
+
+패널 장면 (읽기 순서: 왼쪽→오른쪽, 위→아래 4행):
+- P1 (1행 좌): warm wide establishing shot of a cozy 1903 university club room with bookshelves and a small chess table, two young friendly rivals laughing competitively across the chessboard — Paul on the left with neat black hair and a coral shirt facing right, Quest on the right with golden-blond hair and a mint shirt facing left — scattered trophies, books and warm lamplight
+- P2 (1행 우): medium shot of an evening club dinner table, the two rivals leaning in from opposite sides mid-argument with raised fingers, between them a mild scholarly narrator with round wire-rim glasses and a grey jacket listening with wide eyes, candlelight, teacups and glasses on the table, everyone facing left
+- P3 (2행 좌): close-up in Paul's cluttered workshop at night, Paul (black hair, coral shirt with rolled sleeves) with focused expression looking down as he paints his own forearm with a brush loaded with ultra-matte soot-black paste from open jars of black pigment, the painted half of the arm an unnaturally lightless pure void-black against the warm pastel room
+- P4 (2행 우, 가장 강한 칸·최대, 완전 무음): dramatic low-angle wide shot of a bright pastel drawing room with tall sunny windows — astonished Edwardian guests in cream and mint clothes gasp and point at a calm standing human-shaped silhouette of absolute pure matte black in the center of the room, a man-shaped hole in the bright scene, only a tiny coral collar hinting it is Paul, sunlight streaming around the black shape
+- P5 (3행 좌): over-the-shoulder shot past the rounded shoulder of Quest (golden-blond hair, mint shirt) as he looks down into a shallow glass laboratory bath where his own hand soaks in pale glowing liquid, the submerged hand perfectly transparent like clean glass with light refracting through it, shelves of chemical bottles with mint and sky-blue liquids behind
+- P6 (3행 우): medium shot of the same bright drawing room, delighted guests watching an impossible sight — a walking cane and a top hat floating in mid-air above a faint man-shaped ripple of heat-haze refraction distortion, guests clapping and pointing to the right
+- P7 (4행 좌, 크게·클라이맥스): dramatic high-angle bird's-eye view of a foggy pale-dawn beach at the surf line, two half-revealed invisible men locked together in a desperate struggle — one revealed as a man-shaped patch of absolute void-black with white fog beading around its outline, the other revealed only by wet sand clinging to a transparent body and a wavy ripple of refracted dawn light, a small knife glinting between them, startled gulls scattering
+- P8 (4행 우): quiet wide shot of the empty misty beach in first soft sunrise light, lying on the sand two still forms — one an absolute black silhouette like a cut-out shadow, the other a glass-clear body catching a single coral flash of sunrise on its surface — a line of small footprints leading up to them from the bottom edge, calm pastel sea and sky, nobody standing
+
+캐릭터 일관성: 폴은 P1·P2·P3·P4(검은 실루엣+산호색 칼라 힌트)·P7(검은 형체)에서 동일 인물(검은 머리, 산호색 셔츠). 퀘스트는 P1·P2·P5·P6(공기의 출렁임)·P7(투명 형체)에서 동일 인물(금발, 민트색 셔츠). 내레이터는 P2만(뿔테 안경, 회색 재킷). 생성 결과를 .work/ep009-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep008.py 와 동일한 격자·서체 방식으로 .work/letter_ep009.py 를 작성해 실행(입력을 .work/ep009-notext.png, 출력을 episodes/sf-daily-009-the-shadow-and-the-flash.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지 — ep006·ep007·ep008과 동일한 lettering 방식):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략 가능.
+넣을 텍스트 (패널별, P4는 완전 무음 — 아무 텍스트 없음):
+- P1 [내레이션] 폴과 퀘스트 — 무엇이든 서로보다 한 발 앞서려던 두 천재
+- P2 [대사] 내레이터: "그날 논쟁은 하나로 좁혀졌다 — 사람이 완전히 보이지 않게 될 수 있는가"
+- P3 [내레이션] 폴의 답은 검정이었다 — 완전한 검정은 빛을 한 조각도 되돌리지 않는다
+- P4 (텍스트 없음)
+- P5 [대사] 퀘스트: "난 다른 길을 간다 — 살을 유리처럼 만들면, 빛은 몸을 지나칠 뿐이야"
+- P6 [내레이션] 방 한가운데 있는 것은 공기의 출렁임뿐 — 지팡이만 허공에 떠 있었다
+- P7 [내레이션] 안개 낀 새벽 해변의 결투 — 젖은 모래는 투명한 자를 드러냈고, 안개는 검은 자를 두르었다
+- P8 [내레이션] 해가 뜨자 남은 것은 그림자 하나, 빛의 반짝임 하나 — 그리고 아무 일도 없던 바다
+줄바꿈은 바/상자 너비에 맞게 자동 배치. 텍스트가 그림의 얼굴을 가리지 않게 위치 미세조정.
+최종 저장: episodes/sf-daily-009-the-shadow-and-the-flash.png (PNG). 완료 후 파일 크기(bytes)를 출력하고 종료. 품질 재검·추가 수정 금지.

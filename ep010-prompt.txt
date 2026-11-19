@@ -1,0 +1,35 @@
+작업: SF 데일리 #010 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-010-the-girl-in-the-golden-atom.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 레이 커밍스 "황금 원자 속의 소녀" (The Girl in the Golden Atom, 1919). 요약: 화자는 화학자 친구의 연구실로 부름을 받는다. 친구는 개조한 초정밀 현미경으로 금반지의 원자 하나를 보여준다 — 그 안에 눈부신 황금 도시와 궁전이 있고, 궁전 발코니에는 아름다운 소녀가 잠들어 있다. 화학자는 매일 밤 그녀를 지켜보다 사랑에 빠지고, 방벽은 그녀의 스케치로 가득 찬다. 어느 밤 검은 그림자가 궁전으로 다가오자 소녀는 하늘의 거대한 눈(현미경 렌즈)을 향해 구원을 바라며 두 팔을 뻗는다 — 그녀는 자신을 지켜보는 눈이 있음을 안 것이다. 그러나 인간은 원자 속으로 들어갈 수 없다. 이튿날 현미경 시야에서 그 세계는 사라졌고, 화학자는 오늘도 셀 수 없이 많은 금 티끌을 하나씩 뒤지며 그녀의 세계를 다시 찾는다. 티끌 하나에도 무수한 세계가 잠들어 있다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌): warm cluttered chemistry study at night in 1919, a round friendly chemist with round spectacles, messy chestnut hair and a coral waistcoat proudly presenting a huge brass microscope to his curious slim friend in a sky-blue jacket, a small gold ring lying on the microscope stage, warm lamplight, both facing right
+- P2 (1행 우, 가장 강한 칸·최대): over-the-shoulder view past the friend's rounded shoulder into the microscope eyepiece revealing a circular lens vision — inside one atom of gold a glittering miniature city of slender golden towers and a fairy-tale palace under a peach-colored sky, tiny lights sparkling, overwhelming sense of wonder
+- P3 (2행 좌, 완전 무음): close-up inside the atom world — a beautiful tiny girl with long dark hair in a pale mint gown, asleep on a flower-decked balcony of the golden palace, petals drifting in warm light, peaceful and quiet
+- P4 (2행 우): bird's-eye view of the same study weeks later — the chemist hunched at the microscope, the walls covered with charcoal sketches of the sleeping girl, stacks of teacups, the friend worried in the doorway
+- P5 (3행 좌, 최대 긴장): dramatic low-angle inside the atom world at night — the girl awake and frightened on her balcony, both arms stretched up toward a huge glowing eye in her sky, while below the balcony a tall dark shadowy figure climbs the golden stairs
+- P6 (3행 우): close-up of the chemist's face pressed against the eyepiece, tears in his eyes, one fist clenched on the desk, an impossible distance in his gaze
+- P7 (4행 좌, 완전 무음): wide quiet shot — the microscope's empty round field showing only a blank golden speck with no city, the chemist small and slumped in the dark room
+- P8 (4행 우, 여운 마무리): years later — the chemist older and calm, gently sifting grains of gold dust one by one with tweezers under a warm lamp, a faint hopeful smile, the friend watching quietly from the doorway
+캐릭터 일관성: 화학자는 P1·P4·P6·P7·P8에서 동일 인물(둥근 얼굴, 둥근 안경, 헝클어진 밤색 머리, 산호색 조끼 — P7은 어두운 실루엣). 화자(친구)는 P1·P2(어깨)·P4·P8에서 동일 인물(마른 체형, 하늘색 재킷). 소녀는 P3·P5에서 동일 인물(긴 흑발, 민트색 드레스). 생성 결과를 .work/ep010-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep009.py(없으면 letter_ep008.py)와 동일한 격자·서체 방식으로 .work/letter_ep010.py 를 작성해 실행(입력을 .work/ep010-notext.png, 출력을 episodes/sf-daily-010-the-girl-in-the-golden-atom.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지 — ep006~009와 동일한 lettering 방식):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략 가능.
+넣을 텍스트 (패널별, P3·P7은 완전 무음 — 아무 텍스트 없음):
+- P1 [내레이션] 1919년 어느 밤, 화학자가 나를 불렀다. [대사] 화학자: 이 반지의 원자 하나를 봐.
+- P2 [내레이션] 금 원자 하나 안에 — 도시가 있었다.
+- P4 [내레이션] 화학자는 매일 밤 그녀를 지켜보았다. 벽은 그녀의 스케치로 가득 찼다.
+- P5 [내레이션] 검은 그림자가 성으로 오르던 밤, 소녀는 하늘의 거대한 눈을 향해 두 팔을 뻗었다.
+- P6 [내레이션] 닿을 수 없었다. 단 하나의 원자를 사이에 두고.
+- P8 [내레이션] 그는 오늘도 금 티끌을 뒤진다. 티끌 하나에도 무수한 세계가 잠들어 있으니까.
+(P3·P7은 그림만으로 — 무음 칸)
+
+완료 조건: episodes/sf-daily-010-the-girl-in-the-golden-atom.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

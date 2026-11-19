@@ -1,0 +1,36 @@
+작업: SF 데일리 #013 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-013-the-country-of-the-blind.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: H.G. 웰스 "눈먼 자들의 나라" (The Country of the Blind, 1904). 줄거리: 페루 안데스에서 등반 가이드 누녜스가 얼음 다리가 무너져 절벽 아래 숨겨진 계곡으로 떨어진다. 계곡 마을 사람들은 대대록 전염병 이후 모두 눈이 멀었고, '보다'라는 말 자체를 모른다. 누녜스는 "눈먼 자들의 나라에서는 외눈박이가 왕"이라는 격언을 떠올리지만, 오히려 그의 눈은 병의 혹으로, '보인다'는 말은 미친 헛소리로 취급받는다. 그는 눈먼 처녀 메디나사로테를 사랑하게 되고, 촌장들은 혼인 허락 조건으로 그의 눈을 도려내는 수술을 요구한다. 수술 전날 밤 메디나사로테는 "내 손이 평생 당신의 눈이 되겠다"고 말하지만, 새벽에 누녜스는 눈을 지키기 위해 사랑을 두고 눈 덮인 고개를 오르기 시작한다(1904년 원작 결말 — 그는 홀로 계곡을 떠난다).
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 와이드 확립): night in the Peruvian Andes — two roped mountaineers crossing a fragile ice bridge between dark peaks under a starry indigo sky, the bridge cracking and splitting under them, one young guide tumbling into the void, dramatic wide shot
+- P2 (1행 우): the young guide (dark hair, cream linen shirt, red sash) waking up on a gentle green slope, seen from behind at mid-distance — below him a lush hidden valley ringed by sheer cliff walls, a small white village with terraced fields, morning light
+- P3 (2행 좌): the village street — calm villagers in earth-tone ponchos with white hair walking and working contentedly, every face with gently closed eyelids, windows of white adobe houses painted over, the young guide peeking from behind a low stone wall, excited expression
+- P4 (2행 우): a wise old blind elder with a kind patronizing smile patting the guide's shoulder, other villagers around chuckling, one pointing a worried finger at the guide's wide-open eyes
+- P5 (3행 좌, 감정): warm sunset two-shot by an irrigation stream — the guide tenderly gazing at a young blind woman (long dark braid, cornflower-blue shawl, serene closed eyes, gentle smile), soft golden light on both faces
+- P6 (3행 우, 위기): village hall council — rows of blind elders in ponchos seated on stone benches, a blind doctor standing with a raised gleaming surgical knife in a calm matter-of-fact pose, the guide standing small before them, fists clenched
+- P7 (4행 좌): dim warm lamplight night scene — the young woman's fingertips gently touching the guide's eyes and cheek, both with sorrowful tender expressions, close intimate two-shot
+- P8 (4행 우, 여운 마무리): pale dawn — the guide climbing alone up a rock-and-snow gully toward a high mountain pass, tiny determined figure against bright morning peaks, the green valley and village far below wrapped in mist, he glances back once over his shoulder, his open eyes catching the first light
+캐릭터 일관성: 누녜스는 P2·P3·P4·P5·P7·P8에서 동일 인물(젊은 검은 머리, 크림색 리넨 셔츠, 빨간 새시, 갈색 등반 바지). 메디나사로테는 P5·P7에서 동일 인물(긴 검은 땋은 머리, 코플라워 블루 숄, 감긴 눈). 촌장·노인은 P4·P6에서 동일하게 흰 머리에 흙톤 폰초. 긴장은 어두운 색이 아니라 구도·앵글·표정으로(스타일 블록 유지). 생성 결과를 .work/ep013-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep012.py 와 동일한 격자·서체 방식으로 .work/letter_ep013.py 를 작성해 실행(입력을 .work/ep013-notext.png, 출력을 episodes/sf-daily-013-the-country-of-the-blind.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산.
+서체 스타일(기존 회차 포맷 유지 — ep006~012와 동일한 lettering 방식):
+- 내레이션 바: 각 패널 상단에 붙는 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽에 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold 텍스트(페이지 대비 약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 근처 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황색 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px). 말풍선 꼬리는 생략 가능.
+넣을 텍스트 (패널별):
+- P1 [내레이션] 1904년, 페루 안데스의 밤 — 얼음 다리가 무너지며 등반 가이드 누녜스가 어둠 속으로 떨어졌다.
+- P2 [내레이션] 깨어난 곳은, 낭떠러지로 세상에서 잘려 나간 초록 계곡이었다. [대사] 누녜스: 저기 마을이… 사람이 산다!
+- P3 [내레이션] 마을 사람들의 눈은, 모두 감겨 있었다. [대사] 누녜스: 눈먼 자들의 나라에서는 외눈박이가 왕이다!
+- P4 [내레이션] 그러나 그들에게 '보다'라는 말은 존재하지 않았다. [대사] 노인: 그 눈 혹이 병이지. 도려내면 제정신이 될 게야.
+- P5 [내레이션] 그는 눈먼 처녀 메디나사로테를 사랑하게 되었다. [대사] 누녜스: 당신이… 제일 아름다워요.
+- P6 [내레이션] 혼인 허락의 조건 — 그의 눈을 도려내는 것. [대사] 의사: 눈 혹을 도려내면, 그도 우리처럼 행복해질 것이오.
+- P7 [내레이션] 수술 전날 밤. [대사] 메디나사로테: 당신이 어둠을 받아들이면, 내 손이 평생 당신의 눈이 되어 드릴게요.
+- P8 [내레이션] 새벽 — 그는 눈을 지키기 위해 사랑을 두고 고개를 오르기 시작했다. 세상은, 여전히 눈부셨다.
+
+완료 조건: episodes/sf-daily-013-the-country-of-the-blind.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.

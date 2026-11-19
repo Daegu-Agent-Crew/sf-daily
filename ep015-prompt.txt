@@ -1,0 +1,36 @@
+작업: SF 데일리 #015 한 페이지 만화 제작. 현재 디렉터리(~/tmp/sf-daily)에서 작업. 최종 산출물: episodes/sf-daily-015-the-poison-belt.png — 딱 1회 생성으로 완료(재생성·다듬기 루프 금지). git 명령 사용 금지.
+
+원작: 아서 코난 도일 "독의 벨트" (The Poison Belt, 1913). 줄거리: 1913년 여름, 챌린저 교수는 지구가 에테르 속의 '독 벨트'를 통과 중이라고 예언한다. 기자 에드워드 말론은 전보를 받고 교수의 시골 저택으로 달려가고, 네 사람(챌린저 부부, 말론, 록스턴 경)은 창문을 틀어막고 산소통을 갖춘 방에 틀어박힌다. 밖에서는 온 세상이 잠들어 간다 — 정원사는 장미 옆에 쓰러지고, 런던 거리는 차와 사람 그대로 멈춘다. 산소가 얇어져 네 사람도 졸음과 싸우며 기록을 남긴다. 벨트가 지나가자 하늘은 푸르게 되살아나고, 세계는 하품하며 깨어난다 — 아무도 자신이 잠들었던 것을 기억하지 못한 채. 지구는 아직도 자기 길을 걷고 있다.
+
+## 1단계 — no-text 페이지 생성 (내장 image_gen 도구 사용, 제1원칙)
+image_gen으로 세로 1024x1536, 단일 만화 페이지 1장 생성. 프롬프트 첫머리에 이 스타일 블록을 그대로 고정:
+"bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition"
++ 페이지 지시: single comic page, 2x4 grid (2 columns, 4 rows, equal gutters), reading order left-to-right then next row, absolutely NO text, NO letters, NO speech bubbles anywhere (Korean captions are added later in a separate step).
+패널 (영어 장면 묘사):
+- P1 (1행 좌, 와이드 확립): 1913 summer English village lane at dusk, hedgerows and rose cottages, villagers pausing mid-stroll to look up puzzled at a strangely copper-tinged luminous sky; a small boy points upward; the palette stays bright pastel with only the sky tinted copper-green
+- P2 (1행 우, 오버숄더): cluttered Victorian study, over-the-shoulder view past young journalist Edward Malone (clean-shaven, light gray summer suit, straw boater) reading a telegram; Professor Challenger — huge man, great black beard, bushy brows — holding up a chalk diagram of planet Earth crossing a hazy band drawn on a blackboard
+- P3 (2행 좌, 중간 거리): sealing the dressing room — hands tacking cloth over window edges, two tall oxygen cylinders with rubber breathing tubes on the floor, Mrs. Challenger (tall commanding woman, dark hair with silver streaks in a bun) checking a valve while lean tanned Lord John Roxton (khaki field clothes, small mustache) carries a cylinder
+- P4 (2행 우, 부감): high angle looking down at a rose garden — the elderly gardener lying peacefully asleep face-down on the lawn, shears still in hand, tipped wheelbarrow, spilled watering can; at the frame edge stand Challenger and Malone seen from above, grave faces looking down
+- P5 (3행 좌, 최대 와이드 무음): a sleeping London street in full daylight — a stalled double-decker bus, a hansom cab with the horse asleep standing, people gently collapsed asleep on benches, doorsteps and curbs, a postman asleep mid-route with scattered letters, a bicycle frozen mid-tiptip over, pigeons asleep lined on a wire — this panel stays completely text-free in the final page
+- P6 (3행 우, 클로즈업): inside the sealed lamplit room, drowsy close-up — Malone nodding over his journal, pen dragging, eyelids heavy; behind him Challenger gripping the table to stay awake, beard drooping; a round oxygen gauge with the needle low on the wall
+- P7 (4행 좌, 앙각): low angle looking up as Mrs. Challenger throws the window open — fresh morning light flooding down, shutters wide, the sky clearing from livid blue to clean pastel blue with soft clouds, a sparrow perched on the sill mid-song, Roxton leaning out beside her laughing with relief
+- P8 (4행 우, 여운 마무리): gentle wide morning scene on the village green — people waking one by one, stretching and yawning (a policeman scratching his head, a dog shaking itself); in the near foreground corner Professor Challenger sits calmly in a wicker chair beside the spent oxygen cylinder, eyes closed, small knowing smile
+캐릭터 일관성: 챌린저는 P2·P4·P6·P8에서 동일 인물(거구, 울창한 검은 수염, 숱 많은 눈썹). 말론은 P2·P4·P6에서 동일 인물(젊고 수염 없음, 밝은 회색 여름 정장+밀짚 모자). 긴장은 어두운 색이 아니라 구도·앵글·표정으로(스타일 블록 유지 — 잠든 세상 칸도 하늘만 살짝 구릿빛으로 낮추고 전체 팔레트는 밝게 유지). 생성 결과를 .work/ep015-notext.png 로 저장.
+
+## 2단계 — 한글 캡션 후조판 (python3 + PIL 사용)
+폰트: assets/fonts/NanumGothic-Bold.ttf, assets/fonts/NanumGothic-Regular.ttf (이미 있음). .work/letter_ep014.py 와 동일한 격자·서체 방식으로 .work/letter_ep015.py 를 작성해 실행(입력을 .work/ep015-notext.png, 출력을 episodes/sf-daily-015-the-poison-belt.png 로 바꾸고 패널 텍스트만 아래로 교체).
+격자 계산: 페이지 1024x1536, 바깥 여백 8px, gutter 8px → 패널 크기 약 (500 x 374), 2열 x 4행. 실제 이미지 크기가 다르면 비율에 맞춰 계산. P5는 무음 칸 — 어떤 텍스트도 넣지 않는다.
+서체 스타일(기존 회차 포맷 그대로 유지):
+- 내레이션 바: 각 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 안쪽 여백, 위 10px.
+- 대사 상자: 각 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은 색(#1F2937) NanumGothic-Regular 대사(약 20px).
+넣을 텍스트 (패널별):
+- P1 [내레이션] 1913년 여름, 하늘이 이상한 구릿빛으로 물들기 시작했다. [대사] 챌린저: 지구가 에테르의 '독 벨트' 속으로 들어가고 있소.
+- P2 [내레이션] 챌린저 교수의 전보 한 장 — 기자 말론은 저택으로 달려갔다. [대사] 말론: 온 세상이 잠든다고요, 교수님?
+- P3 [내레이션] 창문을 틀어막고, 산소통을 곁에 두었다. [대사] 챌린저: 이 방이 지상의 마지막 의식이다.
+- P4 [내레이션] 정원사는 장미 옆에서 잠들어 있었다. [대사] 말론: 숨은 쉬고 있어요 — 죽은 게 아니라, 잠들었을 뿐입니다.
+- P5 (무음 칸 — 텍스트 없음, 그림만)
+- P6 [내레이션] 산소가 얇어지고, 네 사람은 졸음과 싸웠다. [대사] 챌린저: 관측 기록 — 독 벨트 통과 중. 최후의 문장이 될지도 모른다.
+- P7 [내레이션] 푸른 안개가 걷히고, 첫 참새가 울었다. [대사] 록스턴: 살았어! 하늘이 돌아왔네!
+- P8 [내레이션] 세상은 하품하며 깨어났다 — 아무도 기억하지 못한 채, 지구는 아직도 자기 길을 걷고 있다.
+
+완료 조건: episodes/sf-daily-015-the-poison-belt.png 파일이 존재하면 종료. 마지막에 산출물 경로를 1줄로 남기기.
