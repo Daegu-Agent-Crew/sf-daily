@@ -29,6 +29,7 @@
 - #017 2026-11-19: H.G. 웰스 「타임 머신」(The Time Machine, 1895)
 - #018 2026-11-19: 에드거 라이스 버로스 「화성의 공주」(A Princess of Mars, 1912)
 - #019 2026-11-19: G. 페이턴 워튼베이커 「원자에서 온 남자」(The Man from the Atom, 1923)
+- #020 2026-11-19: H.G. 웰스 「우주 전쟁」(The War of the Worlds, 1898) — 20:30 실행분 이미지 완성 후 발행 중단, 22:30 실행에서 발행 완료
 
 ## 대시보드
 https://daegu-agent-crew.github.io/sf-daily/
