@@ -27,6 +27,7 @@
 - #015 2026-11-19: 아서 코난 도일 「독의 벨트」(The Poison Belt, 1913)
 - #016 2026-11-19: 몰간 로버트슨 「타이탄호의 침몰」(The Wreck of the Titan, 1898) — 타이타닉을 14년 먼저 적은 소설
 - #017 2026-11-19: H.G. 웰스 「타임 머신」(The Time Machine, 1895)
+- #018 2026-11-19: 에드거 라이스 버로스 「화성의 공주」(A Princess of Mars, 1912)
 
 ## 대시보드
 https://daegu-agent-crew.github.io/sf-daily/
