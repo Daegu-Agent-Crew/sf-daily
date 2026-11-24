@@ -1,0 +1,49 @@
+sf-daily 리포 #029화(아서 코난 도일 "잃어버린 세계", The Lost World, 1912) 3페이지 만화를 한 번의 세션으로 완성하라. 현재 디렉터리(~/tmp/sf-daily)에서 작업. git 명령 사용 금지. 최종 산출물: episodes/sf-daily-029-the-lost-world/page-01.png .. page-03.png + scroll.png — 전부 no-text 생성 후 PIL 한글 후조판으로 완성한다.
+
+[공통 스타일 — 모든 image_gen 호출 프롬프트 첫머리에 이 블록을 그대로 고정]
+bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition
+
+[공통 형식 — 모든 페이지 동일]
+- 세로 1024x1536(2:3), single comic page, 2x3 grid (2 columns x 3 rows, equal white gutters, thin panel borders), reading order left-to-right then next row.
+- absolutely NO text, NO letters, NO speech bubbles, NO numbers, NO runes — any marks must be illegible abstract smudges. Korean captions are added later by PIL.
+
+[캐릭터 — 3페이지 전체에서 동일 디자인 유지, 매 페이지 프롬프트에 이 블록을 반복 삽입]
+- 찰린저 교수: enormous barrel-chested scientist, huge black beard covering his chest, domed bald crown, wide proud bulging eyes, thick neck, short legs, dark-green Victorian coat, dominant triumphant poses.
+- 말론: young earnest journalist, neat chestnut hair, cream shirt with rolled sleeves, khaki field vest, notebook and pencil in hand, wide curious eyes.
+- 록스턴 경: tall lean tanned adventurer, neat small dark mustache, worn khaki safari jacket, rifle slung on shoulder, calm confident grin.
+- 서머리 교수: tall thin elderly scientist, white hair, round pince-nez glasses, grey frock coat, skeptical raised eyebrow.
+- 고메즈(가이드): olive-skinned Amazon boatman, straw hat, shirt with rolled sleeves, holding an axe (배신자).
+- 원주민 선원들: cream and coral work clothes.
+- 원숭이인간: hairy ape-like primitive humans, stooped posture, low brows, wooden spears — rounded friendly cartoon style, never gory.
+
+[페이지별 장면 지시 — 이 순서대로 3장을 생성. 각 장 생성 직전 단계에서, image_gen 도구가 참조 입력 이미지를 지원하면 직전 페이지의 완성 no-text PNG(.work/ep029-p1-notext.png, .work/ep029-p2-notext.png)을 스타일·캐릭터 일관성 참조로 첨부할 것(일관성 체인). 지원하지 않으면 캐릭터 블록 반복 삽입으로 체인을 대신할 것.]
+
+--- PAGE 1 (.work/ep029-p1-notext.png): 런던에서 아마존까지
+- P1 (와이드 확립, 앙각): 1912년 런던 왕립학회 강당 — 연단을 두 손으로 내리치는 거구의 찰린저, 흥분한 신사·숙녀 청중, 구석에서 필기하는 말론.
+- P2 (미디엄): 찰린저의 서재 — 낡은 지도와 스케치가 널린 책상, 찰린저가 커다란 날개 실루엣이 그려진 스케치를 말론에게 내밀고, 말론의 눈이 동그랗게 커짐.
+- P3 (와이드): 아마존 강의 증기선 갑판 — 네 탐험대(찰린저·서머리·록스턴·말론)와 원주민 선원들, 안개 낀 초록 강과 관목 숲.
+- P4 (미디엄, 부감): 정글 행렬 — 짐을 진 일행이 축축한 습지를 따라 걷고, 하늘엔 새 떼가 하얗게 소용돌이침.
+- P5 (페이지 최대 칸, 와이드): 강가 전망 — 분홍빛 화강암 절벽 꼭대기에 초록 고원이 펼쳐지고, 그 위를 익룡 떼가 날아다니는 장엄한 첫 공개 장면.
+- P6 (클로즈업, 후킹): 절벽 아래 찰린저의 얼굴 — 자부심 넘치는 미소, 굵은 손가락으로 고원을 가리킴.
+
+--- PAGE 2 (.work/ep029-p2-notext.png): 고원의 입구가 닫히다
+- P1 (미디엄, 액션): 배신의 순간 — 고메즈가 도끼로 유일한 나무 다리를 끊어버리는 순간, 반대편 절벽에서 외치는 일행의 놀란 얼굴.
+- P2 (와이드): 고립 — 끊어진 다리 틈 새로 보이는 깊은 골짜기, 고원 가장자리에 선 네 사람의 작은 실루엣.
+- P3 (페이지 최대 칸, 무음 — 이 칸에는 그림만): 고원의 호수 — 이구아노돈 무리가 물가에서 풀을 뜯고, 수면엔 반사, 하늘엔 프테라노돈 몇 마리. 텍스트 완전 금지.
+- P4 (액션, 미디엄): 알로사우루스의 습격 — 커다란 육식공룡이 이구아노돈 무리 위로 뛰어들어 진흙이 사방으로 튀고, 바위 뒤에서 입을 막고 지켜보는 네 사람.
+- P5 (와이드, 대립): 원숭이인간 부족 — 나무 창을 든 털북숭이 인간형들이 바위 능선에 도열하고, 맞은편 아래에 인간 일행 넷이 대치.
+- P6 (클로즈업, 여운): 해질녘 고원 가장자리 — 네 사람의 길게 늘어진 그림자와 주황빛 하늘, 조용한 정물 구도.
+
+--- PAGE 3 (.work/ep029-p3-notext.png): 강당의 날개
+- P1 (미디엄): 어둠의 동굴 탈출 — 횃불 하나, 좁은 균열 통로를 빠져나가는 네 사람, 터널 끝에 열린 원시 하늘의 빛.
+- P2 (미디엄): 귀환 항해 — 아마존 증기선 갑판, 커다란 나무 상자 위를 천으로 덮고 그 위에 손을 얹은 찰린저, 곁에서 수상하게 쳐다보는 서머리.
+- P3 (미디엄): 런던 강당 발표 — 무대의 찰린저가 커다란 나무 상자를 소개하고, 청중은 의심 가득한 얼굴, 팔짱 낀 서머리.
+- P4 (클로즈업): 상자 뚜껑 — 찰린저의 굵은 손이 걸쇠를 여는 순간, 상자 안 어둠 속에서 무언가 움직이는 그림자.
+- P5 (페이지 최대 칸, 액션): 강당 유린 — 상자에서 뛰쳐나온 프테라노돈이 커다란 날개를 펴고 청중 머리 위를 날아오름, 쓰러지는 의자, 공중에 날리는 모자들, 하늘을 가리키는 서머리.
+- P6 (클로즈업, 여운): 텅 빈 상자와 높은 창문 — 유리창 너머 사라져가는 익룡의 작은 실루엣. 조용한 마무리 정물.
+
+[각 페이지 검증·재생성 규칙]
+페이지마다 생성 직후: 파일 존재 + PNG 시그니처 + 300KB 이상 + 세로 2:3 비율(±10%) 확인. 실패한 페이지만 최대 2회 재생성(성공 페이지 절대 재생성 금지). 3장 모두 성공 시 다음 단계로.
+
+[2단계 — PIL 한글 후조판]
+.work/letter_ep029.py 가 이미 작성되어 있다. 그대로 실행만 한다: python3 .work/letter_ep029.py — 출력: episodes/sf-daily-029-the-lost-world/page-01.png .. page-03.png + scroll.png. 스크립트 수정 금지(실행 오류 시에만 오류 내용을 보고하고 멈춘다).

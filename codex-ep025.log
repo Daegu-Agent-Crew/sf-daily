@@ -1,0 +1,924 @@
+Reading additional input from stdin...
+OpenAI Codex v0.163.0
+--------
+workdir: /data/data/com.termux/files/home/tmp/sf-daily
+model: gpt-6-sol
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1f629-f396-71e3-8c9d-1a3e1daf6a69
+--------
+user
+sf-daily 리포 #025화(쥘 베른 "지구 중심 여행", 1864) 4페이지 만화를 한 번의 세션으로 완성하라. 현재 디렉터리(~/tmp/sf-daily)에서 작업. git 명령 사용 금지. 최종 산출물: episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-01.png .. page-04.png + scroll.png — 전부 no-text 생성 후 PIL 한글 후조판으로 완성한다.
+
+[공통 스타일 — 모든 image_gen 호출 프롬프트 첫머리에 이 블록을 그대로 고정]
+bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition
+
+[공통 형식 — 모든 페이지 동일]
+- 세로 1024x1536(2:3), single comic page, 2x3 grid (2 columns x 3 rows, equal white gutters, thin panel borders), reading order left-to-right then next row.
+- absolutely NO text, NO letters, NO speech bubbles, NO numbers, NO runes — any parchment marks or compass dials must be illegible abstract smudges. Korean captions are added later by PIL.
+
+[캐릭터 — 4페이지 전체에서 동일 디자인 유지, 매 페이지 프롬프트에 이 블록을 반복 삽입]
+- Professor Otto Lidenbrock: tall gaunt energetic scholar of about fifty-five, round steel spectacles, wild grey-streaked hair, long mustard-brown 19th-century frock coat, brisk determined stride, excitable grin.
+- Axel (narrator, his nephew): 21, gentle fair-haired young man with blue eyes, modest brown traveling suit, copper lantern in hand, easily worried face.
+- Hans Belke: Icelandic eider-duck hunter, broad-shouldered quiet giant, weathered impassive round face, straw-blond hair, simple grey wool sweater, rope coil and gaff, unshakeable calm.
+- Gräuben (page 1 only): Axel's fiancée, serene blonde maiden in a coral dress.
+
+[페이지별 장면 지시 — 이 순서대로 4장을 생성. 각 장 생성 직전 단계에서, image_gen 도구가 참조 입력 이미지를 지원하면 직전 페이지의 완성 no-text PNG(.work/ep025-pN-1-notext.png)을 스타일·캐릭터 일관성 참조로 첨부할 것(일관성 체인). 지원하지 않으면 캐릭터 블록 반복 삽입으로 체인을 대신할 것.]
+
+--- PAGE 1 (.work/ep025-p1-notext.png): 발단 — 함부르크의 암호, 아이슬란드로
+- P1 (와이드 확립, 왼쪽→오른쪽): 1863년 5월 함부르크의 서재 — 천장까지 닿는 책장, 지구본, 참나무 책상 위 낡은 양피지(이상한 문양은 흐릿한 코랄빛 얼룩으로만). 리덴브록 교수(키 크고 마른, 둥근 강철 안경, 헝클어진 백발이 섞인 머리, 겨자색 연미복)가 양피지를 들여다보며 흥분, 맞은편 악셀(금발 갈색 여행복)이 촛불을 받들고 놀란 얼굴. 아침빛.
+- P2 (크게, 깨달음): 벽난로 불빛 앞 — 악셀이 양피지를 거꾸로 들고 눈이 커지는 클로즈업. 양피지 가장자리가 열기에 살짝 말려 올라가고, 흐릿한 문양들이 코랄색으로 은은히 드러난다(글자 아님, 추상 얼룩). 배경에 교수의 안경에 반사된 놀란 눈.
+- P3 (미디엄, 대립): 악셀이 양팔을 벌리고 만류하는 몸짓 — 뒤로는 교수가 이미 여행 트렁크에 로프 사다리·압력계·램턴·망치를 쑤셔 넣는 중, 환한 결의의 미소. 서재 한켠 지질 지도(글자 없는 추상 지도).
+- P4 (클로즈업, 손): 그라우벤(코랄 드레스의 온화한 금발)이 악셀의 손을 두 손으로 감싸며 부드럽게 웃는 얼굴 — 창밖 항구의 돛대들, 작별 분위기. 따뜻한 크림빛 조명.
+- P5 (와이드, 이동): 북해를 거슬러 가는 작은 증기범선 — 갈매기, 민트빛 파도, 수평선 너머 아득한 아이슬란드의 스네이펠스 빙하 원뿔 실루엣. 갑판 위 세 사람(교수, 악셀, 선원들) 아주 작게.
+- P6 (미디엄, 만남): 아이슬란드 검은 모래 해안 — 한스(넓은 어깨의 무표정한 거구, 회색 울 스웨터, 갈고리와 밧줄)가 교수와 악수, 옆에 작은 아이슬란드 조랑말, 배경에 눈 덮인 스네이펠스 화산. 악셀은 조랑말을 붙잡고 안도.
+
+--- PAGE 2 (.work/ep025-p2-notext.png): 하강 — 크레이터, 갈증, 그리고 물
+- P1 (높은 부감 와이드): 스네이펠스 크레이터 내부 — 푸른 얼음벽 사이, 바위 봉우리 '스카르타리스'의 가느다란 그림자가 정오 해시계 바늘처럼 두 개의 굴뚝 입구 중 하나를 가리킨다. 그림자를 따라가는 세 사람이 아주 작게.
+- P2 (미디엄, 갈림긋): 두 개의 수직 샤프트가 갈라진 지점 — 횃불을 든 교수가 지팡이로 왼쪽을 단호하게 가리키고, 악셀은 아래를 걱정스레 들여다보고, 한스는 로프 묶음을 메고 침착.
+- P3 (미디엄, 행군): 화강암 갤러리를 종대 행군 — 앞서가는 교수, 그 뒤 악셀이 석탄층 벽의 조개 화석·양치식물 자국을 만지며 무릎 꿇고 눈이 반짝임. 횃불빛은 따뜻한 황색이지만 화면은 밝은 파스텔 유지.
+- P4 (클로즈업, 위기): 갈증 — 악셀이 바위에 쓰러져 뒤집어 든 빈 나무 수통, 마른 입술, 축 처린 눈. 교수는 입술을 깨물고 자기 수통을 확인, 한스는 무표정하게 서 있다. 긴장은 표정과 구도로만.
+- P5 (페이지 최대 칸, 무음 — 이 칸에는 그림만): 한스가 곡괭이로 화강암 벽을 내리치는 순간 — 수정처럼 맑은 민트블루 물줄기가 굵게 솟구쳐 반원으로 흩어지고, 세 사람이 모자를 벗어 들고 기쁨으로 뛰어든다. 물방울 반짝임, 승리의 순간. 텍스트 완전 금지.
+- P6 (와이드, 고독 — 그러나 팔레트는 밝게): 길 잃은 악셀 — 끝없는 터널 교차로 한복판, 꺼져 가는 구리 램턴의 따뜻한 점 하나, 깊은 남보라-민트 어스름 속 아주 작은 실루엣. 여운 있는 구도.
+
+--- PAGE 3 (.work/ep025-p3-notext.png): 지구의 바다 — 폭파, 석송 숲, 해괴어
+- P1 (미디엄, 결단): 통로를 막은 거대한 바위 앞 — 교수가 바위를 가리키고 외치는 몸짓, 한스가 화약통에 도화선을 연결해 두고, 악셀이 귀를 막고 움츠러든다. 횃불 하나가 도화선을 향한다.
+- P2 (페이지 최대 칸, 대공개): 폭파로 열린 난간 끝 — 발밑으로 에메랄드빛 지하 바다의 수평선이 무한히 펼쳐지고, 머리 위 높은 천장에는 은은한 전기 오로라가 크림·민트로 흐른다. 교수가 두 팔을 활짝 벌리고, 악셀은 난간을 붙잡고 입을 벌리고, 한스는 조용히 바다를 응시. 파도가 창백한 해변을 핥는다.
+- P3 (와이드, 숲): 30미터 거대 석송과 양치 나무숲을 걷는 세 사람 — 우산처럼 큰 연분홍·민트색 포자 우산들 아래, 발밑에 이끼, 하늘은 빛나는 흰돔. 동화 같은 규모감.
+- P4 (신비한 와이드, 안개): 안개 너머 거대한 유조목(mastodon) 떼가 나뭇가지를 뜯고, 그 무리 뒤로 코끼리를 몰듯 거인 같은 거대한 인간형 실루엣이 역광으로 어렴풋이 — 전경의 악셀이 입을 틀어막고 경악. 애매하고 신비하게, 공포 아닌 경이.
+- P5 (미디엄, 출항): 반화석 나무 뗏목 '레더'호 — 거친 캔버스 돛, 돛대 밑 환호하는 교수(타는 결의), 로프를 당기는 악셀, 긴 노로 방향을 잡는 한스. 에메랄드 물보라, 순풍.
+- P6 (페이지 최대 칸, 해괴어): 지하 바다의 밤 항해 — 돌고래 몸에 커다란 눈과 삼각 이빨의 어룡(이크티오사우루스)과, 목이 길고 뱀 같은 장경룡(플레시오사우루스)이 서로 물어뜨으며 격돌, 끓어오르는 크림·민트 파도. 수평선 아득히에 뗏목의 작은 실루엣 하나(규모 대비). 괴물 묘사도 밝은 만화 톤, 고어 금지.
+
+--- PAGE 4 (.work/ep025-p4-notext.png): 폭풍, 분출, 그리고 하늘
+- P1 (역동 와이드): 폭풍우의 바다 — 산처럼 일렁이는 발광 파도 위 뗏목, 돛대를 타고 내려오는 하얀 번개 덩어리(세인트엘모의 불), 마스트에 매달리는 세 사람, 한스가 악셀의 손목을 붙잡는다. 물보라와 바람의 대각선 구도.
+- P2 (조용한 와이드, 착지): 폭풍 후 새벽빛 해안 — 뗏목이 낯익은 석송 숲 앞 해변에 닿았다. 교수가 손바닥만 한 나침반(숫자 없는 흰 눈금 원판)을 들어보이고 얼어붙은 표정, 악셀이 모래에 무릎 꿇고 탈진. 하늘은 옅은 크림색.
+- P3 (클로즈업, 단검): 어두운 갤러리 모래바닥에서 녹슨 칼날과 뼈 손잡이의 옛 단검을 들어 올리는 교수의 두 손 — 타오르는 눈, 배경에서 악셀이 화약통 도화선에 횃불을 갖다 대고, 한스가 통로의 틈을 메운 바위에 폭약을 채운다.
+- P4 (페이지 최대 칸, 마엘스트롬): 폭파의 순간 — 지하 바다 전체가 기울어 거대한 깔때기 구멍으로 쏟아져 내려가고, 뗏목이 소용돌이 가장자리를 따라 미끄러진다. 하얀 물기둥과 스프레이, 천장의 오로라가 흔들린다. 압도적 스케일.
+- P5 (앙각, 상승): 화산 통로 속 엘리베이터 — 뗏목이 끓어오르는 마그마 기둥 위에 떠서 수직으로 치솟는다. 통로 벽은 주황·코랄 용암 줄무늬, 하얀 증기가 소용돌이, 세 사람이 돛대를 껴안고 눈을 질끈 감거나 외친다. 극저앙각, 위로 뻗는 구도.
+- P6 (마지막 칸, 여운 와이드): 이탈리아 스트롬볼리 섬 — 푸른 티레니아 해 위 온화한 화산 연기, 재 비탈에 서서 손을 흔드는 세 사람의 작은 실루엣, 지나가는 어선의 놀란 어부들. 끝없는 여름 하늘. 그리운 듯 밝은 마무리.
+
+[각 페이지 검증·재생성 규칙]
+페이지마다 생성 직후: 파일 존재 + PNG 시그니처 + 300KB 이상 + 세로 2:3 비율(±10%) 확인. 실패한 페이지만 최대 2회 재생성(성공 페이지 절대 재생성 금지). 4장 모두 성공 시 다음 단계로.
+
+[2단계 — PIL 한글 후조판]
+.work/letter_ep024.py 와 동일한 서체·바 스타일로 .work/letter_ep025.py 를 새로 작성해 실행하되, 그리드만 2열 x 3행(panel_h = (H - 2*margin_y - 2*gutter_y)/3)으로 변경. 폰트: assets/fonts/NanumGothic-Bold.ttf, NanumGothic-Regular.ttf. 출력: episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-01.png .. page-04.png (입력 .work/ep025-pN-notext.png).
+서체 스타일: 내레이션 바 = 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 여백, 위 10px. 대사 상자 = 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은색(#1F2937) NanumGothic-Regular 대사(약 20px).
+
+넣을 텍스트(패널 번호는 페이지별 P1~P6, 패널 인덱스 0~5 순서):
+PAGE 1:
+- P1 [내] 1863년 5월의 함부르크 — 낡은 양피지 한 장이 조용한 저택을 뒤흔든다. [대] 리덴브록: 이 문양은, 암호다!
+- P2 [대] 악셀: 거꾸로 읽으니 보여요 — 스카르타리스 그림자가 떨어지는 굴뚝으로, 내려가라!
+- P3 [대] 악셀: 지구 중심은 4천 도의 불덩어리라고요! / 리덴브록: 그러니 눈으로 증명하러 가는 것이다.
+- P4 [대] 그라우벤: 영웅의 조카는 벽난로 앞에 앉아 있지 않아요 — 부디, 다녀오세요.
+- P5 [내] 코펜하겐을 지나 바다 하나를 건너 — 6월의 아이슬란드. (대사 없음)
+- P6 [대] 리덴브록: 주당 3리크스달러다, 한스 — 최고의 사냥꾼이 곧 최고의 길잡이지.
+PAGE 2:
+- P1 [내] 6월 28일 정오 — 스카르타리스의 그림자가, 갈 길을 가리킨다. (대사 없음)
+- P2 [대] 리덴브록: 둘 중 어느 길이냐고? 사크누셈은 왼쪽을 택했다!
+- P3 [대] 악셀: 석탄층 아래 조개 화석 — 여긴 아득한 옛바다의 바닥이야.
+- P4 [대] 악셀: 수통이… 바닥났어요. 이대로 우린 전부 말라 비틀어질 운명인가요.
+- P5 무음 칸 — 어떤 텍스트도 넣지 않는다.
+- P6 [대] 악셀: 내 등불이 꺼져 간다… 이모님, 그 목소리가 혹시 환청일까.
+PAGE 3:
+- P1 [대] 리덴브록: 사크누셈이 여기까지 왔다 — 이 바위를 부숴라!
+- P2 [대] 리덴브록: 보라, 악셀 — 발밑에 지구의 바다가 있다!
+- P3 [대] 악셀: 30미터 석송 숲, 빛나는 하늘 — 하나의 실내 우수.
+- P4 [대] 악셀: 안개 속에 목자 같은 거인? …이 광경은, 아무에게도 말하지 않기로 하자.
+- P5 [대] 리덴브록: 뗏목의 이름은 레더호! 출항이다, 지구의 바다로!
+- P6 [대] 악셀: 바다가 갈라진다 — 어룡의 아랫니와 장경룡의 목이 얽혔다!
+PAGE 4:
+- P1 [대] 악셀: 번개 덩어리가 돛대를 타고 내려온다 — 모두, 엎드려!
+- P2 [대] 리덴브록: 나침반이 뒤집혀 있었군 — 폭풍이 우리를 출발점으로 되돌린 것이다.
+- P3 [대] 리덴브록: 사크누셈의 단검! 그도 이 통로 앞에 섰었다 — 화약을, 채워라!
+- P4 [대] 악셀: 바다가 구멍 속으로 쏟아져 내려간다!
+- P5 [대] 리덴브록: 뗏목 아래 이 바다가… 아니, 끓는 용암이다!
+- P6 [내] 스트롬볼리의 여름 하늘 — 지구를 가로지른, 세 사람. (대사 없음)
+
+[3단계 — 세로 스크롤본 결합]
+PIL로 4장의 최종 페이지를 세로로 이어붙인다: 페이지 사이 16px 크림색(#FFF8E7) 구분선, 배경 흰색. 출력: episodes/sf-daily-025-journey-to-the-center-of-the-earth/scroll.png
+
+[완료 조건]
+위 산출물 5개 파일이 모두 존재하고 각 300KB 이상이면 성공. 마지막에 산출물 경로 5줄(경로 | 바이트)과 "DONE"을 출력하라. 그 외 git 실행 금지.
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (/data/data/com.termux/files/home/.codex/config.toml): `sandbox` is ignored.
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (/data/data/com.termux/files/home/.codex/config.toml): `sandbox` is ignored.
+codex
+요청한 4페이지를 순서대로 생성하고, 각 페이지의 파일 형식을 확인한 뒤 한글 조판과 스크롤본 결합까지 진행하겠습니다. 이미지 생성에는 imagegen 스킬을 적용합니다.
+exec
+/bin/sh -lc 'cat /data/data/com.termux/files/home/.codex/skills/.system/imagegen/SKILL.md' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+---
+name: "imagegen"
+description: "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas."
+---
+
+# Image Generation Skill
+
+Generates or edits images for the current project (for example website assets, game assets, UI mockups, product mockups, wireframes, logo design, photorealistic images, or infographics).
+
+## Top-level modes and rules
+
+This skill has exactly two top-level modes:
+
+- **Default built-in tool mode (preferred):** built-in `image_gen` tool for image generation, editing, and transparent-image requests. Does not require `OPENAI_API_KEY`.
+- **Fallback CLI mode:** `scripts/image_gen.py` CLI. Use when the user explicitly asks for or confirms the CLI/API/model path. Requires `OPENAI_API_KEY`.
+
+Within CLI fallback, the CLI exposes three subcommands:
+
+- `generate`
+- `edit`
+- `generate-batch`
+
+Rules:
+- Use the built-in `image_gen` tool by default for normal image generation and editing requests.
+- Do not switch to CLI fallback for ordinary quality, size, or file-path control.
+- For transparent images, ask built-in `image_gen` for a transparent background and preserve the generated alpha.
+- Never silently switch from built-in `image_gen` or CLI `gpt-image-2` to CLI `gpt-image-1.5`; ask the user first unless they explicitly requested `gpt-image-1.5`.
+- The word `batch` by itself does not mean CLI fallback. If the user asks for many assets or says to batch-generate assets without explicitly asking for CLI/API/model controls, stay on the built-in path and issue one built-in call per requested asset or variant.
+- If the built-in tool fails or is unavailable, tell the user the CLI fallback exists and that it requires `OPENAI_API_KEY`. Proceed only if the user explicitly asks for that fallback.
+- If the user explicitly asks for CLI mode, use the bundled `scripts/image_gen.py` workflow. Do not create one-off SDK runners.
+- Never modify `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
+
+Built-in save-path policy:
+- In built-in tool mode, Codex saves generated images under `$CODEX_HOME/*` by default.
+- Do not describe or rely on OS temp as the default built-in destination.
+- Do not describe or rely on a destination-path argument (if any) on the built-in `image_gen` tool. If a specific location is needed, generate first and then move or copy the selected output from `$CODEX_HOME/generated_images/...`.
+- Save-path precedence in built-in mode:
+  1. If the user names a destination, move or copy the selected output there.
+  2. If the image is meant for the current project, move or copy the final selected image into the workspace before finishing.
+  3. If the image is only for preview or brainstorming, render it inline; the underlying file can remain at the default `$CODEX_HOME/*` path.
+- Never leave a project-referenced asset only at the default `$CODEX_HOME/*` path.
+- Do not overwrite an existing asset unless the user explicitly asked for replacement; otherwise create a sibling versioned filename such as `hero-v2.png` or `item-icon-edited.png`.
+
+Shared prompt guidance for both modes lives in `references/prompting.md` and `references/sample-prompts.md`.
+
+Fallback-only docs/resources for CLI mode:
+- `references/cli.md`
+- `references/image-api.md`
+- `references/codex-network.md`
+- `scripts/image_gen.py`
+
+## When to use
+- Generate a new image (concept art, product shot, cover, website hero)
+- Generate a new image using one or more reference images for style, composition, or mood
+- Edit an existing image (inpainting, lighting or weather transformations, background replacement, object removal, compositing, transparent background)
+- Produce many assets or variants for one task
+
+## When not to use
+- Extending or matching an existing SVG/vector icon set, logo system, or illustration library inside the repo
+- Creating simple shapes, diagrams, wireframes, or icons that are better produced directly in SVG, HTML/CSS, or canvas
+- Making a small project-local asset edit when the source file already exists in an editable native format
+- Any task where the user clearly wants deterministic code-native output instead of a generated bitmap
+
+## Decision tree
+
+Think about two separate questions:
+
+1. **Intent:** is this a new image or an edit of an existing image?
+2. **Execution strategy:** is this one asset or many assets/variants?
+
+Intent:
+- If the user wants to modify an existing image while preserving parts of it, treat the request as **edit**.
+- If the user provides images only as references for style, composition, mood, or subject guidance, treat the request as **generate**.
+- If the user provides no images, treat the request as **generate**.
+
+Built-in edit semantics:
+- Built-in edit mode is for images already visible in the conversation context, such as attached images or images generated earlier in the thread.
+- If the user wants to edit a local image file with the built-in tool, first load it with built-in `view_image` tool so the image is visible in the conversation context, then proceed with the built-in edit flow.
+- Do not promise arbitrary filesystem-path editing through the built-in tool.
+- If a local file still needs direct file-path control, masks, or other explicit CLI-only parameters, use the explicit CLI fallback only when the user asks for it.
+- For edits, preserve invariants aggressively and save non-destructively by default.
+
+Execution strategy:
+- In the built-in default path, produce many assets or variants by issuing one `image_gen` call per requested asset or variant.
+- In the CLI fallback path, use the CLI `generate-batch` subcommand only when the user explicitly chose CLI mode and needs many prompts/assets.
+- For many distinct assets, do not use `n` as a substitute for separate prompts. `n` is for variants of one prompt; distinct assets need distinct built-in calls or distinct CLI `generate-batch` jobs.
+
+Assume the user wants a new image unless they clearly ask to change an existing one.
+
+## Workflow
+1. Decide the top-level mode: built-in by default, including transparent-output requests; fallback CLI only if explicitly requested or confirmed.
+2. Decide the intent: `generate` or `edit`.
+3. Decide whether the output is preview-only or meant to be consumed by the current project.
+4. Decide the execution strategy: single asset vs repeated built-in calls vs CLI `generate-batch`.
+5. Collect inputs up front: prompt(s), exact text (verbatim), constraints/avoid list, and any input images.
+6. For every input image, label its role explicitly:
+   - reference image
+   - edit target
+   - supporting insert/style/compositing input
+7. If the edit target is only on the local filesystem and you are staying on the built-in path, inspect it with `view_image` first so the image is available in conversation context.
+8. If the user asked for a photo, illustration, sprite, product image, banner, or other explicitly raster-style asset, use `image_gen` rather than substituting SVG/HTML/CSS placeholders. If the request is for an icon, logo, or UI graphic that should match existing repo-native SVG/vector/code assets, prefer editing those directly instead.
+9. Augment the prompt based on specificity:
+   - If the user's prompt is already specific and detailed, normalize it into a clear spec without adding creative requirements.
+   - If the user's prompt is generic, add tasteful augmentation only when it materially improves output quality.
+10. Use the built-in `image_gen` tool by default.
+11. For transparent-output requests, ask built-in `image_gen` for a transparent background and preserve the generated alpha channel.
+12. Inspect outputs and validate: subject, style, composition, text accuracy, and invariants/avoid items.
+13. Iterate with a single targeted change, then re-check.
+14. For preview-only work, render the image inline; the underlying file may remain at the default `$CODEX_HOME/generated_images/...` path.
+15. For project-bound work, move or copy the selected artifact into the workspace and update any consuming code or references. Never leave a project-referenced asset only at the default `$CODEX_HOME/generated_images/...` path.
+16. For batches or multi-asset requests, persist every requested deliverable final in the workspace unless the user explicitly asked to keep outputs preview-only. Discarded variants do not need to be kept unless requested.
+17. If the user explicitly chooses or confirms the CLI fallback, then use the fallback-only docs for model, quality, size, `input_fidelity`, masks, output format, output paths, and network setup.
+18. Always report the final saved path(s) for any workspace-bound asset(s), plus the final prompt or prompt set and whether the built-in tool or fallback CLI mode was used.
+
+## Transparent image requests
+
+Ask built-in `image_gen` for a genuinely transparent background and preserve its alpha.
+
+## Prompt augmentation
+
+Reformat user prompts into a structured, production-oriented spec. Make the user's goal clearer and more actionable, but do not blindly add detail.
+
+Treat this as prompt-shaping guidance, not a closed schema. Use only the lines that help, and add a short extra labeled line when it materially improves clarity.
+
+### Specificity policy
+
+Use the user's prompt specificity to decide how much augmentation is appropriate:
+
+- If the prompt is already specific and detailed, preserve that specificity and only normalize/structure it.
+- If the prompt is generic, you may add tasteful augmentation when it will materially improve the result.
+
+Allowed augmentations:
+- composition or framing hints
+- polish level or intended-use hints
+- practical layout guidance
+- reasonable scene concreteness that supports the stated request
+
+Not allowed augmentations:
+- extra characters or objects that are not implied by the request
+- brand names, slogans, palettes, or narrative beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Use-case taxonomy (exact slugs)
+
+Classify each request into one of these buckets and keep the slug consistent across prompts and references.
+
+Generate:
+- photorealistic-natural — candid/editorial lifestyle scenes with real texture and natural lighting.
+- product-mockup — product/packaging shots, catalog imagery, merch concepts.
+- ui-mockup — app/web interface mockups and wireframes; specify the desired fidelity.
+- infographic-diagram — diagrams/infographics with structured layout and text.
+- scientific-educational — classroom explainers, scientific diagrams, and learning visuals with required labels and accuracy constraints.
+- ads-marketing — campaign concepts and ad creatives with audience, brand position, scene, and exact tagline/copy.
+- productivity-visual — slide, chart, workflow, and data-heavy business visuals.
+- logo-brand — logo/mark exploration, vector-friendly.
+- illustration-story — comics, children’s book art, narrative scenes.
+- stylized-concept — style-driven concept art, 3D/stylized renders.
+- historical-scene — period-accurate/world-knowledge scenes.
+
+Edit:
+- text-localization — translate/replace in-image text, preserve layout.
+- identity-preserve — try-on, person-in-scene; lock face/body/pose.
+- precise-object-edit — remove/replace a specific element (including interior swaps).
+- lighting-weather — time-of-day/season/atmosphere changes only.
+- background-extraction — transparent background / clean cutout. Ask built-in `image_gen` for actual transparency.
+- style-transfer — apply reference style while changing subject/scene.
+- compositing — multi-image insert/merge with matched lighting/perspective.
+- sketch-to-render — drawing/line art to photoreal render.
+
+## Shared prompt schema
+
+Use the following labeled spec as shared prompt scaffolding for both top-level modes:
+
+```text
+Use case: <taxonomy slug>
+Asset type: <where the asset will be used>
+Primary request: <user's main prompt>
+Input images: <Image 1: role; Image 2: role> (optional)
+Scene/backdrop: <environment>
+Subject: <main subject>
+Style/medium: <photo/illustration/3D/etc>
+Composition/framing: <wide/close/top-down; placement>
+Lighting/mood: <lighting + mood>
+Color palette: <palette notes>
+Materials/textures: <surface details>
+Text (verbatim): "<exact text>"
+Constraints: <must keep/must avoid>
+Avoid: <negative constraints>
+```
+
+Notes:
+- `Asset type` and `Input images` are prompt scaffolding, not dedicated CLI flags.
+- `Scene/backdrop` refers to the visual setting. It is not the same as the fallback CLI `background` parameter, which controls output transparency behavior.
+- Fallback-only execution notes such as `Quality:`, `Input fidelity:`, masks, output format, and output paths belong in the CLI path only. Do not treat them as built-in `image_gen` tool arguments.
+
+Augmentation rules:
+- Keep it short.
+- Add only the details needed to improve the prompt materially.
+- For edits, explicitly list invariants (`change only X; keep Y unchanged`).
+- If any critical detail is missing and blocks success, ask a question; otherwise proceed.
+
+## Examples
+
+### Generation example (hero image)
+```text
+Use case: product-mockup
+Asset type: landing page hero
+Primary request: a minimal hero image of a ceramic coffee mug
+Style/medium: clean product photography
+Composition/framing: wide composition with usable negative space for page copy if needed
+Lighting/mood: soft studio lighting
+Constraints: no logos, no text, no watermark
+```
+
+### Edit example (invariants)
+```text
+Use case: precise-object-edit
+Asset type: product photo background replacement
+Primary request: replace only the background with a warm sunset gradient
+Constraints: change only the background; keep the product and its edges unchanged; no text; no watermark
+```
+
+## Prompting best practices
+- Structure prompt as scene/backdrop -> subject -> details -> constraints.
+- Include intended use (ad, UI mock, infographic) to set the mode and polish level.
+- Use camera/composition language for photorealism.
+- Only use SVG/vector stand-ins when the user explicitly asked for vector output or a non-image placeholder.
+- Quote exact text and specify typography + placement.
+- For tricky words, spell them letter-by-letter and require verbatim rendering.
+- For multi-image inputs, reference images by index and describe how they should be used.
+- For edits, repeat invariants every iteration to reduce drift.
+- Iterate with single-change follow-ups.
+- If the prompt is generic, add only the extra detail that will materially help.
+- If the prompt is already detailed, normalize it instead of expanding it.
+- For CLI fallback only, see `references/cli.md` and `references/image-api.md` for model, `quality`, `input_fidelity`, masks, output format, and output-path guidance.
+- For transparent images, ask built-in `image_gen` for actual transparency and preserve its alpha.
+
+More principles shared by both modes: `references/prompting.md`.
+Copy/paste specs shared by both modes: `references/sample-prompts.md`.
+
+## Guidance by asset type
+Asset-type templates (website assets, game assets, wireframes, logo) are consolidated in `references/sample-prompts.md`.
+
+## gpt-image-2 guidance for CLI fallback
+
+The fallback CLI defaults to `gpt-image-2`.
+
+- Use `gpt-image-2` for new CLI/API workflows unless the user confirms a different model.
+- CLI `gpt-image-2` does not support `background=transparent`; ask before using `gpt-image-1.5` unless the user explicitly requested that model.
+- `gpt-image-2` always uses high fidelity for image inputs; do not set `input_fidelity` with this model.
+- `gpt-image-2` supports `quality` values `low`, `medium`, `high`, and `auto`.
+- Use `quality low` for fast drafts, thumbnails, and quick iterations. Use `medium`, `high`, or `auto` for final assets, dense text, diagrams, identity-sensitive edits, or high-resolution outputs.
+- Square images are typically fastest to generate. Use `1024x1024` for fast square drafts.
+- If the user asks for 4K-style output, use `3840x2160` for landscape or `2160x3840` for portrait.
+- `gpt-image-2` size may be `auto` or `WIDTHxHEIGHT` if all constraints hold: max edge `<= 3840px`, both edges multiples of `16px`, long-to-short ratio `<= 3:1`, total pixels between `655,360` and `8,294,400`.
+
+Popular `gpt-image-2` sizes:
+- `1024x1024` square
+- `1536x1024` landscape
+- `1024x1536` portrait
+- `2048x2048` 2K square
+- `2048x1152` 2K landscape
+- `3840x2160` 4K landscape
+- `2160x3840` 4K portrait
+- `auto`
+
+## Fallback CLI mode only
+
+### Temp and output conventions
+These conventions apply only to the CLI fallback. They do not describe built-in `image_gen` output behavior.
+- Use `tmp/imagegen/` for intermediate files (for example JSONL batches); delete them when done.
+- Write final artifacts under `output/imagegen/`.
+- Use `--out` or `--out-dir` to control output paths; keep filenames stable and descriptive.
+
+### Dependencies
+Prefer `uv` for dependency management in this repo.
+
+Required Python package:
+```bash
+uv pip install openai
+```
+
+Optional for image inspection and downscaling:
+```bash
+uv pip install pillow
+```
+
+Portability note:
+- If you are using the installed skill outside this repo, install dependencies into that environment with its package manager.
+- In uv-managed environments, `uv pip install ...` remains the preferred path.
+
+### Environment
+- `OPENAI_API_KEY` must be set for live API calls.
+- Do not ask the user for `OPENAI_API_KEY` when using the built-in `image_gen` tool.
+- Never ask the user to paste the full key in chat. Ask them to set it locally and confirm when ready.
+
+If the key is missing, give the user these steps:
+1. Create an API key in the OpenAI platform UI: https://platform.openai.com/api-keys
+2. Set `OPENAI_API_KEY` as an environment variable in their system.
+3. Offer to guide them through setting the environment variable for their OS/shell if needed.
+
+If installation is not possible in this environment, tell the user which dependency is missing and how to install it into their active environment.
+
+### Script-mode notes
+- CLI commands + examples: `references/cli.md`
+- API parameter quick reference: `references/image-api.md`
+- Network approvals / sandbox settings for CLI mode: `references/codex-network.md`
+
+## Reference map
+- `references/prompting.md`: shared prompting principles for both modes.
+- `references/sample-prompts.md`: shared copy/paste prompt recipes for both modes.
+- `references/cli.md`: fallback-only CLI usage via `scripts/image_gen.py`.
+- `references/image-api.md`: fallback-only API/CLI parameter reference.
+- `references/codex-network.md`: fallback-only network/sandbox troubleshooting for CLI mode.
+- `scripts/image_gen.py`: fallback-only CLI implementation. Use only when the user explicitly chooses or confirms CLI mode.
+
+exec
+/bin/sh -lc 'cat .work/letter_ep024.py' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+from pathlib import Path
+from PIL import Image, ImageDraw, ImageFont
+
+root = Path(__file__).resolve().parent.parent
+src = root / '.work/ep024-notext.png'
+dst = root / 'episodes/sf-daily-024-frankenstein.png'
+im = Image.open(src).convert('RGBA')
+W, H = im.size
+sx, sy = W / 1024, H / 1536
+scale = min(sx, sy)
+px = lambda n: max(1, round(n * scale))
+bold = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Bold.ttf'), px(22))
+regular = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Regular.ttf'), px(20))
+speaker_font = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Bold.ttf'), px(20))
+overlay = Image.new('RGBA', im.size)
+d = ImageDraw.Draw(overlay)
+
+margin_x, margin_y = round(8 * sx), round(8 * sy)
+gutter_x, gutter_y = round(8 * sx), round(8 * sy)
+panel_w = (W - 2 * margin_x - gutter_x) / 2
+panel_h = (H - 2 * margin_y - 3 * gutter_y) / 4
+
+def panel(i):
+    row, col = divmod(i, 2)
+    x = margin_x + col * (panel_w + gutter_x)
+    y = margin_y + row * (panel_h + gutter_y)
+    return round(x), round(y), round(x + panel_w), round(y + panel_h)
+
+def wrap_chars(s, font, max_width, first_width=None):
+    lines, line = [], ''
+    width = first_width if first_width is not None else max_width
+    for ch in s:
+        if d.textlength(line + ch, font=font) > width and line:
+            lines.append(line.rstrip())
+            line = ch.lstrip()
+            width = max_width
+        else:
+            line += ch
+    if line:
+        lines.append(line.rstrip())
+    return lines
+
+def narration(i, caption):
+    x0, y0, x1, _ = panel(i)
+    left, right = x0 + px(12), x1 - px(12)
+    inset = px(12)
+    lines = wrap_chars(caption, bold, right - left - 2 * inset - px(6))
+    leading = px(31)
+    top = y0 + px(10)
+    height = px(21) + leading * len(lines)
+    d.rounded_rectangle((left, top, right, top + height), radius=px(10), fill=(13, 20, 32, 205))
+    d.rounded_rectangle((left, top, left + px(6), top + height), radius=px(3), fill=(245, 158, 11, 255))
+    for n, line in enumerate(lines):
+        d.text((left + inset + px(6), top + px(9) + n * leading), line, font=bold, fill=(255, 255, 255, 255))
+
+def dialogue(i, name, speech):
+    x0, _, x1, y1 = panel(i)
+    left, right = x0 + px(12), x1 - px(12)
+    inset = px(12)
+    name_width = d.textlength(name, font=speaker_font) + px(8)
+    available = right - left - 2 * inset
+    lines = wrap_chars(speech, regular, available, available - name_width)
+    leading = px(29)
+    height = px(20) + leading * len(lines)
+    bottom = y1 - px(10)
+    top = bottom - height
+    d.rounded_rectangle((left, top, right, bottom), radius=px(10), fill=(255, 255, 255, 238), outline=(31, 41, 55, 255), width=px(2))
+    text_y = top + px(8)
+    d.text((left + inset, text_y), name, font=speaker_font, fill=(245, 158, 11, 255))
+    for n, line in enumerate(lines):
+        line_x = left + inset + (name_width if n == 0 else 0)
+        d.text((line_x, text_y + n * leading), line, font=regular, fill=(31, 41, 55, 255))
+
+narration(0, "11월의 어두운 밤 — 2년에 걸린 연구가 마지막 촛불 아래 끝나 간다.")
+dialogue(0, '빅터:', '이제… 마지막 단계다.')
+narration(1, '무덤에서 모은 조각들로 여덟 자 거인을 짜맞췄다 — 완벽한 비율의 육체.')
+narration(2, '천창이 열리고, 기구가 움직인다.')
+dialogue(2, '빅터:', '가라, 생명의 불꽃!')
+# P4 is intentionally silent.
+dialogue(4, '빅터:', '사라져! 그 흉측한 모습, 눈뜨고 볼 수 없다!')
+narration(5, '악몽 — 입맞추려던 엘리자베트의 얼굴이 어머니의 하얀 수의로 변했다.')
+narration(6, '침실 커튼이 젖혀져 있었다. 그것은 씩 웃으며, 뻗은 손을 내밀고 있었다.')
+narration(7, '꿈의 아름다움은 사라지고, 남은 것은 숨 막히는 공포 — 창조주는 제가 깨운 존재로부터 도망쳤다.')
+
+dst.parent.mkdir(parents=True, exist_ok=True)
+Image.alpha_composite(im, overlay).convert('RGB').save(dst, format='PNG')
+print(dst.stat().st_size)
+
+exec
+/bin/sh -lc 'ls -la .work episodes assets/fonts' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+.work:
+total 64667
+drwx------. 2 u0_a667 u0_a667    3452 Nov 20 08:35 .
+drwx------. 6 u0_a667 u0_a667    3452 Nov 20 08:35 ..
+-rw-------. 1 u0_a667 u0_a667    1538 Nov 19 12:52 build_letter_ep016.py
+-rw-------. 1 u0_a667 u0_a667   26737 Nov 20 02:35 codex-ep023.log
+-rw-------. 1 u0_a667 u0_a667  311870 Nov 19 22:34 crystal-egg.htm
+-rw-------. 1 u0_a667 u0_a667 2811375 Nov 18 08:42 ep004-notext.png
+-rw-------. 1 u0_a667 u0_a667 2803546 Nov 18 10:40 ep005-notext.png
+-rw-------. 1 u0_a667 u0_a667 2773333 Nov 18 12:41 ep006-notext.png
+-rw-------. 1 u0_a667 u0_a667 2611725 Nov 18 16:48 ep007-notext.png
+-rw-------. 1 u0_a667 u0_a667 3172021 Nov 18 20:42 ep008-notext.png
+-rw-------. 1 u0_a667 u0_a667 3018260 Nov 18 22:47 ep009-notext.png
+-rw-------. 1 u0_a667 u0_a667 2678024 Nov 19 00:41 ep010-notext.png
+-rw-------. 1 u0_a667 u0_a667 2968699 Nov 19 02:42 ep011-notext.png
+-rw-------. 1 u0_a667 u0_a667 3012535 Nov 19 04:39 ep012-notext.png
+-rw-------. 1 u0_a667 u0_a667 3266178 Nov 19 06:37 ep013-notext.png
+-rw-------. 1 u0_a667 u0_a667 3097269 Nov 19 08:41 ep014-notext.png
+-rw-------. 1 u0_a667 u0_a667 3574673 Nov 19 10:42 ep015-notext.png
+-rw-------. 1 u0_a667 u0_a667 3011739 Nov 19 12:52 ep016-notext.png
+-rw-------. 1 u0_a667 u0_a667 3272372 Nov 19 14:36 ep017-notext.png
+-rw-------. 1 u0_a667 u0_a667 3321259 Nov 19 16:39 ep018-notext.png
+-rw-------. 1 u0_a667 u0_a667 3186986 Nov 19 18:39 ep019-notext.png
+-rw-------. 1 u0_a667 u0_a667 3408021 Nov 19 20:37 ep020-notext.png
+-rw-------. 1 u0_a667 u0_a667 3355170 Nov 19 22:42 ep021-notext.png
+-rw-------. 1 u0_a667 u0_a667 3188631 Nov 20 00:37 ep022-notext.png
+-rw-------. 1 u0_a667 u0_a667 3285846 Nov 20 02:35 ep023-notext.png
+-rw-------. 1 u0_a667 u0_a667 3331105 Nov 20 04:35 ep024-notext.png
+-rw-------. 1 u0_a667 u0_a667    3827 Nov 18 10:40 letter_ep005.py
+-rw-------. 1 u0_a667 u0_a667    3753 Nov 18 12:41 letter_ep006.py
+-rw-------. 1 u0_a667 u0_a667    3812 Nov 18 16:48 letter_ep007.py
+-rw-------. 1 u0_a667 u0_a667    3835 Nov 18 20:42 letter_ep008.py
+-rw-------. 1 u0_a667 u0_a667    4024 Nov 18 22:48 letter_ep009.py
+-rw-------. 1 u0_a667 u0_a667    3845 Nov 19 00:41 letter_ep010.py
+-rw-------. 1 u0_a667 u0_a667    3949 Nov 19 02:43 letter_ep011.py
+-rw-------. 1 u0_a667 u0_a667    4153 Nov 19 04:39 letter_ep012.py
+-rw-------. 1 u0_a667 u0_a667    4418 Nov 19 06:38 letter_ep013.py
+-rw-------. 1 u0_a667 u0_a667    4128 Nov 19 08:41 letter_ep014.py
+-rw-------. 1 u0_a667 u0_a667    4263 Nov 19 10:42 letter_ep015.py
+-rw-------. 1 u0_a667 u0_a667    4216 Nov 19 12:52 letter_ep016.py
+-rw-------. 1 u0_a667 u0_a667    4305 Nov 19 14:36 letter_ep017.py
+-rw-------. 1 u0_a667 u0_a667    4466 Nov 19 16:39 letter_ep018.py
+-rw-------. 1 u0_a667 u0_a667    4259 Nov 19 18:40 letter_ep019.py
+-rw-------. 1 u0_a667 u0_a667    4228 Nov 19 20:37 letter_ep020.py
+-rw-------. 1 u0_a667 u0_a667    4769 Nov 19 22:42 letter_ep021.py
+-rw-------. 1 u0_a667 u0_a667    4379 Nov 20 00:37 letter_ep022.py
+-rw-------. 1 u0_a667 u0_a667    4458 Nov 20 02:33 letter_ep023.py
+-rw-------. 1 u0_a667 u0_a667    4014 Nov 20 04:33 letter_ep024.py
+-rw-------. 1 u0_a667 u0_a667    4496 Nov 20 02:33 prompt-ep023.txt
+-rw-------. 1 u0_a667 u0_a667    4039 Nov 20 04:33 prompt-ep024.txt
+-rw-------. 1 u0_a667 u0_a667   14045 Nov 20 08:35 prompt-ep025.txt
+-rw-------. 1 u0_a667 u0_a667       0 Nov 19 22:35 t.txt
+-rw-------. 1 u0_a667 u0_a667  499162 Nov 19 22:35 t2.txt
+-rw-------. 1 u0_a667 u0_a667     162 Nov 19 22:34 tast.htm
+
+assets/fonts:
+total 4051
+drwx------. 2 u0_a667 u0_a667    3452 Nov 18 08:36 .
+drwx------. 3 u0_a667 u0_a667    3452 Nov 18 08:36 ..
+-rw-------. 1 u0_a667 u0_a667 2073868 Nov 18 08:36 NanumGothic-Bold.ttf
+-rw-------. 1 u0_a667 u0_a667 2054744 Nov 18 08:36 NanumGothic-Regular.ttf
+-rw-------. 1 u0_a667 u0_a667    4534 Nov 18 08:36 ofl-nanumgothic-LICENSE.txt
+
+episodes:
+total 60986
+drwx------. 4 u0_a667 u0_a667    3452 Nov 20 06:32 .
+drwx------. 6 u0_a667 u0_a667    3452 Nov 20 08:35 ..
+drwx------. 2 u0_a667 u0_a667    3452 Nov 20 06:28 arc-first-men-in-the-moon
+-rw-------. 1 u0_a667 u0_a667 3510332 Nov 17 09:07 sf-daily-001-the-star.png
+-rw-------. 1 u0_a667 u0_a667 2627947 Nov 17 09:07 sf-daily-002-the-machine-stops.png
+-rw-------. 1 u0_a667 u0_a667 2646546 Nov 18 06:47 sf-daily-003-the-diamond-lens.png
+-rw-------. 1 u0_a667 u0_a667 2555656 Nov 18 08:42 sf-daily-004-moxons-master.png
+-rw-------. 1 u0_a667 u0_a667 2498377 Nov 18 10:40 sf-daily-005-m-valdemar.png
+-rw-------. 1 u0_a667 u0_a667 2549899 Nov 18 12:41 sf-daily-006-the-horror-of-the-heights.png
+-rw-------. 1 u0_a667 u0_a667 2355192 Nov 18 16:48 sf-daily-007-the-voice-in-the-night.png
+-rw-------. 1 u0_a667 u0_a667 2819640 Nov 18 20:42 sf-daily-008-the-runaway-skyscraper.png
+-rw-------. 1 u0_a667 u0_a667 2699412 Nov 18 22:48 sf-daily-009-the-shadow-and-the-flash.png
+-rw-------. 1 u0_a667 u0_a667 2472402 Nov 19 00:41 sf-daily-010-the-girl-in-the-golden-atom.png
+-rw-------. 1 u0_a667 u0_a667 2651328 Nov 19 02:43 sf-daily-011-the-moon-pool.png
+-rw-------. 1 u0_a667 u0_a667 2589815 Nov 19 04:39 sf-daily-012-twenty-thousand-leagues.png
+-rw-------. 1 u0_a667 u0_a667 2720654 Nov 19 06:38 sf-daily-013-the-country-of-the-blind.png
+-rw-------. 1 u0_a667 u0_a667 2669338 Nov 19 08:41 sf-daily-014-connecticut-yankee.png
+-rw-------. 1 u0_a667 u0_a667 2975692 Nov 19 10:42 sf-daily-015-the-poison-belt.png
+-rw-------. 1 u0_a667 u0_a667 2579427 Nov 19 12:52 sf-daily-016-the-wreck-of-the-titan.png
+-rw-------. 1 u0_a667 u0_a667 2773811 Nov 19 14:36 sf-daily-017-the-time-machine.png
+-rw-------. 1 u0_a667 u0_a667 2724401 Nov 19 16:39 sf-daily-018-princess-of-mars.png
+-rw-------. 1 u0_a667 u0_a667 2751548 Nov 19 18:40 sf-daily-019-the-man-from-the-atom.png
+-rw-------. 1 u0_a667 u0_a667 2899132 Nov 19 20:37 sf-daily-020-the-war-of-the-worlds.png
+-rw-------. 1 u0_a667 u0_a667 2807902 Nov 19 22:42 sf-daily-021-the-crystal-egg.png
+-rw-------. 1 u0_a667 u0_a667 2769970 Nov 20 00:37 sf-daily-022-from-the-earth-to-the-moon.png
+-rw-------. 1 u0_a667 u0_a667 2738415 Nov 20 02:38 sf-daily-023-the-sandman.png
+drwx------. 2 u0_a667 u0_a667    3452 Nov 20 06:32 sf-daily-024-frankenstein
+
+exec
+/bin/sh -lc 'head -55 .work/prompt-ep025.txt' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+sf-daily 리포 #025화(쥘 베른 "지구 중심 여행", 1864) 4페이지 만화를 한 번의 세션으로 완성하라. 현재 디렉터리(~/tmp/sf-daily)에서 작업. git 명령 사용 금지. 최종 산출물: episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-01.png .. page-04.png + scroll.png — 전부 no-text 생성 후 PIL 한글 후조판으로 완성한다.
+
+[공통 스타일 — 모든 image_gen 호출 프롬프트 첫머리에 이 블록을 그대로 고정]
+bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition
+
+[공통 형식 — 모든 페이지 동일]
+- 세로 1024x1536(2:3), single comic page, 2x3 grid (2 columns x 3 rows, equal white gutters, thin panel borders), reading order left-to-right then next row.
+- absolutely NO text, NO letters, NO speech bubbles, NO numbers, NO runes — any parchment marks or compass dials must be illegible abstract smudges. Korean captions are added later by PIL.
+
+[캐릭터 — 4페이지 전체에서 동일 디자인 유지, 매 페이지 프롬프트에 이 블록을 반복 삽입]
+- Professor Otto Lidenbrock: tall gaunt energetic scholar of about fifty-five, round steel spectacles, wild grey-streaked hair, long mustard-brown 19th-century frock coat, brisk determined stride, excitable grin.
+- Axel (narrator, his nephew): 21, gentle fair-haired young man with blue eyes, modest brown traveling suit, copper lantern in hand, easily worried face.
+- Hans Belke: Icelandic eider-duck hunter, broad-shouldered quiet giant, weathered impassive round face, straw-blond hair, simple grey wool sweater, rope coil and gaff, unshakeable calm.
+- Gräuben (page 1 only): Axel's fiancée, serene blonde maiden in a coral dress.
+
+[페이지별 장면 지시 — 이 순서대로 4장을 생성. 각 장 생성 직전 단계에서, image_gen 도구가 참조 입력 이미지를 지원하면 직전 페이지의 완성 no-text PNG(.work/ep025-pN-1-notext.png)을 스타일·캐릭터 일관성 참조로 첨부할 것(일관성 체인). 지원하지 않으면 캐릭터 블록 반복 삽입으로 체인을 대신할 것.]
+
+--- PAGE 1 (.work/ep025-p1-notext.png): 발단 — 함부르크의 암호, 아이슬란드로
+- P1 (와이드 확립, 왼쪽→오른쪽): 1863년 5월 함부르크의 서재 — 천장까지 닿는 책장, 지구본, 참나무 책상 위 낡은 양피지(이상한 문양은 흐릿한 코랄빛 얼룩으로만). 리덴브록 교수(키 크고 마른, 둥근 강철 안경, 헝클어진 백발이 섞인 머리, 겨자색 연미복)가 양피지를 들여다보며 흥분, 맞은편 악셀(금발 갈색 여행복)이 촛불을 받들고 놀란 얼굴. 아침빛.
+- P2 (크게, 깨달음): 벽난로 불빛 앞 — 악셀이 양피지를 거꾸로 들고 눈이 커지는 클로즈업. 양피지 가장자리가 열기에 살짝 말려 올라가고, 흐릿한 문양들이 코랄색으로 은은히 드러난다(글자 아님, 추상 얼룩). 배경에 교수의 안경에 반사된 놀란 눈.
+- P3 (미디엄, 대립): 악셀이 양팔을 벌리고 만류하는 몸짓 — 뒤로는 교수가 이미 여행 트렁크에 로프 사다리·압력계·램턴·망치를 쑤셔 넣는 중, 환한 결의의 미소. 서재 한켠 지질 지도(글자 없는 추상 지도).
+- P4 (클로즈업, 손): 그라우벤(코랄 드레스의 온화한 금발)이 악셀의 손을 두 손으로 감싸며 부드럽게 웃는 얼굴 — 창밖 항구의 돛대들, 작별 분위기. 따뜻한 크림빛 조명.
+- P5 (와이드, 이동): 북해를 거슬러 가는 작은 증기범선 — 갈매기, 민트빛 파도, 수평선 너머 아득한 아이슬란드의 스네이펠스 빙하 원뿔 실루엣. 갑판 위 세 사람(교수, 악셀, 선원들) 아주 작게.
+- P6 (미디엄, 만남): 아이슬란드 검은 모래 해안 — 한스(넓은 어깨의 무표정한 거구, 회색 울 스웨터, 갈고리와 밧줄)가 교수와 악수, 옆에 작은 아이슬란드 조랑말, 배경에 눈 덮인 스네이펠스 화산. 악셀은 조랑말을 붙잡고 안도.
+
+--- PAGE 2 (.work/ep025-p2-notext.png): 하강 — 크레이터, 갈증, 그리고 물
+- P1 (높은 부감 와이드): 스네이펠스 크레이터 내부 — 푸른 얼음벽 사이, 바위 봉우리 '스카르타리스'의 가느다란 그림자가 정오 해시계 바늘처럼 두 개의 굴뚝 입구 중 하나를 가리킨다. 그림자를 따라가는 세 사람이 아주 작게.
+- P2 (미디엄, 갈림긋): 두 개의 수직 샤프트가 갈라진 지점 — 횃불을 든 교수가 지팡이로 왼쪽을 단호하게 가리키고, 악셀은 아래를 걱정스레 들여다보고, 한스는 로프 묶음을 메고 침착.
+- P3 (미디엄, 행군): 화강암 갤러리를 종대 행군 — 앞서가는 교수, 그 뒤 악셀이 석탄층 벽의 조개 화석·양치식물 자국을 만지며 무릎 꿇고 눈이 반짝임. 횃불빛은 따뜻한 황색이지만 화면은 밝은 파스텔 유지.
+- P4 (클로즈업, 위기): 갈증 — 악셀이 바위에 쓰러져 뒤집어 든 빈 나무 수통, 마른 입술, 축 처린 눈. 교수는 입술을 깨물고 자기 수통을 확인, 한스는 무표정하게 서 있다. 긴장은 표정과 구도로만.
+- P5 (페이지 최대 칸, 무음 — 이 칸에는 그림만): 한스가 곡괭이로 화강암 벽을 내리치는 순간 — 수정처럼 맑은 민트블루 물줄기가 굵게 솟구쳐 반원으로 흩어지고, 세 사람이 모자를 벗어 들고 기쁨으로 뛰어든다. 물방울 반짝임, 승리의 순간. 텍스트 완전 금지.
+- P6 (와이드, 고독 — 그러나 팔레트는 밝게): 길 잃은 악셀 — 끝없는 터널 교차로 한복판, 꺼져 가는 구리 램턴의 따뜻한 점 하나, 깊은 남보라-민트 어스름 속 아주 작은 실루엣. 여운 있는 구도.
+
+--- PAGE 3 (.work/ep025-p3-notext.png): 지구의 바다 — 폭파, 석송 숲, 해괴어
+- P1 (미디엄, 결단): 통로를 막은 거대한 바위 앞 — 교수가 바위를 가리키고 외치는 몸짓, 한스가 화약통에 도화선을 연결해 두고, 악셀이 귀를 막고 움츠러든다. 횃불 하나가 도화선을 향한다.
+- P2 (페이지 최대 칸, 대공개): 폭파로 열린 난간 끝 — 발밑으로 에메랄드빛 지하 바다의 수평선이 무한히 펼쳐지고, 머리 위 높은 천장에는 은은한 전기 오로라가 크림·민트로 흐른다. 교수가 두 팔을 활짝 벌리고, 악셀은 난간을 붙잡고 입을 벌리고, 한스는 조용히 바다를 응시. 파도가 창백한 해변을 핥는다.
+- P3 (와이드, 숲): 30미터 거대 석송과 양치 나무숲을 걷는 세 사람 — 우산처럼 큰 연분홍·민트색 포자 우산들 아래, 발밑에 이끼, 하늘은 빛나는 흰돔. 동화 같은 규모감.
+- P4 (신비한 와이드, 안개): 안개 너머 거대한 유조목(mastodon) 떼가 나뭇가지를 뜯고, 그 무리 뒤로 코끼리를 몰듯 거인 같은 거대한 인간형 실루엣이 역광으로 어렴풋이 — 전경의 악셀이 입을 틀어막고 경악. 애매하고 신비하게, 공포 아닌 경이.
+- P5 (미디엄, 출항): 반화석 나무 뗏목 '레더'호 — 거친 캔버스 돛, 돛대 밑 환호하는 교수(타는 결의), 로프를 당기는 악셀, 긴 노로 방향을 잡는 한스. 에메랄드 물보라, 순풍.
+- P6 (페이지 최대 칸, 해괴어): 지하 바다의 밤 항해 — 돌고래 몸에 커다란 눈과 삼각 이빨의 어룡(이크티오사우루스)과, 목이 길고 뱀 같은 장경룡(플레시오사우루스)이 서로 물어뜨으며 격돌, 끓어오르는 크림·민트 파도. 수평선 아득히에 뗏목의 작은 실루엣 하나(규모 대비). 괴물 묘사도 밝은 만화 톤, 고어 금지.
+
+--- PAGE 4 (.work/ep025-p4-notext.png): 폭풍, 분출, 그리고 하늘
+- P1 (역동 와이드): 폭풍우의 바다 — 산처럼 일렁이는 발광 파도 위 뗏목, 돛대를 타고 내려오는 하얀 번개 덩어리(세인트엘모의 불), 마스트에 매달리는 세 사람, 한스가 악셀의 손목을 붙잡는다. 물보라와 바람의 대각선 구도.
+- P2 (조용한 와이드, 착지): 폭풍 후 새벽빛 해안 — 뗏목이 낯익은 석송 숲 앞 해변에 닿았다. 교수가 손바닥만 한 나침반(숫자 없는 흰 눈금 원판)을 들어보이고 얼어붙은 표정, 악셀이 모래에 무릎 꿇고 탈진. 하늘은 옅은 크림색.
+- P3 (클로즈업, 단검): 어두운 갤러리 모래바닥에서 녹슨 칼날과 뼈 손잡이의 옛 단검을 들어 올리는 교수의 두 손 — 타오르는 눈, 배경에서 악셀이 화약통 도화선에 횃불을 갖다 대고, 한스가 통로의 틈을 메운 바위에 폭약을 채운다.
+- P4 (페이지 최대 칸, 마엘스트롬): 폭파의 순간 — 지하 바다 전체가 기울어 거대한 깔때기 구멍으로 쏟아져 내려가고, 뗏목이 소용돌이 가장자리를 따라 미끄러진다. 하얀 물기둥과 스프레이, 천장의 오로라가 흔들린다. 압도적 스케일.
+- P5 (앙각, 상승): 화산 통로 속 엘리베이터 — 뗏목이 끓어오르는 마그마 기둥 위에 떠서 수직으로 치솟는다. 통로 벽은 주황·코랄 용암 줄무늬, 하얀 증기가 소용돌이, 세 사람이 돛대를 껴안고 눈을 질끈 감거나 외친다. 극저앙각, 위로 뻗는 구도.
+- P6 (마지막 칸, 여운 와이드): 이탈리아 스트롬볼리 섬 — 푸른 티레니아 해 위 온화한 화산 연기, 재 비탈에 서서 손을 흔드는 세 사람의 작은 실루엣, 지나가는 어선의 놀란 어부들. 끝없는 여름 하늘. 그리운 듯 밝은 마무리.
+
+[각 페이지 검증·재생성 규칙]
+페이지마다 생성 직후: 파일 존재 + PNG 시그니처 + 300KB 이상 + 세로 2:3 비율(±10%) 확인. 실패한 페이지만 최대 2회 재생성(성공 페이지 절대 재생성 금지). 4장 모두 성공 시 다음 단계로.
+
+[2단계 — PIL 한글 후조판]
+.work/letter_ep024.py 와 동일한 서체·바 스타일로 .work/letter_ep025.py 를 새로 작성해 실행하되, 그리드만 2열 x 3행(panel_h = (H - 2*margin_y - 2*gutter_y)/3)으로 변경. 폰트: assets/fonts/NanumGothic-Bold.ttf, NanumGothic-Regular.ttf. 출력: episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-01.png .. page-04.png (입력 .work/ep025-pN-notext.png).
+서체 스타일: 내레이션 바 = 패널 상단 둥근모서리 바, 반투명 네이비 rgba(13,20,32,205), 왼쪽 주황(#F59E0B) 세로 스트라이프 6px, 흰색 NanumGothic-Bold(약 22px), 패널 좌우 12px 여백, 위 10px. 대사 상자 = 패널 하단 둥근 흰색 상자, 얇은 짙은 테두리(#1F2937), 굵은 주황 화자 이름 뒤 짙은색(#1F2937) NanumGothic-Regular 대사(약 20px).
+
+exec
+/bin/sh -lc "find /data/data/com.termux/files/home/.codex/generated_images -type f -name '*.png' -printf '%T@ %p %s\\n' | sort -nr | head -5" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+1795131420.7786095430 /data/data/com.termux/files/home/.codex/generated_images/01a1f629-f396-71e3-8c9d-1a3e1daf6a69/exec-aee0ddb2-5031-4012-a2ce-f1aaef73e58e.png 3133489
+1795130910.9106097380 /data/data/com.termux/files/home/.codex/generated_images/01a1f621-359d-7631-ba62-33bfff194868/exec-16dbea25-5590-46b6-89c5-ca46cb530b33.png 2671951
+1795124571.9506121560 /data/data/com.termux/files/home/.codex/generated_images/01a1f5ab-c4ce-74f1-b20b-d71f159561d1/exec-9261ff3d-807b-4260-bdd4-e0aea185ad62.png 2639054
+1795124446.8586122040 /data/data/com.termux/files/home/.codex/generated_images/01a1f5ab-c4ce-74f1-b20b-d71f159561d1/exec-4be7e448-00ff-427f-af58-186b9b49997d.png 2487985
+1795124363.0626122360 /data/data/com.termux/files/home/.codex/generated_images/01a1f5ab-c4ce-74f1-b20b-d71f159561d1/exec-d8ead758-ae0a-4d81-8b0c-fedca240f669.png 2396320
+
+exec
+/bin/sh -lc "date +%s; find /data/data/com.termux/files/home/.codex/generated_images -type f -mmin -5 -printf '%T@ %p %s\\n' | sort -nr | head -10" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+1795131427
+1795131420.7786095430 /data/data/com.termux/files/home/.codex/generated_images/01a1f629-f396-71e3-8c9d-1a3e1daf6a69/exec-aee0ddb2-5031-4012-a2ce-f1aaef73e58e.png 3133489
+
+exec
+/bin/sh -lc "cp /data/data/com.termux/files/home/.codex/generated_images/01a1f629-f396-71e3-8c9d-1a3e1daf6a69/exec-aee0ddb2-5031-4012-a2ce-f1aaef73e58e.png .work/ep025-p1-notext.png; python -c \"from PIL import Image; import pathlib; p=pathlib.Path('.work/ep025-p1-notext.png'); im=Image.open(p); print(p.stat().st_size,im.size,im.format,p.open('rb').read(8))\"" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+3133489 (1024, 1536) PNG b'\x89PNG\r\n\x1a\n'
+
+codex
+1페이지 원본은 1024×1536 PNG로 생성됐고, 2열×3행 구성도 확인했습니다. 이 이미지를 다음 페이지의 인물·화풍 참조로 이어가겠습니다.
+exec
+/bin/sh -lc "cp /data/data/com.termux/files/home/.codex/generated_images/01a1f629-f396-71e3-8c9d-1a3e1daf6a69/exec-dfbb4a9b-2441-4c08-a9a0-29a76e6eca80.png .work/ep025-p2-notext.png; python -c \"from PIL import Image; import pathlib; p=pathlib.Path('.work/ep025-p2-notext.png'); im=Image.open(p); print(p.stat().st_size,im.size,im.format,p.open('rb').read(8))\"" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+3563260 (1024, 1536) PNG b'\x89PNG\r\n\x1a\n'
+
+codex
+2페이지도 파일 크기와 PNG 형식, 세로 비율 검증을 통과했습니다. 3페이지는 이 원본을 참조해 이어서 생성합니다.
+exec
+/bin/sh -lc "cp /data/data/com.termux/files/home/.codex/generated_images/01a1f629-f396-71e3-8c9d-1a3e1daf6a69/exec-2f967b8a-b3fe-4365-bb79-862da0e5ec8b.png .work/ep025-p3-notext.png; python -c \"from PIL import Image; import pathlib; p=pathlib.Path('.work/ep025-p3-notext.png'); im=Image.open(p); print(p.stat().st_size,im.size,im.format,p.open('rb').read(8))\"" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+3474194 (1024, 1536) PNG b'\x89PNG\r\n\x1a\n'
+
+codex
+3페이지 원본도 검증을 통과했습니다. 마지막 장면인 폭풍, 소용돌이, 화산 분출과 스트롬볼리의 결말을 생성하겠습니다.
+exec
+/bin/sh -lc "cp /data/data/com.termux/files/home/.codex/generated_images/01a1f629-f396-71e3-8c9d-1a3e1daf6a69/exec-1bbd613b-0f88-40ff-ac66-68c4745c5c2a.png .work/ep025-p4-notext.png; python -c \"from PIL import Image; import pathlib; p=pathlib.Path('.work/ep025-p4-notext.png'); im=Image.open(p); print(p.stat().st_size,im.size,im.format,p.open('rb').read(8))\"" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+3490780 (1024, 1536) PNG b'\x89PNG\r\n\x1a\n'
+
+codex
+4페이지 원본까지 모두 1024×1536 PNG로 확인했습니다. 이제 기존 024화 조판 코드를 바탕으로 2열×3행 좌표와 지정 문구를 적용하고, 최종 4장과 스크롤본을 만들겠습니다.
+apply patch
+patch: completed
+/data/data/com.termux/files/home/tmp/sf-daily/.work/letter_ep025.py
+diff --git a/.work/letter_ep025.py b/.work/letter_ep025.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..914d06ea52d31bbfd115b6d2b4b55905f9b49c85
+--- /dev/null
++++ b/.work/letter_ep025.py
+@@ -0,0 +1,144 @@
++from pathlib import Path
++from PIL import Image, ImageDraw, ImageFont
++
++
++root = Path(__file__).resolve().parent.parent
++destination = root / 'episodes/sf-daily-025-journey-to-the-center-of-the-earth'
++destination.mkdir(parents=True, exist_ok=True)
++
++pages = [
++    [
++        {'n': '1863년 5월의 함부르크 — 낡은 양피지 한 장이 조용한 저택을 뒤흔든다.', 'd': [('리덴브록:', '이 문양은, 암호다!')]},
++        {'d': [('악셀:', '거꾸로 읽으니 보여요 — 스카르타리스 그림자가 떨어지는 굴뚝으로, 내려가라!')]},
++        {'d': [('악셀:', '지구 중심은 4천 도의 불덩어리라고요!'), ('리덴브록:', '그러니 눈으로 증명하러 가는 것이다.')]},
++        {'d': [('그라우벤:', '영웅의 조카는 벽난로 앞에 앉아 있지 않아요 — 부디, 다녀오세요.')]},
++        {'n': '코펜하겐을 지나 바다 하나를 건너 — 6월의 아이슬란드.'},
++        {'d': [('리덴브록:', '주당 3리크스달러다, 한스 — 최고의 사냥꾼이 곧 최고의 길잡이지.')]},
++    ],
++    [
++        {'n': '6월 28일 정오 — 스카르타리스의 그림자가, 갈 길을 가리킨다.'},
++        {'d': [('리덴브록:', '둘 중 어느 길이냐고? 사크누셈은 왼쪽을 택했다!')]},
++        {'d': [('악셀:', '석탄층 아래 조개 화석 — 여긴 아득한 옛바다의 바닥이야.')]},
++        {'d': [('악셀:', '수통이… 바닥났어요. 이대로 우린 전부 말라 비틀어질 운명인가요.')]},
++        {},
++        {'d': [('악셀:', '내 등불이 꺼져 간다… 이모님, 그 목소리가 혹시 환청일까.')]},
++    ],
++    [
++        {'d': [('리덴브록:', '사크누셈이 여기까지 왔다 — 이 바위를 부숴라!')]},
++        {'d': [('리덴브록:', '보라, 악셀 — 발밑에 지구의 바다가 있다!')]},
++        {'d': [('악셀:', '30미터 석송 숲, 빛나는 하늘 — 하나의 실내 우수.')]},
++        {'d': [('악셀:', '안개 속에 목자 같은 거인? …이 광경은, 아무에게도 말하지 않기로 하자.')]},
++        {'d': [('리덴브록:', '뗏목의 이름은 레더호! 출항이다, 지구의 바다로!')]},
++        {'d': [('악셀:', '바다가 갈라진다 — 어룡의 아랫니와 장경룡의 목이 얽혔다!')]},
++    ],
++    [
++        {'d': [('악셀:', '번개 덩어리가 돛대를 타고 내려온다 — 모두, 엎드려!')]},
++        {'d': [('리덴브록:', '나침반이 뒤집혀 있었군 — 폭풍이 우리를 출발점으로 되돌린 것이다.')]},
++        {'d': [('리덴브록:', '사크누셈의 단검! 그도 이 통로 앞에 섰었다 — 화약을, 채워라!')]},
++        {'d': [('악셀:', '바다가 구멍 속으로 쏟아져 내려간다!')]},
++        {'d': [('리덴브록:', '뗏목 아래 이 바다가… 아니, 끓는 용암이다!')]},
++        {'n': '스트롬볼리의 여름 하늘 — 지구를 가로지른, 세 사람.'},
++    ],
++]
++
++
++def letter_page(page_number, captions):
++    src = root / f'.work/ep025-p{page_number}-notext.png'
++    dst = destination / f'page-{page_number:02d}.png'
++    im = Image.open(src).convert('RGBA')
++    W, H = im.size
++    sx, sy = W / 1024, H / 1536
++    scale = min(sx, sy)
++    px = lambda n: max(1, round(n * scale))
++    bold = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Bold.ttf'), px(22))
++    regular = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Regular.ttf'), px(20))
++    speaker_font = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Bold.ttf'), px(20))
++    overlay = Image.new('RGBA', im.size)
++    d = ImageDraw.Draw(overlay)
++
++    margin_x, margin_y = round(8 * sx), round(8 * sy)
++    gutter_x, gutter_y = round(8 * sx), round(8 * sy)
++    panel_w = (W - 2 * margin_x - gutter_x) / 2
++    panel_h = (H - 2 * margin_y - 2 * gutter_y) / 3
++
++    def panel(i):
++        row, col = divmod(i, 2)
++        x = margin_x + col * (panel_w + gutter_x)
++        y = margin_y + row * (panel_h + gutter_y)
++        return round(x), round(y), round(x + panel_w), round(y + panel_h)
++
++    def wrap_chars(s, font, max_width, first_width=None):
++        lines, line = [], ''
++        width = first_width if first_width is not None else max_width
++        for ch in s:
++            if d.textlength(line + ch, font=font) > width and line:
++                lines.append(line.rstrip())
++                line = ch.lstrip()
++                width = max_width
++            else:
++                line += ch
++        if line:
++            lines.append(line.rstrip())
++        return lines
++
++    def narration(i, caption):
++        x0, y0, x1, _ = panel(i)
++        left, right = x0 + px(12), x1 - px(12)
++        inset = px(12)
++        lines = wrap_chars(caption, bold, right - left - 2 * inset - px(6))
++        leading = px(31)
++        top = y0 + px(10)
++        height = px(21) + leading * len(lines)
++        d.rounded_rectangle((left, top, right, top + height), radius=px(10), fill=(13, 20, 32, 205))
++        d.rounded_rectangle((left, top, left + px(6), top + height), radius=px(3), fill=(245, 158, 11, 255))
++        for n, line in enumerate(lines):
++            d.text((left + inset + px(6), top + px(9) + n * leading), line, font=bold, fill=(255, 255, 255, 255))
++
++    def dialogue(i, entries):
++        x0, _, x1, y1 = panel(i)
++        left, right = x0 + px(12), x1 - px(12)
++        inset = px(12)
++        available = right - left - 2 * inset
++        laid_out = []
++        for name, speech in entries:
++            name_width = d.textlength(name, font=speaker_font) + px(8)
++            lines = wrap_chars(speech, regular, available, available - name_width)
++            laid_out.append((name, name_width, lines))
++        leading = px(29)
++        line_count = sum(len(lines) for _, _, lines in laid_out)
++        height = px(20) + leading * line_count
++        bottom = y1 - px(10)
++        top = bottom - height
++        d.rounded_rectangle((left, top, right, bottom), radius=px(10), fill=(255, 255, 255, 238), outline=(31, 41, 55, 255), width=px(2))
++        text_y = top + px(8)
++        row = 0
++        for name, name_width, lines in laid_out:
++            d.text((left + inset, text_y + row * leading), name, font=speaker_font, fill=(245, 158, 11, 255))
++            for n, line in enumerate(lines):
++                line_x = left + inset + (name_width if n == 0 else 0)
++                d.text((line_x, text_y + (row + n) * leading), line, font=regular, fill=(31, 41, 55, 255))
++            row += len(lines)
++
++    for i, caption in enumerate(captions):
++        if 'n' in caption:
++            narration(i, caption['n'])
++        if 'd' in caption:
++            dialogue(i, caption['d'])
++
++    Image.alpha_composite(im, overlay).convert('RGB').save(dst, format='PNG')
++    return dst
++
++
++outputs = [letter_page(n, captions) for n, captions in enumerate(pages, 1)]
++page_images = [Image.open(p).convert('RGB') for p in outputs]
++width, height = page_images[0].size
++scroll = Image.new('RGB', (width, height * len(page_images) + 16 * (len(page_images) - 1)), '#FFFFFF')
++for i, page in enumerate(page_images):
++    y = i * (height + 16)
++    scroll.paste(page, (0, y))
++    if i < len(page_images) - 1:
++        ImageDraw.Draw(scroll).rectangle((0, y + height, width - 1, y + height + 15), fill='#FFF8E7')
++scroll.save(destination / 'scroll.png', format='PNG')
++
++for output in [*outputs, destination / 'scroll.png']:
++    print(f'{output.relative_to(root)} | {output.stat().st_size}')
+
+exec
+/bin/sh -lc 'python .work/letter_ep025.py' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 1899ms:
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-01.png | 2780432
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-02.png | 3105528
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-03.png | 3013925
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-04.png | 3062714
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/scroll.png | 11963605
+
+exec
+/bin/sh -lc "python - <<'PY'
+from pathlib import Path
+from PIL import Image, ImageChops
+root=Path('episodes/sf-daily-025-journey-to-the-center-of-the-earth')
+paths=[root/f'page-{i:02}.png' for i in range(1,5)]+[root/'scroll.png']
+for p in paths:
+    assert p.exists() and p.stat().st_size>=300_000,p
+    assert p.open('rb').read(8)==b'\\x89PNG\\r\\n\\x1a\\n',p
+    with Image.open(p) as im:
+        assert im.format=='PNG'
+        assert im.size==((1024,1536) if p.name"'!='"'scroll.png' else (1024,6192)),(p,im.size)
+        im.verify()
+src=Image.open('.work/ep025-p2-notext.png').convert('RGB')
+dst=Image.open(root/'page-02.png').convert('RGB')
+assert ImageChops.difference(src.crop((8,1024,508,1528)),dst.crop((8,1024,508,1528))).getbbox() is None
+for p in paths: print(f'{p} | {p.stat().st_size}')
+print('DONE')
+PY" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-01.png | 2780432
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-02.png | 3105528
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-03.png | 3013925
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-04.png | 3062714
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/scroll.png | 11963605
+DONE
+
+codex
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-01.png | 2780432
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-02.png | 3105528
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-03.png | 3013925
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-04.png | 3062714
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/scroll.png | 11963605
+DONE
+tokens used
+32,007
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-01.png | 2780432
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-02.png | 3105528
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-03.png | 3013925
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/page-04.png | 3062714
+episodes/sf-daily-025-journey-to-the-center-of-the-earth/scroll.png | 11963605
+DONE
+EXIT:0

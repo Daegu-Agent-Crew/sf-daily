@@ -1,0 +1,49 @@
+sf-daily 리포 #030화(H.G. 웰스 "모로 박사의 섬", The Island of Doctor Moreau, 1896) 3페이지 만화를 한 번의 세션으로 완성하라. 현재 디렉터리(~/tmp/sf-daily)에서 작업. git 명령 사용 금지. 최종 산출물: episodes/sf-daily-030-the-island-of-doctor-moreau/page-01.png .. page-03.png + scroll.png — 전부 no-text 생성 후 PIL 한글 후조판으로 완성한다.
+
+[공통 스타일 — 모든 image_gen 호출 프롬프트 첫머리에 이 블록을 그대로 고정]
+bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition
+
+[공통 형식 — 모든 페이지 동일]
+- 세로 1024x1536(2:3), single comic page, 2x3 grid (2 columns x 3 rows, equal white gutters, thin panel borders), reading order left-to-right then next row.
+- absolutely NO text, NO letters, NO speech bubbles, NO numbers, NO runes — any marks must be illegible abstract smudges. Korean captions are added later by PIL.
+- 절대 유혈·상처 묘사 금지(never gory) — 긴장은 구도·표정·그림자로만.
+
+[캐릭터 — 3페이지 전체에서 동일 디자인 유지, 매 페이지 프롬프트에 이 블록을 반복 삽입]
+- 프렌딕: pale shipwrecked Victorian gentleman, dark tousled hair, exhausted wide worried eyes, torn cream shirt under navy coat, expressive fearful face.
+- 모로 박사: stern tall elderly scientist, swept-back white hair, thick grey eyebrows, cold calm pale face, immaculate white linen suit, holding a small silver scalpel like a pen (no blood ever).
+- 몽고메리: gentle young doctor, sandy blond hair, rumpled khaki shirt, tired kind smile, rolled sleeves.
+- 밀링: black-faced beast-man servant, pointed dog-like ears, smooth black fur, slightly stooped posture, red collar, often carrying a tray.
+- 짐승인간들: hybrid animal-people in loose cream robes — shaggy brown ape-man walking upright, pink-snouted swine-man, spotted hyena-swine, loyal sheepdog-faced dog-man — rounded friendly cartoon designs, never gory.
+- 퓨마: large tawny puma — 위험 장면에서는 실루엣·그림자로만.
+
+[페이지별 장면 지시 — 이 순서대로 3장을 생성. 각 장 생성 직전 단계에서, image_gen 도구가 참조 입력 이미지를 지원하면 직전 페이지의 완성 no-text PNG(.work/ep030-p1-notext.png, .work/ep030-p2-notext.png)을 스타일·캐릭터 일관성 참조로 첨부할 것(일관성 체인). 지원하지 않으면 캐릭터 블록 반복 삽입으로 체인을 대신할 것.]
+
+--- PAGE 1 (.work/ep030-p1-notext.png): 난파자, 이름 없는 섬
+- P1 (와이드 확립, 부감): 밤바다 — 부서진 뗏목 조각에 매달린 초췌한 프렌딕, 달빛 파도 위로 작은 트랩증기선이 등불을 밝히고 접근.
+- P2 (미디엄): 증기선 갑판 — 몽고메리가 찻잔을 내밀고, 그 뒤 갑판원들의 얼굴이 묘하게 짐승 같다(개 얼굴·곰 같은 얼굴 섞임), 프렌딕의 의아한 눈.
+- P3 (미디엄, 대립): 선장이 바다를 가리키며 화내고, 프렌딕은 두 손을 모아 애원, 몽고메리는 팔짱 낀 채 돌아서 있음.
+- P4 (와이드): 해질녘 해변 — 작은 배에서 내려 모래사장에 선 프렌딕, 짐을 든 밀링, 야자수 정글 벽, 멀리 하얀 울타리의 집.
+- P5 (미디엄): 울타리 문 — 하얀 리넨 정장의 모로 박사가 대저택 문을 막아서며 한 손을 들어 제지, 차가운 무표정, 프렌딕은 허리 숙여 애원.
+- P6 (클로즈업, 후킹): 첫날 밤 오두막 — 촛불에 비친 프렌딕의 긴장한 얼굴, 창밖 어둠 속 숲에 반짝이는 눈동자들이 줄지어 늘어섬.
+
+--- PAGE 2 (.work/ep030-p2-notext.png): 법의 밤, 고통의 집
+- P1 (와이드): 달빛 아래 정글 공지 — 횃불을 든 짐승인간들이 원형으로 무릎 꿇고, 커다란 회색 늑대곰 같은 '법의 대언자'가 두 팔을 들어 외침, 몽입에 격한 얼굴들.
+- P2 (미디엄): 원 중앙에 떨어져든 프렌딕, 원숭이인간이 호기심에 그의 가슴을 톡톡 두드리며 두 발로 서서 씩 웃음, 주위의 빤픈 시선들.
+- P3 (페이지 최대 칸, 무음 — 이 칸에는 그림만): 고통의 집 외경 — 길쭉하게 누운 실험실, 살짝 열린 문으로 새어 나오는 창백한 청록빛, 실루엣된 수술대와 드리운 램프들, 가장자리에 퓨마의 꼬리. 텍스트 완전 금지.
+- P4 (미디엄): 프렌딕의 방 — 귀를 막고 눈을 감은 프렌딕, 창으로 보이는 실험실 불빛, 엉킨 침구.
+- P5 (클로즈업): 실험동 문간에서 얼어붙은 프렌딕 — 앞쪽에 붕대를 감은 짐승인간의 팔목(손가락 다섯), 옆에서 움찔하는 밀링, 진실을 깨달은 프렌딕의 커진 눈.
+- P6 (클로즈업): 모로 박사의 얼굴 — 완벽히 평온, 차가운 창백한 눈, 펜처럼 쥔 메스, 등 뒤 청록빛 램프.
+
+--- PAGE 3 (.work/ep030-p3-notext.png): 법이 사라진 섬
+- P1 (페이지 최대 칸, 액션 와이드): 밤 — 부서진 실험실 문을 박차고 흐릿한 속도로 뛰쳐나가는 퓨마의 실루엣, 사방으로 흩어지는 종이와 도구, 좌우로 달아나는 짐승인간들, 횃불의 빛줄기.
+- P2 (미디엄): 골짜기 아침 — 양치식물 위에 누워 눈을 감은 채 평온한 모로 박사, 주위에 조심스러운 원을 그린 짐승인간들, 내려진 횃불(상처·피 절대 없음).
+- P3 (와이드, 대립): 불빛 공지에서 서로 다투는 짐승인간들 — 일부는 네발로 기려 하고, 창을 든 손이 흔들림, 그중에서 팔을 들어 외치는 프렌딕.
+- P4 (와이드): 새벽 해변 — 홀로 저어 나가는 작은 배, 등 뒤로 붉게 타오르는 섬, 수평선의 일출.
+- P5 (미디엄): 런던 해질녘 거리 — 중산모 쓴 인파 속을 빠르게 걷는 프렌딕, 평범한 행인들의 얼굴에 희미하게 겹쳐 보이는 짐승의 그림자(부드러운 이중노출).
+- P6 (클로즈업, 여운 정물): 깊은 밤 프렌딕의 조용한 연구실 창가 — 촛불 하나, 유리 너머 별이 가득한 하늘과 어두운 바다 수평선, 반쯤 돌아선 실루엣.
+
+[각 페이지 검증·재생성 규칙]
+페이지마다 생성 직후: 파일 존재 + PNG 시그니처 + 300KB 이상 + 세로 2:3 비율(±10%) 확인. 실패한 페이지만 최대 2회 재생성(성공 페이지 절대 재생성 금지). 3장 모두 성공 시 다음 단계로.
+
+[2단계 — PIL 한글 후조판]
+.work/letter_ep030.py 가 이미 작성되어 있다. 그대로 실행만 한다: python3 .work/letter_ep030.py — 출력: episodes/sf-daily-030-the-island-of-doctor-moreau/page-01.png .. page-03.png + scroll.png. 스크립트 수정 금지(실행 오류 시에만 오류 내용을 보고하고 멈춘다).

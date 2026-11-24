@@ -1,0 +1,39 @@
+sf-daily 리포 #032화(볼테르 "미크로메가스", Micromégas, 1752 — 근대 SF 최초의 외계인 방문 이야기) 2페이지 만화를 한 번의 세션으로 완성하라. 현재 디렉터리(~/tmp/sf-daily)에서 작업. git 명령 사용 금지. 최종 산출물: episodes/sf-daily-032-micromegas/page-01.png .. page-02.png + scroll.png — 전부 내장 image_gen 도구로 no-text 생성 후 PIL 한글 후조판으로 완성한다.
+
+[공통 스타일 — 모든 image_gen 호출 프롬프트 첫머리에 이 블록을 그대로 고정]
+bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition
+
+[공통 형식 — 모든 페이지 동일]
+- 세로 1024x1536(2:3), single comic page, 2x3 grid (2 columns x 3 rows, equal white gutters, thin panel borders), reading order left-to-right then next row.
+- absolutely NO text, NO letters, NO speech bubbles, NO numbers, NO runes — any marks must be illegible abstract smudges. Korean captions are added later by PIL.
+- 절대 유혈·상처 묘사 금지(never gory) — 긴장은 구도·표정·그림자로만.
+
+[캐릭터 — 2페이지 전체에서 동일 디자인 유지, 매 페이지 프롬프트에 이 블록을 반복 삽입]
+- 미크로메가스: colossal friendly giant from Sirius, 12 times taller than mountains, luminous sky-blue skin, flowing silver-lavender hair, indigo scholar robe embroidered with golden constellations, warm curious smile, tall walking staff topped with a tiny glowing planet.
+- 토성인: knee-high to Micromégas (still enormous), round dusty-gold skin, droopy melancholic yet cute face, moss-green scholar robe, a small Saturn-ring halo hovering above his head, tiny brass telescope on a neck chain.
+- 지구 선원들: 1752 French polar expedition crew on a wooden sailing ship — tricorn hats, navy tailcoats, tiny energetic expressive figures.
+- 파리 학자들: bewigged 18th-century French academy scholars in velvet coats.
+
+[페이지별 장면 지시 — 이 순서대로 2장을 생성. PAGE 2 생성 직전 단계에서, image_gen 도구가 참조 입력 이미지를 지원하면 직전 페이지의 완성 no-text PNG(.work/ep032-p1-notext.png)을 스타일·캐릭터 일관성 참조로 첨부할 것(일관성 체인). 지원하지 않으면 캐릭터 블록 반복 삽입으로 체인을 대신할 것.]
+
+--- PAGE 1 (.work/ep032-p1-notext.png): 시리우스에서 온 방랑자
+- P1 (와이드 확립, 부감): 시리우스 항성 주위 행성의 새벽 — 보라색 산맥을 산책로처럼 걸어 넘는 거대한 하늘빛 거인, 발치의 수정 도시들이 반짝이는 먼지처럼 작음, 지평선에 크게 뜬 밝은 별.
+- P2 (미디엄): 고리가 그린 파스텔 하늘 아래 — 책상다리로 앉은 거인과 그 무릎쯤 오는 토성인, 토성인은 허리에 손을 얹고 삐죽 얼굴로 올려다보고, 거인은 다정하게 몸을 숙여 눈높이를 맞춤.
+- P3 (클로즈업): 화면을 채우는 두 얼굴 — 눈물까지 그렁한 자존심 강한 토성인의 한숨 얼굴과, 따뜻하게 듣는 거인의 미소, 배경에 흐릿한 고리 하늘.
+- P4 (미디엄, 다이내믹): 두 거인이 무지개 꼬리를 끄는 얼음 혜성 위로 나란히 뛰어오르는 장면, 옷자락과 머리칼이 바람에 날림, 옆으로 줄무늬 목성이 스쳐 지나감, 짜릿한 표정.
+- P5 (페이지 최대 칸, 무음 — 이 칸에는 그림만): 깊은 우주 — 별들 사이에 떠서 아래를 내려다보는 두 거인, 거인의 손끝 사이에 대리석 구슬처럼 감싸진 작고 푸르게 빛나는 지구, 두 얼굴에 경외감. 텍스트 완전 금지.
+- P6 (클로즈업, 후킹): 거인이 목걸이에서 뺀 반짝이는 다이아몬드를 보석감정사처럼 한쪽 눈에 대는 모습 — 다이아몬드 안쪽에 확대되어 비치는 작은 목범선 한 척과 갑판 위 점 같은 선원들, 햇살 받는 바다.
+
+--- PAGE 2 (.work/ep032-p2-notext.png): 원자만 한 철학자들
+- P1 (와이드, 갑판에서 올려다보는 앙각): 목범선 갑판 — 삼각모자 선원들이 하늘을 가리키며 놀라 올려다보고, 돛대 위 하늘을 가득 채운 거인의 커다란 온화한 파란 눈과 미소 얼굴, 선체 옆으로 고래 한 마리가 몸을 내밀고 있음.
+- P2 (미디엄): 거인의 거대한 손이 장난감 같은 작은 배를 향해 황동 나팔과 깔때기로 된 즉석 청취 기계를 내려주는 모습, 거인의 귀가 가까이 다가와 있고 장난기 어린 표정.
+- P3 (미디엄, 대립): 갑판 위 열변을 토하는 작은 철학자들(모자를 벗어 흔들며)과, 구름 뒤에 흐릿하게 떠서 충격과 연민이 뒤섞인 두 거인의 얼굴 — 극단적 크기 대비의 코미디 구도.
+- P4 (클로즈업): 난간 위에 선 작은 신부 한 명이 가슴을 펴고 제 심장을 가리킴, 그 옆에 거인의 거대한 검지 손가락이 벽처럼 부드럽게 다가와 있고, 따뜻한 빛.
+- P5 (와이드): 황금빛 노을 바다의 작별 — 두 거인이 별빛 줄기가 되어 하늘로 스러져 올라가고, 작은 배는 평온하게 돛을 펼침, 갑판의 선원들이 벨벳 방석 위 손톱만 한 하얀 책 하나를 둘러싸고 환호.
+- P6 (클로즈업 정물, 여운): 촛불 밝은 파리 과학 아카데미 홀 — 가발을 쓴 학자들이 확대경을 들고 엄지 손가락만 한 펼쳐진 책을 들여다봄, 그 책의 페이지는 순백의 백지, 어리둥절한 얼굴들.
+
+[각 페이지 검증·재생성 규칙]
+페이지마다 생성 직후: 파일 존재 + PNG 시그니처 + 300KB 이상 + 세로 2:3 비율(±10%) 확인. 실패한 페이지만 최대 2회 재생성(성공 페이지 절대 재생성 금지). 2장 모두 성공 시 다음 단계로.
+
+[2단계 — PIL 한글 후조판]
+.work/letter_ep032.py 가 이미 작성되어 있다. 그대로 실행만 한다: python3 .work/letter_ep032.py — 출력: episodes/sf-daily-032-micromegas/page-01.png .. page-02.png + scroll.png. 스크립트 수정 금지(실행 오류 시에만 오류 내용을 보고하고 멈춘다).

@@ -1,0 +1,52 @@
+sf-daily 리포 #026화(에드윈 A. 애벗 "플랫랜드", Flatland, 1884) 3페이지 만화를 한 번의 세션으로 완성하라. 현재 디렉터리(~/tmp/sf-daily)에서 작업. git 명령 사용 금지. 최종 산출물: episodes/sf-daily-026-flatland/page-01.png .. page-03.png + scroll.png — 전부 no-text 생성 후 PIL 한글 후조판으로 완성한다.
+
+[공통 스타일 — 모든 image_gen 호출 프롬프트 첫머리에 이 블록을 그대로 고정]
+bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition
+
+[공통 형식 — 모든 페이지 동일]
+- 세로 1024x1536(2:3), single comic page, 2x3 grid (2 columns x 3 rows, equal white gutters, thin panel borders), reading order left-to-right then next row.
+- absolutely NO text, NO letters, NO speech bubbles, NO numbers, NO runes — any marks must be illegible abstract smudges. Korean captions are added later by PIL.
+
+[캐릭터 — 3페이지 전체에서 동일 디자인 유지, 매 페이지 프롬프트에 이 블록을 반복 삽입]
+- A. Square(주인공, 변호사): mint-green rounded square character, two friendly dot eyes on the upper edge, thin stick arms and legs, tiny cream bow-tie below the face, upright dignified posture.
+- 손자(육각형): small sky-blue hexagon with bright curious eyes, tiny limbs, bouncy energetic.
+- 아내: coral slender vertical line with one gentle dot eye at the top, thin small arms.
+- 구(스피어): large warm cream-gold sphere with soft glow, calm kind dot eyes, gentle radiating light rings, floats above the plane.
+- 라인랜드 왕: coral segment standing proudly on a row of tiny dot citizens, tiny simple crown shape (no letters).
+- 점(포인트랜드 왕): single glowing coral dot with faint ripple.
+- 사제(원): large soft lavender circle with stern heavy-lidded eyes.
+
+[페이지별 장면 지시 — 이 순서대로 3장을 생성. 각 장 생성 직전 단계에서, image_gen 도구가 참조 입력 이미지를 지원하면 직전 페이지의 완성 no-text PNG(.work/ep026-pN-1-notext.png)을 스타일·캐릭터 일관성 참조로 첨부할 것(일관성 체인). 지원하지 않으면 캐릭터 블록 반복 삽입으로 체인을 대신할 것.]
+
+--- PAGE 1 (.work/ep026-p1-notext.png): 플랫랜드 — 두께 제로의 나라
+- P1 (와이드 확립, 살짝 부감): 플랫랜드 전경 — 민트색 평원 위 파스텔 도형 시민들(산책하는 삼각형·사각형·오각형·육각형), 작은 직사각형 집들, 지평선의 하늘빛 안개. 종이 오려붙인 듯 평평함을 강조 — 원근 깊이 없는 납작한 세계.
+- P2 (미디엄, 가정): A. Square의 집 내부(납작한 디오라마식 실내) — 마주 보는 민트 사각형과 스카이블루 육각형(신나서 통통 튀는), 배경에 코랄색 선분 아내가 조용히 서 있음. 두 도형 사이에 반짝이는 기하 장난감.
+- P3 (미디엄, 유머): 안개 낀 아침 거리 — 코랄 삼각형 이웃이 민트 사각형에게 인사, 안개 리본 속에 삼각형이 살짝 둥글어 보임, 둘 다 킬킬 웃는 표정.
+- P4 (드림 클로즈업): 꿈속 라인랜드 — 패널 가로지르는 밝은 한 줄 위에 코랄 선분 왕과 쩍쩍 붙은 점 시민들, 그 옆에 A. Square의 사각형 얼굴이 둥실 떠 있음(꿈 표시의 부드러운 가장자리), 라벤더빛 꿈 톤.
+- P5 (크게, 갈등): 꿈속 대치 — 코랄 선분 왕이 몸을 돌리며 화난 표정(작은 빗금 표시), A. Square는 두 팔을 벌려 "전부 한 줄이 보인다"는 몸짓, 커다란 설득의 구도.
+- P6 (크게, 후킹): 깊은 민트색 밤의 방 — 잠에서 벌떡 깬 A. Square, 시선이 이끄는 벽 안쪽에서 크림빛으로 빛나는 원이 자라나고 있음, 은은한 빛 고리 2~3겹. 다음 페이지로 이어지는 긴장(팔레트는 밝게 유지).
+
+--- PAGE 2 (.work/ep026-p2-notext.png): 구의 방문 — 세 번째 차원
+- P1 (미디엄, 경악): 방 안 — 점점 커지는 크림빛 원을 마주 보고 굳은 A. Square, 눈이 동그랗게, 팔을 반쯤 들고 한 걸음 물러선 자세.
+- P2 (미디엄, 등장): 부유하는 크림빛 구(Sphere)가 온화한 표정으로 내려다보고, 아래에 작은 A. Square가 고개 젖히고 올려다봄 — 구 주위로 부드러운 빛 고리.
+- P3 (클로즈업, 대립): 얼굴 맞대기 — 몸을 앞으로 기울인 A. Square(분노, 손가락질)와 뒤로 물러나는 구(태연), 코랄 대비 민트의 티격태격 구도.
+- P4 (페이지 최대 칸, 무음 — 이 칸에는 그림만): 상승의 순간 — 옆에서 본 장면: 얇은 민트색 종이 한 장 같은 플랫랜드 평면 위로 A. Square가 구의 손에 이끌려 공중으로 뽑혀 올라가는 중, 평면 아래로 크림빛 광채가 쏟아짐, 사각형의 놀란 눈. 텍스트 완전 금지.
+- P5 (와이드 부감): 위에서 내려다본 플랫랜드 — 판지 위의 도형들처럼 모든 이웃의 내부가 한눈에: 삼각형의 속, 사각형의 속, 집의 안쪽까지 훤히. 구의 그림자가 평면 위에 둥글게 드리움, 경이로운 구도.
+- P6 (와이드, 우주): 3차원의 하늘 — 아득한 크림·민트 우주 공간, 구와 나란히 떠서 아래 세계를 내려다보는 작은 A. Square, 사각형의 눈동자에 별빛 같은 반짝임.
+
+--- PAGE 3 (.work/ep026-p3-notext.png): 계시, 그리고 감옥
+- P1 (미디엄): 포인트랜드 — 텅 빈 크림색 공간 중앙의 빛나는 코랄 점 하나(잔잔한 물결 무늬), 그것을 구와 A. Square가 바깥에서 조용히 들여다봄, 몽환적 구도.
+- P2 (클로즈업, 대립): A. Square(기대에 찬 몸짓, 두 손 모으듯)와 구(고개 젖히고 단호)가 다시 맞섬 — 희망과 거절의 표정 대비.
+- P3 (미디엄, 작별): 발밑에 플랫랜드 평면이 가까워진 높이 — 은은히 빛나는 구가 작별의 미소, A. Square는 작고 결의에 찬 자세, 크림빛 석양 조명.
+- P4 (크게, 설교): 플랫랜드 광장 — 받침대 위의 A. Square가 한 손가락을 하늘 높이 치켜들고 웅변, 아래에 모인 파스텔 도형 군중(고개 갸웃, 놀람, 찡그림 뒤섞임), 살짝 앙각 기운으로 손가락의 '위'를 강조.
+- P5 (미디엄, 연행): 라벤더 사제 원이 좌우 코랄 삼각형 위병 둘과 함께 A. Square를 호위하는 행렬 — 사각형은 고개는 숙였으나 눈은 위를 향함, 긴장은 구도로만.
+- P6 (와이드, 여운): 감옥 내부 — 크고 두꺼운 회청-민트 돌벽, 아주 높은 곳 작은 창문 하나에서 크림빛 빛줄기 한 가닥, 그 빛을 올려다보며 앉은 A. Square의 작은 실루엣, 조용하고 그리운 구도.
+
+[각 페이지 검증·재생성 규칙]
+페이지마다 생성 직후: 파일 존재 + PNG 시그니처 + 300KB 이상 + 세로 2:3 비율(±10%) 확인. 실패한 페이지만 최대 2회 재생성(성공 페이지 절대 재생성 금지). 3장 모두 성공 시 다음 단계로.
+
+[2단계 — PIL 한글 후조판]
+.work/letter_ep026.py 가 이미 작성되어 있다. 그대로 실행만 한다: python3 .work/letter_ep026.py — 출력: episodes/sf-daily-026-flatland/page-01.png .. page-03.png + scroll.png. 스크립트 수정 금지(실행 오류 시에만 오류 내용을 보고하고 멈춘다).
+
+[완료 조건]
+산출물 4개 파일이 모두 존재하고 각 300KB 이상이면 성공. 마지막에 산출물 경로 4줄(경로 | 바이트)과 "DONE"을 출력하라. 그 외 git 실행 금지.

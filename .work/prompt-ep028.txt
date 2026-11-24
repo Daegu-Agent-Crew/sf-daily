@@ -1,0 +1,48 @@
+sf-daily 리포 #028화(H.G. 웰스 "투명 인간", The Invisible Man, 1897) 3페이지 만화를 한 번의 세션으로 완성하라. 현재 디렉터리(~/tmp/sf-daily)에서 작업. git 명령 사용 금지. 최종 산출물: episodes/sf-daily-028-the-invisible-man/page-01.png .. page-03.png + scroll.png — 전부 no-text 생성 후 PIL 한글 후조판으로 완성한다.
+
+[공통 스타일 — 모든 image_gen 호출 프롬프트 첫머리에 이 블록을 그대로 고정]
+bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition
+
+[공통 형식 — 모든 페이지 동일]
+- 세로 1024x1536(2:3), single comic page, 2x3 grid (2 columns x 3 rows, equal white gutters, thin panel borders), reading order left-to-right then next row.
+- absolutely NO text, NO letters, NO speech bubbles, NO numbers, NO runes — any marks must be illegible abstract smudges. Korean captions are added later by PIL.
+
+[캐릭터 — 3페이지 전체에서 동일 디자인 유지, 매 페이지 프롬프트에 이 블록을 반복 삽입]
+- 그리핀(투명 인간): 몸은 투명 — 평소 완전 가림 차림: heavy white bandages wrapping the entire face, large round black goggles over the bandages, wide-brim black hat, long black coat, black gloves. 정체가 드러나는 순간에만: pale bald young scientist, faint pink-white skin, gaunt intense face(회상·최후 장면).
+- 켐프 박사: tall young doctor, tidy sandy-brown hair, mint-green doctor's coat over cream vest, kind but sharp eyes.
+- 홀 부인: round curious middle-aged innkeeper, coral apron over cream dress, hair in a bun.
+- 홀스(순경): ruddy-faced village constable, navy-blue uniform with brass buttons.
+- 마블: short stout tramp, ragged brown hat, oversized shabby coat, sweaty worried face.
+- 마을 사람들: pastel winter coats and scarves.
+
+[페이지별 장면 지시 — 이 순서대로 3장을 생성. 각 장 생성 직전 단계에서, image_gen 도구가 참조 입력 이미지를 지원하면 직전 페이지의 완성 no-text PNG(.work/ep028-p1-notext.png, .work/ep028-p2-notext.png)을 스타일·캐릭터 일관성 참조로 첨부할 것(일관성 체인). 지원하지 않으면 캐릭터 블록 반복 삽입으로 체인을 대신할 것.]
+
+--- PAGE 1 (.work/ep028-p1-notext.png): 눈보라 속의 손님
+- P1 (와이드 확립, 부감): 눈보라의 아이핑 마을 전경 — 언덕 위 하얀 눈 지붕들과 '코치와 말' 여관 간판, 아무도 다니지 않는 눈길을 홀로 걸어오는 검은 코트에 붕대 얼굴의 작은 실루엣.
+- P2 (클로즈업): 여관 현관 문간 — 붕대로 얼굴 전체를 감싼 손님, 붕대 틈새는 그저 어둠(눈·입이 보이지 않음), 커다란 검은 안경, 챙 넓은 모자, 찬 공기에 김이 나는 숨.
+- P3 (미디엄): 여관 2층 방 — 탁자 위 비커·붉은 약병·알코올 램프, 붉은 가루가 피어오르는 연기, 창틈으로 몰래 엿보는 마을 사람의 뒷모습.
+- P4 (미디엄, 오버숄더): 식탁 — 접시를 내려놓는 홀 부인 시점: 손님의 검은 코트 소매가 팔 없이 텅 빈 채 흐느적거리고, 검은 장갑은 의자 등걸이에 혼자 걸려 있음.
+- P5 (클로즈업): 텅 빈 검은 장갑 한 짝 클로즈업 — 안에 아무것도 없는데 손가락 부분이 움직인 듯 살짝 일그러진 형태.
+- P6 (미디엄, 후킹): 밤, 눈 내리는 창가 — 붕대 얼굴이 창밖 눈보라를 응시, 창유리에 김이 서리고 유리에는 사람 그림자가 비치지 않음.
+
+--- PAGE 2 (.work/ep028-p2-notext.png): 눈 위의 발자국
+- P1 (미디엄, 액션): 여관 앞 소동 — 몽둥이를 든 홀스와 마을 사람들이 문을 밀치는 순간, 손님이 두 손으로 제 붕대를 직접 뜯어내기 시작, 흩어지는 하얀 붕대 끝자락.
+- P2 (와이드): 눈밭 — 맨발 발자국이 쭉 이어지다 뚝 끊긴 지점, 바닥에 떨어진 붕대·검은 안경·코트 옷더미, 텅 빈 허공을 올려다보는 홀스의 믿을 수 없는 얼굴.
+- P3 (페이지 최대 칸, 무음 — 이 칸에는 그림만): 눈 내리는 마을길 — 재킷과 바지가 사람 형태로 부풀어 저절로 걷고 뛰는 텅 빈 옷들, 뒤로 흩날리는 스카프, 뒤쫓는 파스텔 코트의 군중. 텍스트 완전 금지.
+- P4 (클로즈업): 진흙 웅덩이 — 물과 흙이 튄 자리에 젖은 손 윤곽이 반투명하게 드러나 물방울을 떨구는 순간, 그 옆 놀란 군중의 신발들.
+- P5 (미디엄): 골목 추격 — 몽둥이와 삽을 든 군중이 사방으로 퍼져 달리고, 한쪽에선 마블이 귀를 틀어막은 채 떠밀리듯 허둥지둥 걷는 모습.
+- P6 (클로즈업, 여운): 돌길 바닥 — 눈보라 속에 흩날리며 내려앉는 하얀 붕대 한 조각. 조용한 정물 구도.
+
+--- PAGE 3 (.work/ep028-p3-notext.png): 보이지 않는 제왕
+- P1 (미디엄): 켐프의 서재, 밤 — 등불 아래 의자에 셔츠와 바지가 사람 형태로 앉아 있으나 안이 텅 빔(목 없는 옷), 마주 선 켐프가 겁에 질려 의자를 뒤로 빼는 자세.
+- P2 (크게, 회상): 과거의 대학 실험실 — 붉은 약병과 플라스크 불빛, 큰 거울 앞에서 오른손부터 서서히 투명해져 실오라기처럼 옅어지는 젊은 그리핀, 환희와 공포가 뒤섞인 얼굴.
+- P3 (미디엄, 대립): 창가 — 켐프의 옷깃이 허공에 홱 잡혀 구부러지고(보이지 않는 손에 이끌리는 옷), 창밖엔 방의 인영이 하나도 비치지 않는 밤거리, 켐프의 다급한 얼굴.
+- P4 (와이드, 액션): 마을 골목 최후의 결전 — 낫·삽·몽둥이를 든 군중이 좁은 골목을 가득 메우고, 한가운데 진흙투성이 반투명 인영이 옷자락 얼룩만 드러낸 채 둘러싸이는 정점.
+- P5 (크게): 골목 바닥 — 쓰러진 몸이 공기 중에 그려지듯 서서히 나타나는 순간(가슴과 얼굴 윤곽이 젖은 연기처럼 짙어짐), 그 위로 내려오는 군중의 긴 그림자.
+- P6 (클로즈업, 여운): 마지막 칸 — 온전히 나타난 젊고 피폐한 그리핀의 얼굴 클로즈업, 감겨가는 눈, 고요한 새벽빛. 조용한 마무리.
+
+[각 페이지 검증·재생성 규칙]
+페이지마다 생성 직후: 파일 존재 + PNG 시그니처 + 300KB 이상 + 세로 2:3 비율(±10%) 확인. 실패한 페이지만 최대 2회 재생성(성공 페이지 절대 재생성 금지). 3장 모두 성공 시 다음 단계로.
+
+[2단계 — PIL 한글 후조판]
+.work/letter_ep028.py 가 이미 작성되어 있다. 그대로 실행만 한다: python3 .work/letter_ep028.py — 출력: episodes/sf-daily-028-the-invisible-man/page-01.png .. page-03.png + scroll.png. 스크립트 수정 금지(실행 오류 시에만 오류 내용을 보고하고 멈춘다).

@@ -1,0 +1,48 @@
+sf-daily 리포 #027화(로버트 루이스 스티븐슨 "지킬 박사와 하이드", The Strange Case of Dr Jekyll and Mr Hyde, 1886) 3페이지 만화를 한 번의 세션으로 완성하라. 현재 디렉터리(~/tmp/sf-daily)에서 작업. git 명령 사용 금지. 최종 산출물: episodes/sf-daily-027-dr-jekyll-and-mr-hyde/page-01.png .. page-03.png + scroll.png — 전부 no-text 생성 후 PIL 한글 후조판으로 완성한다.
+
+[공통 스타일 — 모든 image_gen 호출 프롬프트 첫머리에 이 블록을 그대로 고정]
+bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition
+
+[공통 형식 — 모든 페이지 동일]
+- 세로 1024x1536(2:3), single comic page, 2x3 grid (2 columns x 3 rows, equal white gutters, thin panel borders), reading order left-to-right then next row.
+- absolutely NO text, NO letters, NO speech bubbles, NO numbers, NO runes — any marks must be illegible abstract smudges. Korean captions are added later by PIL.
+
+[캐릭터 — 3페이지 전체에서 동일 디자인 유지, 매 페이지 프롬프트에 이 블록을 반복 삽입]
+- 지킬 박사: tall dignified middle-aged doctor, soft silver-gray hair, round glasses, cream waistcoat under a sky-blue frock coat, warm gentle smile, thin walking cane.
+- 하이드: shorter wiry young man, messy dark plum-purple hair, sharp jagged grin, dark plum jacket, slightly hunched prowling posture — same person as Jekyll but younger, smaller, coiled menace (bright palette, menace via posture and grin only).
+- 어터슨 변호사: lean stern lawyer, slate-navy suit, gray top hat, bushy eyebrows, straight walking stick.
+- 랜년 박사: kindly elderly doctor, white mustache, cream-gold waistcoat, easily shocked round eyes.
+- 푸울(집사): worried burgundy-uniform butler.
+- 케루 경: gentle elderly gentleman with white hair and a gold-topped cane.
+
+[페이지별 장면 지시 — 이 순서대로 3장을 생성. 각 장 생성 직전 단계에서, image_gen 도구가 참조 입력 이미지를 지원하면 직전 페이지의 완성 no-text PNG(.work/ep027-p1-notext.png, .work/ep027-p2-notext.png)을 스타일·캐릭터 일관성 참조로 첨부할 것(일관성 체인). 지원하지 않으면 캐릭터 블록 반복 삽입으로 체인을 대신할 것.]
+
+--- PAGE 1 (.work/ep027-p1-notext.png): 두 얼굴의 실험
+- P1 (와이드 확립, 살짝 부감): 새벽 안개의 런던 뒷골목 — 낡은 붉은 벽돌 건물 옆면의 무겁게 닫힌 옆문(실험실 문), 그 앞에 회색 실루엣의 어터슨. 잔디와 안개 리본, 물감처럼 피어오르는 하늘빛 새벽빛.
+- P2 (클로즈업): 그 문 앞 — 하이드가 어깨 너머로 반쯤 돌아본 얼굴 클로즈업, 찢어진 듯한 넓은 미소, 눈매 날카로움, 코너의 어터슨 놀란 눈. 긴장은 표정으로만(팔레트 밝게).
+- P3 (미디엄, 오버숄더): 지킬의 서재 — 난로의 따뜻한 불빛, 지킬이 미소 지어 유서 이야기를 꺼내는 자세, 맞은편 어터슨이 몸을 앞으로 기울여 의심 어린 눈.
+- P4 (크게, 결심): 자정의 실험실 — 달빛이 드는 창, 선반의 푸른·민트 약병들, 두 손으로 잔을 높이 든 지킬의 옆얼굴, 결의에 찬 눈동자.
+- P5 (클로즈업, 변신): 약을 마신 순간 — 코랄색 연기가 감싸는 가운데 움츠러들며 일그러지는 몸, 젊어지고 사나워지는 얼굴의 중간 지점(안경이 반쯤 미끄러짐), 찢어진 미소가 번지는 중.
+- P6 (미디엄, 후킹): 새벽 거리를 활보하는 하이드의 뒷모습 — 그러나 가로등 불빛 아래 바닥에 드리운 그림자는 지킬 박사(안경·지팡이 실루엣)의 것. 두 인격의 그림자 대비.
+
+--- PAGE 2 (.work/ep027-p2-notext.png): 안개의 밤
+- P1 (미디엄): 밤 거리 — 하이드가 쿵 하고 아이를 치고 그대로 걸어 지나가는 과장된 동작, 놀라 입을 벌린 코랄 파스텔 행인 둘, 흩날리는 종이 연필.
+- P2 (미디엄): 지킬의 응접실 — 웃으며 활짝 팔을 벌린 지킬("끝났네"), 탁자 위 조그만 약봉지 하나, 어터슨은 그것을 곁눈질.
+- P3 (페이지 최대 칸, 무음 — 이 칸에는 그림만): 달밤의 안개 낀 광장 — 하얀 머리의 케루 경이 정중히 인사를 건네는 순간, 마주 선 하이드가 지팡이를 머리 위로 치켜든 실루엣, 달빛 역광, 날카로운 대각선 구도. 텍스트 완전 금지.
+- P4 (와이드, 부감): 안개의 런던 거리 추적 — 뛰는 경찰관들과 어터슨, 사라져 버린 하이드, 바닥에 떨어진 지팡이 부러진 절반 하나.
+- P5 (미디엄, 대립): 지킬의 서재 — 창백해진 지킬(한 손으로 벽난로를 짚음)과 눈을 가늘게 뜨고 다그치는 어터슨, 탁자 위 부러진 지팡이 절반.
+- P6 (클로즈업, 여운): 서랍 위 봉인된 편지 봉투 더미와 열쇠 꾸러미 — 초점 밖으로 흐려진 창백한 지킬의 얼굴. 조용한 정물 구도.
+
+--- PAGE 3 (.work/ep027-p3-notext.png): 마지막 밤
+- P1 (미디엄): 랜년의 서재, 밤 — 떨리는 손으로 종이 꾸러미와 약병을 내미는 하이드, 마주 선 랜년의 동그란 놀란 눈, 촛불 조명.
+- P2 (크게, 경악): 커튼 앞 — 잔을 비운 하이드의 몸에서 코랄 연기가 피어오르며 지킬 박사의 모습으로 되돌아가는 변신 순간, 그것을 목격한 랜년이 의자로 넘어가며 기절 직전. 페이지에서 가장 강한 칸.
+- P3 (미디엄, 병상): 침대에 누운 랜년 — 뼈만 남은 창백한 얼굴, 손에 쥔 편지 한 장을 어터슨에게 내미는 모습, 창백한 아침빛.
+- P4 (미디엄, 액션): 지킬 저택 뒷문 앞 — 도끼로 문을 내리치는 어터슨, 옆에서 겁먹은 얼굴로 등을 돌리는 푸울, 갈라진 문틈 새로 새어 나오는 민트빛 실내.
+- P5 (미디엄, 조용): 실험실 바닥 — 크게 뒤틀린 채 움직이지 않는 하이드, 곁에 굴러든 빈 약병 하나와 두꺼운 봉투, 차가워 보이는 회청-민트 조명(팔레트는 밝게 유지).
+- P6 (클로즈업, 여운): 마지막 칸 — 어터슨의 손에 펼쳐진 고백서, 그 위로 겹쳐 보이는 지킬의 온화한 얼굴과 하이드의 찢어진 미소가 반투명하게 좌우로 겹친 구도. 조용한 마무리.
+
+[각 페이지 검증·재생성 규칙]
+페이지마다 생성 직후: 파일 존재 + PNG 시그니처 + 300KB 이상 + 세로 2:3 비율(±10%) 확인. 실패한 페이지만 최대 2회 재생성(성공 페이지 절대 재생성 금지). 3장 모두 성공 시 다음 단계로.
+
+[2단계 — PIL 한글 후조판]
+.work/letter_ep027.py 가 이미 작성되어 있다. 그대로 실행만 한다: python3 .work/letter_ep027.py — 출력: episodes/sf-daily-027-dr-jekyll-and-mr-hyde/page-01.png .. page-03.png + scroll.png. 스크립트 수정 금지(실행 오류 시에만 오류 내용을 보고하고 멈춘다).

@@ -1,0 +1,815 @@
+OpenAI Codex v0.163.0
+--------
+workdir: /data/data/com.termux/files/home/tmp/sf-daily
+model: gpt-6-sol
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a2037a-80b7-7511-9d2a-7439af92ed7c
+--------
+user
+sf-daily 리포 #053화(표도르 도스토옙스키 "어릿광두의 꿈" — The Dream of a Ridiculous Man, 1877, 잡지 《작가의 일기》 1877년 4월호 수록 — 세상에게 비웃음만 사는 남자가 꿈속에서 지구와 똑같은 낙원 행성을 방문하고, 그의 거짓말 하나로 낙원이 타락하는 것을 지켜보고 깨어난다 — 평행 세계 방문을 그린 초기 SF 계보의 고전. 무대는 1870년대 페테르부르크와 꿈속 쌍둥이 지구. 세상이 전부 우스워져 버린 어릿광두는 자살을 결심하지만 의자에 앉은 채 잠들어 버리고 — 꿈에서 소리 없는 전령들에게 이끌려 지구와 닮은 아름다운 행성에 떨어진다. 이마에 태양빛이 반짝이는 사람들의 낙원에서 그는 처음으로 사랑을 배우지만, 장난 삼아 들려준 거짓말이 전쟁까지 번지는 타락의 씨앗이 된다. 깨어난 새벽, 그는 어젯밤 외면했던 꼬마 아가씨를 찾아간다 — 사람들은 선을 안다, 나는 그것을 보았다) 2페이지 만화를 한 번의 세션으로 완성하라. 현재 디렉터리(~/tmp/sf-daily)에서 작업. git 명령 사용 금지. 최종 산출물: episodes/sf-daily-053-dream-of-a-ridiculous-man/page-01.png .. page-02.png + scroll.png — 전부 내장 image_gen 도구로 no-text 생성 후 PIL 한글 후조판으로 완성한다.
+
+[공통 스타일 — 모든 image_gen 호출 프롬프트 첫머리에 이 블록을 그대로 고정]
+bright casual webtoon style, vivid pastel colors (sky blue, cream, coral, mint), soft bold linework, rounded friendly character design, expressive exaggerated faces, flat colors, cheerful bright lighting, clean readable composition
+
+[공통 형식 — 모든 페이지 동일]
+- 세로 1024x1536(2:3), single comic page, 2x3 grid (2 columns x 3 rows, equal white gutters, thin panel borders), reading order left-to-right then next row.
+- absolutely NO text, NO letters, NO speech bubbles, NO numbers — any marks must be illegible abstract smudges. Korean captions are added later by PIL.
+- 이 화의 톤 — 절망조차 밝게: 페테르부르크 밤은 민트빛 별과 따뜻한 가스등 노란빛, 꿈의 우주는 라벤더·민트 성운, 낙원은 금빛 초원과 코랄 하늘의 만개한 파스텔. 어두운 팔레트 금지 — 슬픔은 색이 아니라 표정과 구도로 전달.
+
+[캐릭터·배경 — 2페이지 전체에서 동일 디자인 유지, 매 페이지 프롬프트에 이 블록을 반복 삽입]
+- 어릿광두(주인공): 스무여덟쯤의 청년, 헝클어진 다크 브라운 머리, 크고 처진 눈, 올리브그린 코트에 늘어진 머스터드색 스카프, 낡은 갈색 부츠 — 회색빛 표정에서 시작해 페이지가 지날수록 눈이 빛나는 표정으로 변한다.
+- 꼬마 아가씨: 여덟 살쯤, 노란 코트에 빨간 베레모, 갈색 머리 두 갈래 땋기, 눈물이 그렁한 커다란 눈.
+- 낙원의 사람들: 빛나는 흰색·라벤더 옷, 이마마다 작은 금빛 태양 문양, 나이와 성별을 넘어 모두가 환하게 아름다운 얼굴.
+- 배경: 1870년대 페테르부르크 — 눈 내리는 가스등 골목과 석조 제방, 좁은 하숙방(아치창·촛불·달빛·흩어진 원고); 꿈의 우주(민트·라벤더 성운과 별); 쌍둥이 지구 낙원 — 금빛 초원, 푸른 호수, 만개한 코랄·민트 꽃밭, 따뜻한 태양빛.
+
+[페이지별 장면 지시 — 이 순서대로 2장을 생성. PAGE 2 생성 직전 단계에서, image_gen 도구가 참조 입력 이미지를 지원하면 직전 페이지의 완성 no-text PNG(.work/ep053-p1-notext.png)을 스타일·캐릭터 일관성 참조로 첨부할 것(일관성 체인). 지원하지 않으면 캐릭터 블록 반복 삽입으로 체인을 대신할 것.]
+
+PAGE 1 (6칸):
+1칸(미디엄): 눈 내리는 저녁 페테르부르크 골목 — 가스등의 따뜻한 노란빛, 지나가는 행인들이 어릿광두를 손가락질하며 웃는 모습, 코트 깃을 세우고 무표정히 걷는 어릿광두.
+2칸(클로즈업): 노란 코트의 꼬마 아가씨가 어릿광두의 소매를 붙잡고 매달리는 순간 — 눈물 그렁한 큰 눈으로 올려다보는 아이와, 시선을 피해 옆으로 지나쳐 버리는 청년.
+3칸(미디엄): 달빛 드는 하숙방 — 아치창 옆 낡은 의자에 앉아 눈을 감고 고개를 떨군 어릿광두, 촛불 책상 위 흩어진 원고, 창밖 민트빛 별.
+4칸(와이드, 부감, 무음): 꿈의 우주 — 민트·라벤더 성운과 별들 사이를 소리 없이 떠다니는 어릿광두, 바람에 실린 씨앗처럼. 완전히 무음인 칸.
+5칸(미디엄): 눈앞에 가득 차오르는 쌍둥이 지구 — 금빛 초원과 푸른 바다가 빛나는 아름다운 행성, 행성의 빛에 얼굴이 밝아지는 어릿광두.
+6칸(와이드): 낙원의 첫 만남 — 이마에 금빛 태양 문양이 반짝이는 흰·라벤더 옷의 사람들이 호수가 꽃밭에서 두 팔을 벌려 어릿광두를 맞이하는 장면, 코랄색 하늘.
+
+PAGE 2 (6칸):
+1칸(미디엄): 낙원의 나날 — 사람들이 어릿광두를 빙 둘러싸고 웃으며 정성껏 돌보는 장면, 꽃잎 목욕과 깨끗한 흰 옷, 아이들이 양쪽 손을 잡아 끄는 모습.
+2칸(클로즈업): 어릿광두의 첫 거짓말 — 장난스럽게 손짓하며 몸을 앞으로 기울인 그와, 눈을 반짝이며 순진하게 귀 기울이는 낙원 사람들의 얼굴들.
+3칸(와이드, 최대): 타락이 번지는 낙원 — 다투고 밀치는 사람들, 처음 생겨난 울타리와 깃발, 시들기 시작한 꽃밭, 움츬 아이들, 아득히 번지는 검은 연기.
+4칸(클로즈업, 무음): 가시넝쿨 꽃밭 사이 무릎 꿇고 고개 숙인 어릿광두 — 떨어지는 눈물 한 방울, 황혼으로 흐려진 배경. 완전히 무음인 칸.
+5칸(미디엄, 앙각): 깨어난 새벽 하숙방 — 침대에서 벌떡 상체를 일으킨 어릿광두, 창으로 쏟아지는 눈부신 아침 햇살, 책상 위에 그대로 놓인 은빛 권총.
+6칸(미디엄): 눈 녹는 아침 골목 — 노란 코트의 꼬마 아가씨를 찾아내 마주 앉아 두 손을 잡는 어릿광두, 활짝 웃는 두 사람, 골목에 스며드는 따뜻한 봄 햇살.
+
+[생성·후조판 절차]
+1. PAGE 1 생성: 위 장면 6칸을 하나의 1024x1536 PNG로. 산출물을 .work/ep053-p1-notext.png 로 저장.
+2. PAGE 2 생성: PAGE 1의 산출물(.work/ep053-p1-notext.png)을 참조로 첨부(지원 시)하고 캐릭터 블록을 반복해 스타일을 이어받는다. 산출물을 .work/ep053-p2-notext.png 로 저장.
+3. 각 PNG에 대해 PIL(Image.open(...).size, .verify())로 1024x1536 PNG 형식 검사. 실패한 페이지만 재생성(성공 페이지 재생성 금지).
+4. python3 .work/letter_ep053.py 를 수정 없이 실행해 한글 후조판 페이지 2장과 세로 결합 scroll.png를 만든다.
+5. 최종 파일 존재·크기(수백 KB 이상)를 확인하고 목록을 출력한다.
+
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (/data/data/com.termux/files/home/.codex/config.toml): `sandbox` is ignored.
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (/data/data/com.termux/files/home/.codex/config.toml): `sandbox` is ignored.
+2026-11-22T13:38:11.827674Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer realm=\"OAuth\", resource_metadata=\"https://openai.canva.com/.well-known/oauth-protected-resource/mcp\", error=\"invalid_token\", error_description=\"Missing or invalid access token\"" })
+codex
+먼저 이미지 생성 스킬과 후조판 스크립트, 출력 경로를 확인하겠습니다. 지정하신 6칸 구성으로 무문자 원본 두 장을 순서대로 만들고, 각 장을 검사한 뒤 스크립트를 그대로 실행하겠습니다.
+exec
+/bin/sh -lc 'cat /data/data/com.termux/files/home/.codex/skills/.system/imagegen/SKILL.md' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+---
+name: "imagegen"
+description: "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas."
+---
+
+# Image Generation Skill
+
+Generates or edits images for the current project (for example website assets, game assets, UI mockups, product mockups, wireframes, logo design, photorealistic images, or infographics).
+
+## Top-level modes and rules
+
+This skill has exactly two top-level modes:
+
+- **Default built-in tool mode (preferred):** built-in `image_gen` tool for image generation, editing, and transparent-image requests. Does not require `OPENAI_API_KEY`.
+- **Fallback CLI mode:** `scripts/image_gen.py` CLI. Use when the user explicitly asks for or confirms the CLI/API/model path. Requires `OPENAI_API_KEY`.
+
+Within CLI fallback, the CLI exposes three subcommands:
+
+- `generate`
+- `edit`
+- `generate-batch`
+
+Rules:
+- Use the built-in `image_gen` tool by default for normal image generation and editing requests.
+- Do not switch to CLI fallback for ordinary quality, size, or file-path control.
+- For transparent images, ask built-in `image_gen` for a transparent background and preserve the generated alpha.
+- Never silently switch from built-in `image_gen` or CLI `gpt-image-2` to CLI `gpt-image-1.5`; ask the user first unless they explicitly requested `gpt-image-1.5`.
+- The word `batch` by itself does not mean CLI fallback. If the user asks for many assets or says to batch-generate assets without explicitly asking for CLI/API/model controls, stay on the built-in path and issue one built-in call per requested asset or variant.
+- If the built-in tool fails or is unavailable, tell the user the CLI fallback exists and that it requires `OPENAI_API_KEY`. Proceed only if the user explicitly asks for that fallback.
+- If the user explicitly asks for CLI mode, use the bundled `scripts/image_gen.py` workflow. Do not create one-off SDK runners.
+- Never modify `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
+
+Built-in save-path policy:
+- In built-in tool mode, Codex saves generated images under `$CODEX_HOME/*` by default.
+- Do not describe or rely on OS temp as the default built-in destination.
+- Do not describe or rely on a destination-path argument (if any) on the built-in `image_gen` tool. If a specific location is needed, generate first and then move or copy the selected output from `$CODEX_HOME/generated_images/...`.
+- Save-path precedence in built-in mode:
+  1. If the user names a destination, move or copy the selected output there.
+  2. If the image is meant for the current project, move or copy the final selected image into the workspace before finishing.
+  3. If the image is only for preview or brainstorming, render it inline; the underlying file can remain at the default `$CODEX_HOME/*` path.
+- Never leave a project-referenced asset only at the default `$CODEX_HOME/*` path.
+- Do not overwrite an existing asset unless the user explicitly asked for replacement; otherwise create a sibling versioned filename such as `hero-v2.png` or `item-icon-edited.png`.
+
+Shared prompt guidance for both modes lives in `references/prompting.md` and `references/sample-prompts.md`.
+
+Fallback-only docs/resources for CLI mode:
+- `references/cli.md`
+- `references/image-api.md`
+- `references/codex-network.md`
+- `scripts/image_gen.py`
+
+## When to use
+- Generate a new image (concept art, product shot, cover, website hero)
+- Generate a new image using one or more reference images for style, composition, or mood
+- Edit an existing image (inpainting, lighting or weather transformations, background replacement, object removal, compositing, transparent background)
+- Produce many assets or variants for one task
+
+## When not to use
+- Extending or matching an existing SVG/vector icon set, logo system, or illustration library inside the repo
+- Creating simple shapes, diagrams, wireframes, or icons that are better produced directly in SVG, HTML/CSS, or canvas
+- Making a small project-local asset edit when the source file already exists in an editable native format
+- Any task where the user clearly wants deterministic code-native output instead of a generated bitmap
+
+## Decision tree
+
+Think about two separate questions:
+
+1. **Intent:** is this a new image or an edit of an existing image?
+2. **Execution strategy:** is this one asset or many assets/variants?
+
+Intent:
+- If the user wants to modify an existing image while preserving parts of it, treat the request as **edit**.
+- If the user provides images only as references for style, composition, mood, or subject guidance, treat the request as **generate**.
+- If the user provides no images, treat the request as **generate**.
+
+Built-in edit semantics:
+- Built-in edit mode is for images already visible in the conversation context, such as attached images or images generated earlier in the thread.
+- If the user wants to edit a local image file with the built-in tool, first load it with built-in `view_image` tool so the image is visible in the conversation context, then proceed with the built-in edit flow.
+- Do not promise arbitrary filesystem-path editing through the built-in tool.
+- If a local file still needs direct file-path control, masks, or other explicit CLI-only parameters, use the explicit CLI fallback only when the user asks for it.
+- For edits, preserve invariants aggressively and save non-destructively by default.
+
+Execution strategy:
+- In the built-in default path, produce many assets or variants by issuing one `image_gen` call per requested asset or variant.
+- In the CLI fallback path, use the CLI `generate-batch` subcommand only when the user explicitly chose CLI mode and needs many prompts/assets.
+- For many distinct assets, do not use `n` as a substitute for separate prompts. `n` is for variants of one prompt; distinct assets need distinct built-in calls or distinct CLI `generate-batch` jobs.
+
+Assume the user wants a new image unless they clearly ask to change an existing one.
+
+## Workflow
+1. Decide the top-level mode: built-in by default, including transparent-output requests; fallback CLI only if explicitly requested or confirmed.
+2. Decide the intent: `generate` or `edit`.
+3. Decide whether the output is preview-only or meant to be consumed by the current project.
+4. Decide the execution strategy: single asset vs repeated built-in calls vs CLI `generate-batch`.
+5. Collect inputs up front: prompt(s), exact text (verbatim), constraints/avoid list, and any input images.
+6. For every input image, label its role explicitly:
+   - reference image
+   - edit target
+   - supporting insert/style/compositing input
+7. If the edit target is only on the local filesystem and you are staying on the built-in path, inspect it with `view_image` first so the image is available in conversation context.
+8. If the user asked for a photo, illustration, sprite, product image, banner, or other explicitly raster-style asset, use `image_gen` rather than substituting SVG/HTML/CSS placeholders. If the request is for an icon, logo, or UI graphic that should match existing repo-native SVG/vector/code assets, prefer editing those directly instead.
+9. Augment the prompt based on specificity:
+   - If the user's prompt is already specific and detailed, normalize it into a clear spec without adding creative requirements.
+   - If the user's prompt is generic, add tasteful augmentation only when it materially improves output quality.
+10. Use the built-in `image_gen` tool by default.
+11. For transparent-output requests, ask built-in `image_gen` for a transparent background and preserve the generated alpha channel.
+12. Inspect outputs and validate: subject, style, composition, text accuracy, and invariants/avoid items.
+13. Iterate with a single targeted change, then re-check.
+14. For preview-only work, render the image inline; the underlying file may remain at the default `$CODEX_HOME/generated_images/...` path.
+15. For project-bound work, move or copy the selected artifact into the workspace and update any consuming code or references. Never leave a project-referenced asset only at the default `$CODEX_HOME/generated_images/...` path.
+16. For batches or multi-asset requests, persist every requested deliverable final in the workspace unless the user explicitly asked to keep outputs preview-only. Discarded variants do not need to be kept unless requested.
+17. If the user explicitly chooses or confirms the CLI fallback, then use the fallback-only docs for model, quality, size, `input_fidelity`, masks, output format, output paths, and network setup.
+18. Always report the final saved path(s) for any workspace-bound asset(s), plus the final prompt or prompt set and whether the built-in tool or fallback CLI mode was used.
+
+## Transparent image requests
+
+Ask built-in `image_gen` for a genuinely transparent background and preserve its alpha.
+
+## Prompt augmentation
+
+Reformat user prompts into a structured, production-oriented spec. Make the user's goal clearer and more actionable, but do not blindly add detail.
+
+Treat this as prompt-shaping guidance, not a closed schema. Use only the lines that help, and add a short extra labeled line when it materially improves clarity.
+
+### Specificity policy
+
+Use the user's prompt specificity to decide how much augmentation is appropriate:
+
+- If the prompt is already specific and detailed, preserve that specificity and only normalize/structure it.
+- If the prompt is generic, you may add tasteful augmentation when it will materially improve the result.
+
+Allowed augmentations:
+- composition or framing hints
+- polish level or intended-use hints
+- practical layout guidance
+- reasonable scene concreteness that supports the stated request
+
+Not allowed augmentations:
+- extra characters or objects that are not implied by the request
+- brand names, slogans, palettes, or narrative beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Use-case taxonomy (exact slugs)
+
+Classify each request into one of these buckets and keep the slug consistent across prompts and references.
+
+Generate:
+- photorealistic-natural — candid/editorial lifestyle scenes with real texture and natural lighting.
+- product-mockup — product/packaging shots, catalog imagery, merch concepts.
+- ui-mockup — app/web interface mockups and wireframes; specify the desired fidelity.
+- infographic-diagram — diagrams/infographics with structured layout and text.
+- scientific-educational — classroom explainers, scientific diagrams, and learning visuals with required labels and accuracy constraints.
+- ads-marketing — campaign concepts and ad creatives with audience, brand position, scene, and exact tagline/copy.
+- productivity-visual — slide, chart, workflow, and data-heavy business visuals.
+- logo-brand — logo/mark exploration, vector-friendly.
+- illustration-story — comics, children’s book art, narrative scenes.
+- stylized-concept — style-driven concept art, 3D/stylized renders.
+- historical-scene — period-accurate/world-knowledge scenes.
+
+Edit:
+- text-localization — translate/replace in-image text, preserve layout.
+- identity-preserve — try-on, person-in-scene; lock face/body/pose.
+- precise-object-edit — remove/replace a specific element (including interior swaps).
+- lighting-weather — time-of-day/season/atmosphere changes only.
+- background-extraction — transparent background / clean cutout. Ask built-in `image_gen` for actual transparency.
+- style-transfer — apply reference style while changing subject/scene.
+- compositing — multi-image insert/merge with matched lighting/perspective.
+- sketch-to-render — drawing/line art to photoreal render.
+
+## Shared prompt schema
+
+Use the following labeled spec as shared prompt scaffolding for both top-level modes:
+
+```text
+Use case: <taxonomy slug>
+Asset type: <where the asset will be used>
+Primary request: <user's main prompt>
+Input images: <Image 1: role; Image 2: role> (optional)
+Scene/backdrop: <environment>
+Subject: <main subject>
+Style/medium: <photo/illustration/3D/etc>
+Composition/framing: <wide/close/top-down; placement>
+Lighting/mood: <lighting + mood>
+Color palette: <palette notes>
+Materials/textures: <surface details>
+Text (verbatim): "<exact text>"
+Constraints: <must keep/must avoid>
+Avoid: <negative constraints>
+```
+
+Notes:
+- `Asset type` and `Input images` are prompt scaffolding, not dedicated CLI flags.
+- `Scene/backdrop` refers to the visual setting. It is not the same as the fallback CLI `background` parameter, which controls output transparency behavior.
+- Fallback-only execution notes such as `Quality:`, `Input fidelity:`, masks, output format, and output paths belong in the CLI path only. Do not treat them as built-in `image_gen` tool arguments.
+
+Augmentation rules:
+- Keep it short.
+- Add only the details needed to improve the prompt materially.
+- For edits, explicitly list invariants (`change only X; keep Y unchanged`).
+- If any critical detail is missing and blocks success, ask a question; otherwise proceed.
+
+## Examples
+
+### Generation example (hero image)
+```text
+Use case: product-mockup
+Asset type: landing page hero
+Primary request: a minimal hero image of a ceramic coffee mug
+Style/medium: clean product photography
+Composition/framing: wide composition with usable negative space for page copy if needed
+Lighting/mood: soft studio lighting
+Constraints: no logos, no text, no watermark
+```
+
+### Edit example (invariants)
+```text
+Use case: precise-object-edit
+Asset type: product photo background replacement
+Primary request: replace only the background with a warm sunset gradient
+Constraints: change only the background; keep the product and its edges unchanged; no text; no watermark
+```
+
+## Prompting best practices
+- Structure prompt as scene/backdrop -> subject -> details -> constraints.
+- Include intended use (ad, UI mock, infographic) to set the mode and polish level.
+- Use camera/composition language for photorealism.
+- Only use SVG/vector stand-ins when the user explicitly asked for vector output or a non-image placeholder.
+- Quote exact text and specify typography + placement.
+- For tricky words, spell them letter-by-letter and require verbatim rendering.
+- For multi-image inputs, reference images by index and describe how they should be used.
+- For edits, repeat invariants every iteration to reduce drift.
+- Iterate with single-change follow-ups.
+- If the prompt is generic, add only the extra detail that will materially help.
+- If the prompt is already detailed, normalize it instead of expanding it.
+- For CLI fallback only, see `references/cli.md` and `references/image-api.md` for model, `quality`, `input_fidelity`, masks, output format, and output-path guidance.
+- For transparent images, ask built-in `image_gen` for actual transparency and preserve its alpha.
+
+More principles shared by both modes: `references/prompting.md`.
+Copy/paste specs shared by both modes: `references/sample-prompts.md`.
+
+## Guidance by asset type
+Asset-type templates (website assets, game assets, wireframes, logo) are consolidated in `references/sample-prompts.md`.
+
+## gpt-image-2 guidance for CLI fallback
+
+The fallback CLI defaults to `gpt-image-2`.
+
+- Use `gpt-image-2` for new CLI/API workflows unless the user confirms a different model.
+- CLI `gpt-image-2` does not support `background=transparent`; ask before using `gpt-image-1.5` unless the user explicitly requested that model.
+- `gpt-image-2` always uses high fidelity for image inputs; do not set `input_fidelity` with this model.
+- `gpt-image-2` supports `quality` values `low`, `medium`, `high`, and `auto`.
+- Use `quality low` for fast drafts, thumbnails, and quick iterations. Use `medium`, `high`, or `auto` for final assets, dense text, diagrams, identity-sensitive edits, or high-resolution outputs.
+- Square images are typically fastest to generate. Use `1024x1024` for fast square drafts.
+- If the user asks for 4K-style output, use `3840x2160` for landscape or `2160x3840` for portrait.
+- `gpt-image-2` size may be `auto` or `WIDTHxHEIGHT` if all constraints hold: max edge `<= 3840px`, both edges multiples of `16px`, long-to-short ratio `<= 3:1`, total pixels between `655,360` and `8,294,400`.
+
+Popular `gpt-image-2` sizes:
+- `1024x1024` square
+- `1536x1024` landscape
+- `1024x1536` portrait
+- `2048x2048` 2K square
+- `2048x1152` 2K landscape
+- `3840x2160` 4K landscape
+- `2160x3840` 4K portrait
+- `auto`
+
+## Fallback CLI mode only
+
+### Temp and output conventions
+These conventions apply only to the CLI fallback. They do not describe built-in `image_gen` output behavior.
+- Use `tmp/imagegen/` for intermediate files (for example JSONL batches); delete them when done.
+- Write final artifacts under `output/imagegen/`.
+- Use `--out` or `--out-dir` to control output paths; keep filenames stable and descriptive.
+
+### Dependencies
+Prefer `uv` for dependency management in this repo.
+
+Required Python package:
+```bash
+uv pip install openai
+```
+
+Optional for image inspection and downscaling:
+```bash
+uv pip install pillow
+```
+
+Portability note:
+- If you are using the installed skill outside this repo, install dependencies into that environment with its package manager.
+- In uv-managed environments, `uv pip install ...` remains the preferred path.
+
+### Environment
+- `OPENAI_API_KEY` must be set for live API calls.
+- Do not ask the user for `OPENAI_API_KEY` when using the built-in `image_gen` tool.
+- Never ask the user to paste the full key in chat. Ask them to set it locally and confirm when ready.
+
+If the key is missing, give the user these steps:
+1. Create an API key in the OpenAI platform UI: https://platform.openai.com/api-keys
+2. Set `OPENAI_API_KEY` as an environment variable in their system.
+3. Offer to guide them through setting the environment variable for their OS/shell if needed.
+
+If installation is not possible in this environment, tell the user which dependency is missing and how to install it into their active environment.
+
+### Script-mode notes
+- CLI commands + examples: `references/cli.md`
+- API parameter quick reference: `references/image-api.md`
+- Network approvals / sandbox settings for CLI mode: `references/codex-network.md`
+
+## Reference map
+- `references/prompting.md`: shared prompting principles for both modes.
+- `references/sample-prompts.md`: shared copy/paste prompt recipes for both modes.
+- `references/cli.md`: fallback-only CLI usage via `scripts/image_gen.py`.
+- `references/image-api.md`: fallback-only API/CLI parameter reference.
+- `references/codex-network.md`: fallback-only network/sandbox troubleshooting for CLI mode.
+- `scripts/image_gen.py`: fallback-only CLI implementation. Use only when the user explicitly chooses or confirms CLI mode.
+
+exec
+/bin/sh -lc "pwd && rg --files -g 'AGENTS.md' -g '.work/letter_ep053.py' -g 'episodes/sf-daily-053-dream-of-a-ridiculous-man/**' -g '.work/**' | head -80" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+/data/data/com.termux/files/home/tmp/sf-daily
+/bin/sh: rg: inaccessible or not found
+
+codex
+이미지 생성 스킬을 적용하겠습니다. 내장 도구로 페이지별 원본을 만들 수 있고, 생성 파일은 작업 디렉터리로 옮긴 뒤 검증하겠습니다.
+exec
+/bin/sh -lc 'ls -la episodes/sf-daily-053-dream-of-a-ridiculous-man 2>/dev/null || true' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+exec
+/bin/sh -lc "ls -la .work && sed -n '1,240p' .work/letter_ep053.py" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+total 294407
+drwx------. 4 u0_a667 u0_a667   20480 Nov 22 22:38 .
+drwx------. 6 u0_a667 u0_a667    3452 Nov 21 14:35 ..
+drwx------. 2 u0_a667 u0_a667    3452 Nov 22 22:38 __pycache__
+-rw-------. 1 u0_a667 u0_a667    1538 Nov 19 12:52 build_letter_ep016.py
+-rw-------. 1 u0_a667 u0_a667     645 Nov 20 20:34 check_names.sh
+-rw-------. 1 u0_a667 u0_a667   26737 Nov 20 02:35 codex-ep023.log
+-rw-------. 1 u0_a667 u0_a667   54192 Nov 21 16:40 codex-ep040.log
+-rw-------. 1 u0_a667 u0_a667   49062 Nov 21 18:39 codex-ep041.log
+-rw-------. 1 u0_a667 u0_a667   55130 Nov 21 20:39 codex-ep042.log
+-rw-------. 1 u0_a667 u0_a667   56814 Nov 21 22:40 codex-ep043.log
+-rw-------. 1 u0_a667 u0_a667   55609 Nov 22 00:47 codex-ep043b.log
+-rw-------. 1 u0_a667 u0_a667   41080 Nov 22 02:45 codex-ep044.log
+-rw-------. 1 u0_a667 u0_a667   68514 Nov 22 04:46 codex-ep045.log
+-rw-------. 1 u0_a667 u0_a667   65005 Nov 22 06:42 codex-ep046.log
+-rw-------. 1 u0_a667 u0_a667   66907 Nov 22 08:43 codex-ep047.log
+-rw-------. 1 u0_a667 u0_a667   68054 Nov 22 12:42 codex-ep048.log
+-rw-------. 1 u0_a667 u0_a667   65417 Nov 22 14:44 codex-ep049.log
+-rw-------. 1 u0_a667 u0_a667   62083 Nov 22 16:46 codex-ep050.log
+-rw-------. 1 u0_a667 u0_a667   66423 Nov 22 18:45 codex-ep051.log
+-rw-------. 1 u0_a667 u0_a667   67446 Nov 22 20:50 codex-ep052.log
+-rw-------. 1 u0_a667 u0_a667   28238 Nov 22 22:38 codex-ep053.log
+-rw-------. 1 u0_a667 u0_a667  311870 Nov 19 22:34 crystal-egg.htm
+drwx------. 2 u0_a667 u0_a667    3452 Nov 22 00:36 discarded-ep043-machine-stops-dup
+-rw-------. 1 u0_a667 u0_a667 2811375 Nov 18 08:42 ep004-notext.png
+-rw-------. 1 u0_a667 u0_a667 2803546 Nov 18 10:40 ep005-notext.png
+-rw-------. 1 u0_a667 u0_a667 2773333 Nov 18 12:41 ep006-notext.png
+-rw-------. 1 u0_a667 u0_a667 2611725 Nov 18 16:48 ep007-notext.png
+-rw-------. 1 u0_a667 u0_a667 3172021 Nov 18 20:42 ep008-notext.png
+-rw-------. 1 u0_a667 u0_a667 3018260 Nov 18 22:47 ep009-notext.png
+-rw-------. 1 u0_a667 u0_a667 2678024 Nov 19 00:41 ep010-notext.png
+-rw-------. 1 u0_a667 u0_a667 2968699 Nov 19 02:42 ep011-notext.png
+-rw-------. 1 u0_a667 u0_a667 3012535 Nov 19 04:39 ep012-notext.png
+-rw-------. 1 u0_a667 u0_a667 3266178 Nov 19 06:37 ep013-notext.png
+-rw-------. 1 u0_a667 u0_a667 3097269 Nov 19 08:41 ep014-notext.png
+-rw-------. 1 u0_a667 u0_a667 3574673 Nov 19 10:42 ep015-notext.png
+-rw-------. 1 u0_a667 u0_a667 3011739 Nov 19 12:52 ep016-notext.png
+-rw-------. 1 u0_a667 u0_a667 3272372 Nov 19 14:36 ep017-notext.png
+-rw-------. 1 u0_a667 u0_a667 3321259 Nov 19 16:39 ep018-notext.png
+-rw-------. 1 u0_a667 u0_a667 3186986 Nov 19 18:39 ep019-notext.png
+-rw-------. 1 u0_a667 u0_a667 3408021 Nov 19 20:37 ep020-notext.png
+-rw-------. 1 u0_a667 u0_a667 3355170 Nov 19 22:42 ep021-notext.png
+-rw-------. 1 u0_a667 u0_a667 3188631 Nov 20 00:37 ep022-notext.png
+-rw-------. 1 u0_a667 u0_a667 3285846 Nov 20 02:35 ep023-notext.png
+-rw-------. 1 u0_a667 u0_a667 3331105 Nov 20 04:35 ep024-notext.png
+-rw-------. 1 u0_a667 u0_a667 3133489 Nov 20 08:37 ep025-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3563260 Nov 20 08:39 ep025-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3474194 Nov 20 08:41 ep025-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3490780 Nov 20 08:44 ep025-p4-notext.png
+-rw-------. 1 u0_a667 u0_a667 1844213 Nov 20 10:38 ep026-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 1793655 Nov 20 10:39 ep026-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 1822033 Nov 20 10:41 ep026-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 2728982 Nov 20 12:40 ep027-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2742380 Nov 20 12:42 ep027-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2664852 Nov 20 12:44 ep027-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 2634091 Nov 20 14:39 ep028-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3037329 Nov 20 14:42 ep028-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2943263 Nov 20 14:44 ep028-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3038640 Nov 20 16:41 ep029-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3346119 Nov 20 16:44 ep029-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2917024 Nov 20 16:47 ep029-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 2834908 Nov 20 18:37 ep030-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2878823 Nov 20 18:40 ep030-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2997607 Nov 20 18:43 ep030-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3177238 Nov 20 20:42 ep031-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2974550 Nov 20 20:46 ep031-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3122474 Nov 20 20:48 ep031-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 2916899 Nov 21 00:37 ep032-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2911935 Nov 21 00:40 ep032-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3354433 Nov 21 02:37 ep033-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3127215 Nov 21 02:40 ep033-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3323097 Nov 21 04:38 ep034-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3426590 Nov 21 04:40 ep034-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3314686 Nov 21 04:43 ep034-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 2838898 Nov 21 06:37 ep035-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2914916 Nov 21 06:39 ep035-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3121369 Nov 21 08:37 ep036-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3030781 Nov 21 08:39 ep036-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3043641 Nov 21 10:40 ep037-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3083523 Nov 21 10:43 ep037-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2980545 Nov 21 12:39 ep038-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3371870 Nov 21 12:42 ep038-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3173111 Nov 21 14:38 ep039-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3169050 Nov 21 14:40 ep039-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3395762 Nov 21 16:37 ep040-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3278021 Nov 21 16:40 ep040-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2655357 Nov 21 18:37 ep041-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2646771 Nov 21 18:38 ep041-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2908826 Nov 21 20:36 ep042-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2946988 Nov 21 20:39 ep042-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2646039 Nov 21 22:37 ep043-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2764419 Nov 21 22:39 ep043-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3063708 Nov 22 00:39 ep043b-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3216943 Nov 22 00:42 ep043b-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3108931 Nov 22 00:46 ep043b-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3329449 Nov 22 02:39 ep044-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3234331 Nov 22 02:42 ep044-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3289413 Nov 22 02:44 ep044-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3199798 Nov 22 04:39 ep045-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3078447 Nov 22 04:40 ep045-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3008958 Nov 22 04:45 ep045-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3019181 Nov 22 06:36 ep046-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3343085 Nov 22 06:39 ep046-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3244181 Nov 22 06:42 ep046-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3406982 Nov 22 08:37 ep047-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3535015 Nov 22 08:40 ep047-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3383225 Nov 22 08:42 ep047-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 2728367 Nov 22 12:38 ep048-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2928405 Nov 22 12:40 ep048-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2951938 Nov 22 12:41 ep048-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3218322 Nov 22 14:38 ep049-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3111317 Nov 22 14:41 ep049-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3023156 Nov 22 14:43 ep049-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3231760 Nov 22 16:41 ep050-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3246937 Nov 22 16:43 ep050-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3328634 Nov 22 16:46 ep050-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 2586104 Nov 22 18:40 ep051-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 2962133 Nov 22 18:42 ep051-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 2534586 Nov 22 18:44 ep051-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667 3272392 Nov 22 20:38 ep052-p1-notext.png
+-rw-------. 1 u0_a667 u0_a667 3138209 Nov 22 20:41 ep052-p2-notext.png
+-rw-------. 1 u0_a667 u0_a667 3108918 Nov 22 20:50 ep052-p3-notext.png
+-rw-------. 1 u0_a667 u0_a667  258318 Nov 20 20:35 hoc.txt
+-rw-------. 1 u0_a667 u0_a667    3827 Nov 18 10:40 letter_ep005.py
+-rw-------. 1 u0_a667 u0_a667    3753 Nov 18 12:41 letter_ep006.py
+-rw-------. 1 u0_a667 u0_a667    3812 Nov 18 16:48 letter_ep007.py
+-rw-------. 1 u0_a667 u0_a667    3835 Nov 18 20:42 letter_ep008.py
+-rw-------. 1 u0_a667 u0_a667    4024 Nov 18 22:48 letter_ep009.py
+-rw-------. 1 u0_a667 u0_a667    3845 Nov 19 00:41 letter_ep010.py
+-rw-------. 1 u0_a667 u0_a667    3949 Nov 19 02:43 letter_ep011.py
+-rw-------. 1 u0_a667 u0_a667    4153 Nov 19 04:39 letter_ep012.py
+-rw-------. 1 u0_a667 u0_a667    4418 Nov 19 06:38 letter_ep013.py
+-rw-------. 1 u0_a667 u0_a667    4128 Nov 19 08:41 letter_ep014.py
+-rw-------. 1 u0_a667 u0_a667    4263 Nov 19 10:42 letter_ep015.py
+-rw-------. 1 u0_a667 u0_a667    4216 Nov 19 12:52 letter_ep016.py
+-rw-------. 1 u0_a667 u0_a667    4305 Nov 19 14:36 letter_ep017.py
+-rw-------. 1 u0_a667 u0_a667    4466 Nov 19 16:39 letter_ep018.py
+-rw-------. 1 u0_a667 u0_a667    4259 Nov 19 18:40 letter_ep019.py
+-rw-------. 1 u0_a667 u0_a667    4228 Nov 19 20:37 letter_ep020.py
+-rw-------. 1 u0_a667 u0_a667    4769 Nov 19 22:42 letter_ep021.py
+-rw-------. 1 u0_a667 u0_a667    4379 Nov 20 00:37 letter_ep022.py
+-rw-------. 1 u0_a667 u0_a667    4458 Nov 20 02:33 letter_ep023.py
+-rw-------. 1 u0_a667 u0_a667    4014 Nov 20 04:33 letter_ep024.py
+-rw-------. 1 u0_a667 u0_a667    7426 Nov 20 08:45 letter_ep025.py
+-rw-------. 1 u0_a667 u0_a667    6974 Nov 20 10:37 letter_ep026.py
+-rw-------. 1 u0_a667 u0_a667    6625 Nov 20 12:37 letter_ep027.py
+-rw-------. 1 u0_a667 u0_a667    6830 Nov 20 14:37 letter_ep028.py
+-rw-------. 1 u0_a667 u0_a667    6953 Nov 20 16:36 letter_ep029.py
+-rw-------. 1 u0_a667 u0_a667    7034 Nov 20 18:35 letter_ep030.py
+-rw-------. 1 u0_a667 u0_a667    6850 Nov 20 20:39 letter_ep031.py
+-rw-------. 1 u0_a667 u0_a667    6627 Nov 21 00:34 letter_ep032.py
+-rw-------. 1 u0_a667 u0_a667    6173 Nov 21 02:34 letter_ep033.py
+-rw-------. 1 u0_a667 u0_a667    7545 Nov 21 04:34 letter_ep034.py
+-rw-------. 1 u0_a667 u0_a667    6360 Nov 21 06:34 letter_ep035.py
+-rw-------. 1 u0_a667 u0_a667    5926 Nov 21 08:34 letter_ep036.py
+-rw-------. 1 u0_a667 u0_a667    5972 Nov 21 10:36 letter_ep037.py
+-rw-------. 1 u0_a667 u0_a667    6005 Nov 21 12:35 letter_ep038.py
+-rw-------. 1 u0_a667 u0_a667    6184 Nov 21 14:34 letter_ep039.py
+-rw-------. 1 u0_a667 u0_a667    6090 Nov 21 16:34 letter_ep040.py
+-rw-------. 1 u0_a667 u0_a667    5956 Nov 21 18:34 letter_ep041.py
+-rw-------. 1 u0_a667 u0_a667    5927 Nov 21 20:34 letter_ep042.py
+-rw-------. 1 u0_a667 u0_a667    6021 Nov 21 22:34 letter_ep043.py
+-rw-------. 1 u0_a667 u0_a667    6705 Nov 22 00:36 letter_ep043b.py
+-rw-------. 1 u0_a667 u0_a667    6626 Nov 22 02:37 letter_ep044.py
+-rw-------. 1 u0_a667 u0_a667    6428 Nov 22 04:36 letter_ep045.py
+-rw-------. 1 u0_a667 u0_a667    6620 Nov 22 06:34 letter_ep046.py
+-rw-------. 1 u0_a667 u0_a667    6458 Nov 22 08:35 letter_ep047.py
+-rw-------. 1 u0_a667 u0_a667    6839 Nov 22 12:35 letter_ep048.py
+-rw-------. 1 u0_a667 u0_a667    6767 Nov 22 14:36 letter_ep049.py
+-rw-------. 1 u0_a667 u0_a667    6998 Nov 22 16:37 letter_ep050.py
+-rw-------. 1 u0_a667 u0_a667    6699 Nov 22 18:37 letter_ep051.py
+-rw-------. 1 u0_a667 u0_a667    6708 Nov 22 20:36 letter_ep052.py
+-rw-------. 1 u0_a667 u0_a667    6101 Nov 22 22:38 letter_ep053.py
+-rw-------. 1 u0_a667 u0_a667     913 Nov 22 14:33 looking-backward.txt
+-rw-------. 1 u0_a667 u0_a667    2881 Nov 20 14:37 make_letter_028.py
+-rw-------. 1 u0_a667 u0_a667    2999 Nov 20 16:36 make_letter_029.py
+-rw-------. 1 u0_a667 u0_a667    3074 Nov 20 18:35 make_letter_030.py
+-rw-------. 1 u0_a667 u0_a667    2927 Nov 20 20:39 make_letter_031.py
+-rw-------. 1 u0_a667 u0_a667    2695 Nov 21 00:34 make_letter_032.py
+-rw-------. 1 u0_a667 u0_a667    1618 Nov 21 10:36 patch_pages_037.py
+-rw-------. 1 u0_a667 u0_a667    4496 Nov 20 02:33 prompt-ep023.txt
+-rw-------. 1 u0_a667 u0_a667    4039 Nov 20 04:33 prompt-ep024.txt
+-rw-------. 1 u0_a667 u0_a667   14045 Nov 20 08:35 prompt-ep025.txt
+-rw-------. 1 u0_a667 u0_a667    7713 Nov 20 10:36 prompt-ep026.txt
+-rw-------. 1 u0_a667 u0_a667    7157 Nov 20 12:37 prompt-ep027.txt
+-rw-------. 1 u0_a667 u0_a667    7018 Nov 20 14:36 prompt-ep028.txt
+-rw-------. 1 u0_a667 u0_a667    6638 Nov 20 16:35 prompt-ep029.txt
+-rw-------. 1 u0_a667 u0_a667    6958 Nov 20 18:35 prompt-ep030.txt
+-rw-------. 1 u0_a667 u0_a667    7611 Nov 20 20:38 prompt-ep031.txt
+-rw-------. 1 u0_a667 u0_a667    6292 Nov 21 00:34 prompt-ep032.txt
+-rw-------. 1 u0_a667 u0_a667    6240 Nov 21 02:34 prompt-ep033.txt
+-rw-------. 1 u0_a667 u0_a667    8895 Nov 21 04:35 prompt-ep034.txt
+-rw-------. 1 u0_a667 u0_a667    6845 Nov 21 06:34 prompt-ep035.txt
+-rw-------. 1 u0_a667 u0_a667    6152 Nov 21 08:34 prompt-ep036.txt
+-rw-------. 1 u0_a667 u0_a667    5878 Nov 21 10:37 prompt-ep037.txt
+-rw-------. 1 u0_a667 u0_a667    5739 Nov 21 12:34 prompt-ep038.txt
+-rw-------. 1 u0_a667 u0_a667    6372 Nov 21 14:34 prompt-ep039.txt
+-rw-------. 1 u0_a667 u0_a667    6898 Nov 21 16:34 prompt-ep040.txt
+-rw-------. 1 u0_a667 u0_a667    6481 Nov 21 18:34 prompt-ep041.txt
+-rw-------. 1 u0_a667 u0_a667    6252 Nov 21 20:33 prompt-ep042.txt
+-rw-------. 1 u0_a667 u0_a667    6221 Nov 21 22:34 prompt-ep043.txt
+-rw-------. 1 u0_a667 u0_a667    7199 Nov 22 00:36 prompt-ep043b.txt
+-rw-------. 1 u0_a667 u0_a667    8132 Nov 22 02:37 prompt-ep044.txt
+-rw-------. 1 u0_a667 u0_a667    8437 Nov 22 04:36 prompt-ep045.txt
+-rw-------. 1 u0_a667 u0_a667    8926 Nov 22 06:34 prompt-ep046.txt
+-rw-------. 1 u0_a667 u0_a667    8130 Nov 22 08:34 prompt-ep047.txt
+-rw-------. 1 u0_a667 u0_a667    8446 Nov 22 12:35 prompt-ep048.txt
+-rw-------. 1 u0_a667 u0_a667    8632 Nov 22 14:36 prompt-ep049.txt
+-rw-------. 1 u0_a667 u0_a667    8988 Nov 22 16:37 prompt-ep050.txt
+-rw-------. 1 u0_a667 u0_a667    8832 Nov 22 18:37 prompt-ep051.txt
+-rw-------. 1 u0_a667 u0_a667    8354 Nov 22 20:35 prompt-ep052.txt
+-rw-------. 1 u0_a667 u0_a667    7082 Nov 22 22:37 prompt-ep053.txt
+-rw-------. 1 u0_a667 u0_a667    1786 Nov 22 18:33 pub050.py
+-rw-------. 1 u0_a667 u0_a667    1879 Nov 22 20:33 pub051.py
+-rw-------. 1 u0_a667 u0_a667    1881 Nov 22 22:33 pub052.py
+-rw-------. 1 u0_a667 u0_a667       0 Nov 19 22:35 t.txt
+-rw-------. 1 u0_a667 u0_a667  499162 Nov 19 22:35 t2.txt
+-rw-------. 1 u0_a667 u0_a667     162 Nov 19 22:34 tast.htm
+from pathlib import Path
+from PIL import Image, ImageDraw, ImageFont
+
+
+root = Path(__file__).resolve().parent.parent
+destination = root / 'episodes/sf-daily-053-dream-of-a-ridiculous-man'
+destination.mkdir(parents=True, exist_ok=True)
+
+
+pages = [
+    [
+        {'d': [('행인들:', '어릿광두가 온다! 저 웃음거리 좀 봐'), ('어릿광두:', '…오늘일 필요도 없지, 이제 아무래도 좋으니')]},
+        {'d': [('소녀:', '아저씨! 저 어두운 데 엄마가… 좀 데려다 주세요'), ('어릿광두:', '비켜 가렴, 아가씨 — 오늘 밤엔 누구도 구하지 못해')]},
+        {'d': [('어릿광두:', '자, 이제 자자 — 잠들면 전부 끝나는 거야')]},
+        {},
+        {'n': '눈을 뜨자 새로운 태양 — 지구와 똑같되, 상처 하나 없는 세계가 눈앞에'},
+        {'d': [('낙원의 사람들:', '어서 와요, 나그네 — 여기엔 슬픔이 자라난 적이 없답니다')]},
+    ],
+    [
+        {'d': [('낙원의 아이:', '우리는 필요한 만큼만 가져요 — 그러면 모두에게 늘 충분하거든요')]},
+        {'d': [('어릿광두:', '내 고향에선 진실만 말하면 웃음거리가 돼 — 그럼, 재미있는 거짓 하나 가르쳐 줄까')]},
+        {'n': '거짓은 꽃가루처럼 번지고 — 낙원에 처음으로, 눈물이 핀다'},
+        {},
+        {'d': [('어릿광두:', '…살아 있다! 차갑고 눈부신 아침이, 나를 도로 데려왔다')]},
+        {'d': [('어릿광두:', '이제 알겠어, 꼬마 아가씨 — 사람은 선을 이미 알고 있어'), ('소녀:', '…아저씨, 이제 웃네요')]},
+    ],
+]
+
+
+def letter_page(page_number, captions):
+    src = root / f'.work/ep053-p{page_number}-notext.png'
+    dst = destination / f'page-{page_number:02d}.png'
+    im = Image.open(src).convert('RGBA')
+    W, H = im.size
+    sx, sy = W / 1024, H / 1536
+    scale = min(sx, sy)
+    px = lambda n: max(1, round(n * scale))
+    bold = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Bold.ttf'), px(22))
+    regular = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Regular.ttf'), px(20))
+    speaker_font = ImageFont.truetype(str(root / 'assets/fonts/NanumGothic-Bold.ttf'), px(20))
+    overlay = Image.new('RGBA', im.size)
+    d = ImageDraw.Draw(overlay)
+
+    margin_x, margin_y = round(8 * sx), round(8 * sy)
+    gutter_x, gutter_y = round(8 * sx), round(8 * sy)
+    panel_w = (W - 2 * margin_x - gutter_x) / 2
+    panel_h = (H - 2 * margin_y - 2 * gutter_y) / 3
+
+    def panel(i):
+        row, col = divmod(i, 2)
+        x = margin_x + col * (panel_w + gutter_x)
+        y = margin_y + row * (panel_h + gutter_y)
+        return round(x), round(y), round(x + panel_w), round(y + panel_h)
+
+    def wrap_chars(s, font, max_width, first_width=None):
+        lines, line = [], ''
+        width = first_width if first_width is not None else max_width
+        for ch in s:
+            if d.textlength(line + ch, font=font) > width and line:
+                lines.append(line.rstrip())
+                line = ch.lstrip()
+                width = max_width
+            else:
+                line += ch
+        if line:
+            lines.append(line.rstrip())
+        return lines
+
+    def narration(i, caption):
+        x0, y0, x1, _ = panel(i)
+        left, right = x0 + px(12), x1 - px(12)
+        inset = px(12)
+        lines = wrap_chars(caption, bold, right - left - 2 * inset - px(6))
+        leading = px(31)
+        top = y0 + px(10)
+        height = px(21) + leading * len(lines)
+        d.rounded_rectangle((left, top, right, top + height), radius=px(10), fill=(13, 20, 32, 205))
+        d.rounded_rectangle((left, top, left + px(6), top + height), radius=px(3), fill=(245, 158, 11, 255))
+        for n, line in enumerate(lines):
+            d.text((left + inset + px(6), top + px(9) + n * leading), line, font=bold, fill=(255, 255, 255, 255))
+
+    def dialogue(i, entries):
+        x0, _, x1, y1 = panel(i)
+        left, right = x0 + px(12), x1 - px(12)
+        inset = px(12)
+        available = right - left - 2 * inset
+        laid_out = []
+        for name, speech in entries:
+            name_width = d.textlength(name, font=speaker_font) + px(8)
+            lines = wrap_chars(speech, regular, available, available - name_width)
+            laid_out.append((name, name_width, lines))
+        leading = px(29)
+        line_count = sum(len(lines) for _, _, lines in laid_out)
+        height = px(20) + leading * line_count
+        bottom = y1 - px(10)
+        top = bottom - height
+        d.rounded_rectangle((left, top, right, bottom), radius=px(10), fill=(255, 255, 255, 238), outline=(31, 41, 55, 255), width=px(2))
+        text_y = top + px(8)
+        row = 0
+        for name, name_width, lines in laid_out:
+            d.text((left + inset, text_y + row * leading), name, font=speaker_font, fill=(245, 158, 11, 255))
+            for n, line in enumerate(lines):
+                line_x = left + inset + (name_width if n == 0 else 0)
+                d.text((line_x, text_y + (row + n) * leading), line, font=regular, fill=(31, 41, 55, 255))
+            row += len(lines)
+
+    for i, caption in enumerate(captions):
+        if 'n' in caption:
+            narration(i, caption['n'])
+        if 'd' in caption:
+            dialogue(i, caption['d'])
+
+    Image.alpha_composite(im, overlay).convert('RGB').save(dst, format='PNG')
+    return dst
+
+
+outputs = [letter_page(n, captions) for n, captions in enumerate(pages, 1)]
+page_images = [Image.open(p).convert('RGB') for p in outputs]
+width, height = page_images[0].size
+scroll = Image.new('RGB', (width, height * len(page_images) + 16 * (len(page_images) - 1)), '#FFFFFF')
+for i, page in enumerate(page_images):
+    y = i * (height + 16)
+    scroll.paste(page, (0, y))
+    if i < len(page_images) - 1:
+        ImageDraw.Draw(scroll).rectangle((0, y + height, width - 1, y + height + 15), fill='#FFF8E7')
+scroll.save(destination / 'scroll.png', format='PNG')
+
+for output in [*outputs, destination / 'scroll.png']:
+    print(f'{output.relative_to(root)} | {output.stat().st_size}')
+
+exec
+/bin/sh -lc 'find .. -name AGENTS.md -print' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 167ms:
+../team-memory-tmp2/AGENTS.md
+
+codex
+1페이지 생성 호출을 마쳤습니다. 도구 응답에 저장 경로가 표시되지 않아 생성 파일을 확인하고, 확인되는 대로 규격 검사를 진행하겠습니다.
+exec
+/bin/sh -lc "find /data/data/com.termux/files/home/.codex/generated_images -type f -mmin -10 -printf '%TY-%Tm-%Td %TH:%TM:%TS %s %p\\n' 2>/dev/null | tail -20" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+2026-11-22 22:40:21.0905243230 3227662 /data/data/com.termux/files/home/.codex/generated_images/01a2037a-80b7-7511-9d2a-7439af92ed7c/exec-4fb40f9d-010e-479e-9e65-e7d3c2b3c891.png
+
+exec
+/bin/sh -lc "cp /data/data/com.termux/files/home/.codex/generated_images/01a2037a-80b7-7511-9d2a-7439af92ed7c/exec-4fb40f9d-010e-479e-9e65-e7d3c2b3c891.png .work/ep053-p1-notext.png && python3 -c \"from PIL import Image; p='.work/ep053-p1-notext.png'; im=Image.open(p); print(im.format,im.size); im.verify()\"" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+PNG (1024, 1536)
+
+codex
+1페이지 원본은 PNG 1024×1536으로 확인했고, 6칸 구성과 주인공·소녀의 외형도 맞습니다. 이 파일을 참조 이미지로 첨부해 2페이지를 생성하겠습니다.
+codex
+2페이지는 1페이지 원본을 참조해 생성 중입니다. 완료되면 파일을 옮겨 형식과 크기를 검사하겠습니다.
+exec
+/bin/sh -lc "find /data/data/com.termux/files/home/.codex/generated_images -type f -mmin -6 -printf '%TY-%Tm-%Td %TH:%TM:%TS %s %p\\n' 2>/dev/null | tail -10" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+2026-11-22 22:40:21.0905243230 3227662 /data/data/com.termux/files/home/.codex/generated_images/01a2037a-80b7-7511-9d2a-7439af92ed7c/exec-4fb40f9d-010e-479e-9e65-e7d3c2b3c891.png
+2026-11-22 22:43:15.2105242570 3455940 /data/data/com.termux/files/home/.codex/generated_images/01a2037a-80b7-7511-9d2a-7439af92ed7c/exec-bfa4cfd5-4a55-412e-a0b9-2b6d676483da.png
+
+exec
+/bin/sh -lc "cp /data/data/com.termux/files/home/.codex/generated_images/01a2037a-80b7-7511-9d2a-7439af92ed7c/exec-bfa4cfd5-4a55-412e-a0b9-2b6d676483da.png .work/ep053-p2-notext.png && python3 -c \"from PIL import Image; p='.work/ep053-p2-notext.png'; im=Image.open(p); print(im.format,im.size); im.verify()\"" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+PNG (1024, 1536)
+
+codex
+2페이지도 PNG 1024×1536으로 통과했습니다. 참조 이미지의 인물 디자인이 이어졌고, 마지막 칸의 소녀도 같은 차림입니다. 이제 후조판 스크립트를 수정 없이 실행하겠습니다.
+exec
+/bin/sh -lc 'python3 .work/letter_ep053.py' in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 917ms:
+episodes/sf-daily-053-dream-of-a-ridiculous-man/page-01.png | 2854263
+episodes/sf-daily-053-dream-of-a-ridiculous-man/page-02.png | 3061703
+episodes/sf-daily-053-dream-of-a-ridiculous-man/scroll.png | 5916009
+
+exec
+/bin/sh -lc "python3 - <<'PY'
+from pathlib import Path
+from PIL import Image
+base=Path('episodes/sf-daily-053-dream-of-a-ridiculous-man')
+for name, expected in [('page-01.png',(1024,1536)),('page-02.png',(1024,1536)),('scroll.png',(1024,3088))]:
+    p=base/name
+    with Image.open(p) as im:
+        actual=(im.format,im.size)
+        im.verify()
+    assert actual==('PNG',expected), (p,actual)
+    assert p.stat().st_size>=300_000, (p,p.stat().st_size)
+    print(f'{p} | {p.stat().st_size:,} bytes | {expected[0]}x{expected[1]} PNG')
+PY" in /data/data/com.termux/files/home/tmp/sf-daily
+ succeeded in 0ms:
+episodes/sf-daily-053-dream-of-a-ridiculous-man/page-01.png | 2,854,263 bytes | 1024x1536 PNG
+episodes/sf-daily-053-dream-of-a-ridiculous-man/page-02.png | 3,061,703 bytes | 1024x1536 PNG
+episodes/sf-daily-053-dream-of-a-ridiculous-man/scroll.png | 5,916,009 bytes | 1024x3088 PNG
+
+codex
+#053화 2페이지 만화를 완성했습니다. 내장 image_gen으로 원본을 생성하고, 지정된 스크립트를 수정 없이 실행해 한글 후조판을 마쳤습니다. 세 파일 모두 PNG 형식·크기 검사를 통과했습니다.
+
+- [page-01.png](/data/data/com.termux/files/home/tmp/sf-daily/episodes/sf-daily-053-dream-of-a-ridiculous-man/page-01.png) — 2.85 MB
+- [page-02.png](/data/data/com.termux/files/home/tmp/sf-daily/episodes/sf-daily-053-dream-of-a-ridiculous-man/page-02.png) — 3.06 MB
+- [scroll.png](/data/data/com.termux/files/home/tmp/sf-daily/episodes/sf-daily-053-dream-of-a-ridiculous-man/scroll.png) — 5.92 MB
+tokens used
+27,508
+#053화 2페이지 만화를 완성했습니다. 내장 image_gen으로 원본을 생성하고, 지정된 스크립트를 수정 없이 실행해 한글 후조판을 마쳤습니다. 세 파일 모두 PNG 형식·크기 검사를 통과했습니다.
+
+- [page-01.png](/data/data/com.termux/files/home/tmp/sf-daily/episodes/sf-daily-053-dream-of-a-ridiculous-man/page-01.png) — 2.85 MB
+- [page-02.png](/data/data/com.termux/files/home/tmp/sf-daily/episodes/sf-daily-053-dream-of-a-ridiculous-man/page-02.png) — 3.06 MB
+- [scroll.png](/data/data/com.termux/files/home/tmp/sf-daily/episodes/sf-daily-053-dream-of-a-ridiculous-man/scroll.png) — 5.92 MB
+EXIT:0
